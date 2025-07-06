@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.pathing.calc.IPathingControlManager;
-import baritone.api.process.IBaritoneProcess;
-import baritone.api.process.PathingCommand;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.pathing.calc.IPathingControlManager;
+import burgertone.api.process.IBaritoneProcess;
+import burgertone.api.process.PathingCommand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,14 +32,14 @@ import java.util.stream.Stream;
 
 public class ProcCommand extends Command {
 
-    public ProcCommand(IBaritone baritone) {
-        super(baritone, "proc");
+    public ProcCommand(IBaritone burgertone) {
+        super(burgertone, "proc");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        IPathingControlManager pathingControlManager = baritone.getPathingControlManager();
+        IPathingControlManager pathingControlManager = burgertone.getPathingControlManager();
         IBaritoneProcess process = pathingControlManager.mostRecentInControl().orElse(null);
         if (process == null) {
             throw new CommandInvalidStateException("No process in control");

@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
-import baritone.Baritone;
-import baritone.api.cache.ICachedWorld;
-import baritone.api.cache.IWaypointCollection;
-import baritone.api.cache.IWorldData;
+import burgertone.Baritone;
+import burgertone.api.cache.ICachedWorld;
+import burgertone.api.cache.IWaypointCollection;
+import burgertone.api.cache.IWorldData;
 import net.minecraft.world.level.dimension.DimensionType;
 
 import java.nio.file.Path;
 
 /**
- * Data about a world, from baritone's point of view. Includes cached chunks, waypoints, and map data.
+ * Data about a world, from burgertone's point of view. Includes cached chunks, waypoints, and map data.
  *
  * @author leijurv
  */

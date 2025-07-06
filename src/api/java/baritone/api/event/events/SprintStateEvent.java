@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.event.events;
+package burgertone.api.event.events;
 
 /**
  * @author Brady

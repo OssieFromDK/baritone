@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.behavior.look;
+package burgertone.behavior.look;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;

@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.schematic;
+package burgertone.api.schematic;
 
 import java.util.ArrayList;
 import java.util.List;

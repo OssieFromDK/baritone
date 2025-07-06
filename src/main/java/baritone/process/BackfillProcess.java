@@ -15,17 +15,17 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.process;
+package burgertone.process;
 
-import baritone.Baritone;
-import baritone.api.process.PathingCommand;
-import baritone.api.process.PathingCommandType;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.pathing.path.PathExecutor;
-import baritone.utils.BaritoneProcessHelper;
+import burgertone.Baritone;
+import burgertone.api.process.PathingCommand;
+import burgertone.api.process.PathingCommandType;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.pathing.path.PathExecutor;
+import burgertone.utils.BaritoneProcessHelper;
 import java.util.*;
 import java.util.stream.Collectors;
 import net.minecraft.core.BlockPos;
@@ -37,8 +37,8 @@ public final class BackfillProcess extends BaritoneProcessHelper {
 
     public HashMap<BlockPos, BlockState> blocksToReplace = new HashMap<>();
 
-    public BackfillProcess(Baritone baritone) {
-        super(baritone);
+    public BackfillProcess(Baritone burgertone) {
+        super(burgertone);
     }
 
     @Override
@@ -60,7 +60,7 @@ public final class BackfillProcess extends BaritoneProcessHelper {
             }
         }
         amIBreakingABlockHMMMMMMM();
-        baritone.getInputOverrideHandler().clearAllKeys();
+        burgertone.getInputOverrideHandler().clearAllKeys();
 
         return !toFillIn().isEmpty();
     }
@@ -70,18 +70,18 @@ public final class BackfillProcess extends BaritoneProcessHelper {
         if (!isSafeToCancel) {
             return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
         }
-        baritone.getInputOverrideHandler().clearAllKeys();
+        burgertone.getInputOverrideHandler().clearAllKeys();
         for (BlockPos toPlace : toFillIn()) {
             MovementState fake = new MovementState();
-            switch (MovementHelper.attemptToPlaceABlock(fake, baritone, toPlace, false, false)) {
+            switch (MovementHelper.attemptToPlaceABlock(fake, burgertone, toPlace, false, false)) {
                 case NO_OPTION:
                     continue;
                 case READY_TO_PLACE:
-                    baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
+                    burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
                     return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                 case ATTEMPTING:
                     // patience
-                    baritone.getLookBehavior().updateTarget(fake.getTarget().getRotation().get(), true);
+                    burgertone.getLookBehavior().updateTarget(fake.getTarget().getRotation().get(), true);
                     return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                 default:
                     throw new IllegalStateException();
@@ -91,7 +91,7 @@ public final class BackfillProcess extends BaritoneProcessHelper {
     }
 
     private void amIBreakingABlockHMMMMMMM() {
-        if (!ctx.getSelectedBlock().isPresent() || !baritone.getPathingBehavior().isPathing()) {
+        if (!ctx.getSelectedBlock().isPresent() || !burgertone.getPathingBehavior().isPathing()) {
             return;
         }
         blocksToReplace.put(ctx.getSelectedBlock().get(), ctx.world().getBlockState(ctx.getSelectedBlock().get()));
@@ -102,14 +102,14 @@ public final class BackfillProcess extends BaritoneProcessHelper {
                 .keySet()
                 .stream()
                 .filter(pos -> ctx.world().getBlockState(pos).getBlock() == Blocks.AIR)
-                .filter(pos -> baritone.getBuilderProcess().placementPlausible(pos, Blocks.DIRT.defaultBlockState()))
+                .filter(pos -> burgertone.getBuilderProcess().placementPlausible(pos, Blocks.DIRT.defaultBlockState()))
                 .filter(pos -> !partOfCurrentMovement(pos))
                 .sorted(Comparator.<BlockPos>comparingDouble(ctx.playerFeet()::distSqr).reversed())
                 .collect(Collectors.toList());
     }
 
     private boolean partOfCurrentMovement(BlockPos pos) {
-        PathExecutor exec = baritone.getPathingBehavior().getCurrent();
+        PathExecutor exec = burgertone.getPathingBehavior().getCurrent();
         if (exec == null || exec.finished() || exec.failed()) {
             return false;
         }

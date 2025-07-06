@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.IBaritone;
-import baritone.api.event.events.PacketEvent;
-import baritone.api.event.events.type.EventState;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.IBaritone;
+import burgertone.api.event.events.PacketEvent;
+import burgertone.api.event.events.type.EventState;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.network.Connection;

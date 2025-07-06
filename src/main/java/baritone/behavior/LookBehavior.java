@@ -15,17 +15,17 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.behavior;
+package burgertone.behavior;
 
-import baritone.Baritone;
-import baritone.api.Settings;
-import baritone.api.behavior.ILookBehavior;
-import baritone.api.behavior.look.IAimProcessor;
-import baritone.api.behavior.look.ITickableAimProcessor;
-import baritone.api.event.events.*;
-import baritone.api.utils.IPlayerContext;
-import baritone.api.utils.Rotation;
-import baritone.behavior.look.ForkableRandom;
+import burgertone.Baritone;
+import burgertone.api.Settings;
+import burgertone.api.behavior.ILookBehavior;
+import burgertone.api.behavior.look.IAimProcessor;
+import burgertone.api.behavior.look.ITickableAimProcessor;
+import burgertone.api.event.events.*;
+import burgertone.api.utils.IPlayerContext;
+import burgertone.api.utils.Rotation;
+import burgertone.behavior.look.ForkableRandom;
 import net.minecraft.network.protocol.game.ServerboundMovePlayerPacket;
 
 import java.util.ArrayDeque;
@@ -56,9 +56,9 @@ public final class LookBehavior extends Behavior implements ILookBehavior {
     private final Deque<Float> smoothYawBuffer;
     private final Deque<Float> smoothPitchBuffer;
 
-    public LookBehavior(Baritone baritone) {
-        super(baritone);
-        this.processor = new AimProcessor(baritone.getPlayerContext());
+    public LookBehavior(Baritone burgertone) {
+        super(burgertone);
+        this.processor = new AimProcessor(burgertone.getPlayerContext());
         this.smoothYawBuffer = new ArrayDeque<>();
         this.smoothPitchBuffer = new ArrayDeque<>();
     }

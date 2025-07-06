@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.process;
+package burgertone.api.process;
 
-import baritone.api.utils.BlockOptionalMeta;
-import baritone.api.utils.BlockOptionalMetaLookup;
+import burgertone.api.utils.BlockOptionalMeta;
+import burgertone.api.utils.BlockOptionalMetaLookup;
 import java.util.stream.Stream;
 import net.minecraft.world.level.block.Block;
 

@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.event.events;
+package burgertone.api.event.events;
 
-import baritone.api.utils.Pair;
+import burgertone.api.utils.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.state.BlockState;

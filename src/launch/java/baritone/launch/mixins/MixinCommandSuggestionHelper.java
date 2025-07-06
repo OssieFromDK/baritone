@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.event.events.TabCompleteEvent;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.event.events.TabCompleteEvent;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.context.StringRange;
 import com.mojang.brigadier.suggestion.Suggestion;

@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.IBaritone;
-import baritone.api.event.events.RotationMoveEvent;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.IBaritone;
+import burgertone.api.event.events.RotationMoveEvent;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -61,9 +61,9 @@ public abstract class MixinLivingEntity extends Entity {
             at = @At("HEAD")
     )
     private void preMoveRelative(CallbackInfo ci) {
-        this.getBaritone().ifPresent(baritone -> {
+        this.getBaritone().ifPresent(burgertone -> {
             this.jumpRotationEvent = new RotationMoveEvent(RotationMoveEvent.Type.JUMP, this.getYRot(), this.getXRot());
-            baritone.getGameEventHandler().onPlayerRotationMove(this.jumpRotationEvent);
+            burgertone.getGameEventHandler().onPlayerRotationMove(this.jumpRotationEvent);
         });
     }
 
@@ -89,9 +89,9 @@ public abstract class MixinLivingEntity extends Entity {
             )
     )
     private void onPreElytraMove(Vec3 direction, final CallbackInfoReturnable<Vec3> cir) {
-        this.getBaritone().ifPresent(baritone -> {
+        this.getBaritone().ifPresent(burgertone -> {
             this.elytraRotationEvent = new RotationMoveEvent(RotationMoveEvent.Type.MOTION_UPDATE, this.getYRot(), this.getXRot());
-            baritone.getGameEventHandler().onPlayerRotationMove(this.elytraRotationEvent);
+            burgertone.getGameEventHandler().onPlayerRotationMove(this.elytraRotationEvent);
             this.setYRot(this.elytraRotationEvent.getYaw());
             this.setXRot(this.elytraRotationEvent.getPitch());
         });

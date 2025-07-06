@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,14 +28,14 @@ import java.util.stream.Stream;
 
 public class ClickCommand extends Command {
 
-    public ClickCommand(IBaritone baritone) {
-        super(baritone, "click");
+    public ClickCommand(IBaritone burgertone) {
+        super(burgertone, "click");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        baritone.openClick();
+        burgertone.openClick();
         logDirect("aight dude");
     }
 

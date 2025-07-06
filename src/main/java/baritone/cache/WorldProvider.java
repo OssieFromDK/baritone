@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
-import baritone.Baritone;
-import baritone.api.cache.IWorldProvider;
-import baritone.api.utils.IPlayerContext;
+import burgertone.Baritone;
+import burgertone.api.cache.IWorldProvider;
+import burgertone.api.utils.IPlayerContext;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
@@ -44,7 +44,7 @@ public class WorldProvider implements IWorldProvider {
 
     private static final Map<Path, WorldData> worldCache = new HashMap<>();
 
-    private final Baritone baritone;
+    private final Baritone burgertone;
     private final IPlayerContext ctx;
     private WorldData currentWorld;
 
@@ -54,9 +54,9 @@ public class WorldProvider implements IWorldProvider {
      */
     private Level mcWorld;
 
-    public WorldProvider(Baritone baritone) {
-        this.baritone = baritone;
-        this.ctx = baritone.getPlayerContext();
+    public WorldProvider(Baritone burgertone) {
+        this.burgertone = burgertone;
+        this.ctx = burgertone.getPlayerContext();
     }
 
     @Override
@@ -76,12 +76,12 @@ public class WorldProvider implements IWorldProvider {
             final Path readmeDir = dirs.getB();
 
             try {
-                // lol wtf is this baritone folder in my minecraft save?
+                // lol wtf is this burgertone folder in my minecraft save?
                 // good thing we have a readme
                 Files.createDirectories(readmeDir);
                 Files.write(
                         readmeDir.resolve("readme.txt"),
-                        "https://github.com/cabaletta/baritone\n".getBytes(StandardCharsets.US_ASCII)
+                        "https://github.com/cabaletta/burgertone\n".getBytes(StandardCharsets.US_ASCII)
                 );
             } catch (IOException ignored) {}
 
@@ -117,7 +117,7 @@ public class WorldProvider implements IWorldProvider {
 
     /**
      * @param world The world
-     * @return An {@link Optional} containing the world's baritone dir and readme dir, or {@link Optional#empty()} if
+     * @return An {@link Optional} containing the world's burgertone dir and readme dir, or {@link Optional#empty()} if
      *         the world isn't valid for caching.
      */
     private Optional<Tuple<Path, Path>> getSaveDirectories(Level world) {
@@ -134,7 +134,7 @@ public class WorldProvider implements IWorldProvider {
                 worldDir = worldDir.getParent();
             }
 
-            worldDir = worldDir.resolve("baritone");
+            worldDir = worldDir.resolve("burgertone");
             readmeDir = worldDir;
         } else { // Otherwise, the server must be remote...
             String folderName;
@@ -151,10 +151,10 @@ public class WorldProvider implements IWorldProvider {
             if (SystemUtils.IS_OS_WINDOWS) {
                 folderName = folderName.replace(":", "_");
             }
-            // TODO: This should probably be in "baritone/servers"
-            worldDir = baritone.getDirectory().resolve(folderName);
-            // Just write the readme to the baritone directory instead of each server save in it
-            readmeDir = baritone.getDirectory();
+            // TODO: This should probably be in "burgertone/servers"
+            worldDir = burgertone.getDirectory().resolve(folderName);
+            // Just write the readme to the burgertone directory instead of each server save in it
+            readmeDir = burgertone.getDirectory();
         }
 
         return Optional.of(new Tuple<>(worldDir, readmeDir));

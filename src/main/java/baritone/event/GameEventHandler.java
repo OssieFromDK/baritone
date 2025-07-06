@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.event;
+package burgertone.event;
 
-import baritone.Baritone;
-import baritone.api.event.events.*;
-import baritone.api.event.events.type.EventState;
-import baritone.api.event.listener.IEventBus;
-import baritone.api.event.listener.IGameEventListener;
-import baritone.api.utils.Helper;
-import baritone.api.utils.Pair;
-import baritone.cache.CachedChunk;
-import baritone.cache.WorldProvider;
-import baritone.utils.BlockStateInterface;
+import burgertone.Baritone;
+import burgertone.api.event.events.*;
+import burgertone.api.event.events.type.EventState;
+import burgertone.api.event.listener.IEventBus;
+import burgertone.api.event.listener.IGameEventListener;
+import burgertone.api.utils.Helper;
+import burgertone.api.utils.Pair;
+import burgertone.cache.CachedChunk;
+import burgertone.cache.WorldProvider;
+import burgertone.utils.BlockStateInterface;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,25 +41,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public final class GameEventHandler implements IEventBus, Helper {
 
-    private final Baritone baritone;
+    private final Baritone burgertone;
 
     private final List<IGameEventListener> listeners = new CopyOnWriteArrayList<>();
 
-    public GameEventHandler(Baritone baritone) {
-        this.baritone = baritone;
+    public GameEventHandler(Baritone burgertone) {
+        this.burgertone = burgertone;
     }
 
     @Override
     public final void onTick(TickEvent event) {
         if (event.getType() == TickEvent.Type.IN) {
             try {
-                baritone.bsi = new BlockStateInterface(baritone.getPlayerContext(), true);
+                burgertone.bsi = new BlockStateInterface(burgertone.getPlayerContext(), true);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                baritone.bsi = null;
+                burgertone.bsi = null;
             }
         } else {
-            baritone.bsi = null;
+            burgertone.bsi = null;
         }
         listeners.forEach(l -> l.onTick(event));
     }
@@ -89,7 +89,7 @@ public final class GameEventHandler implements IEventBus, Helper {
         EventState state = event.getState();
         ChunkEvent.Type type = event.getType();
 
-        Level world = baritone.getPlayerContext().world();
+        Level world = burgertone.getPlayerContext().world();
 
         // Whenever the server sends us to another dimension, chunks are unloaded
         // technically after the new world has been loaded, so we perform a check
@@ -99,7 +99,7 @@ public final class GameEventHandler implements IEventBus, Helper {
                 && world.getChunkSource().getChunk(event.getX(), event.getZ(), null, false) != null;
 
         if (event.isPostPopulate() || isPreUnload) {
-            baritone.getWorldProvider().ifWorldLoaded(worldData -> {
+            burgertone.getWorldProvider().ifWorldLoaded(worldData -> {
                 LevelChunk chunk = world.getChunk(event.getX(), event.getZ());
                 worldData.getCachedWorld().queueForPacking(chunk);
             });
@@ -117,8 +117,8 @@ public final class GameEventHandler implements IEventBus, Helper {
                     .anyMatch(CachedChunk.BLOCKS_TO_KEEP_TRACK_OF::contains);
 
             if (keepingTrackOf) {
-                baritone.getWorldProvider().ifWorldLoaded(worldData -> {
-                    final Level world = baritone.getPlayerContext().world();
+                burgertone.getWorldProvider().ifWorldLoaded(worldData -> {
+                    final Level world = burgertone.getPlayerContext().world();
                     ChunkPos pos = event.getChunkPos();
                     worldData.getCachedWorld().queueForPacking(world.getChunk(pos.x, pos.z));
                 });
@@ -135,7 +135,7 @@ public final class GameEventHandler implements IEventBus, Helper {
 
     @Override
     public final void onWorldEvent(WorldEvent event) {
-        WorldProvider cache = baritone.getWorldProvider();
+        WorldProvider cache = burgertone.getWorldProvider();
 
         if (event.getState() == EventState.POST) {
             cache.closeWorld();

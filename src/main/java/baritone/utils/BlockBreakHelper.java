@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils;
+package burgertone.utils;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.utils.IPlayerContext;
-import baritone.utils.accessor.IPlayerControllerMP;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.utils.IPlayerContext;
+import burgertone.utils.accessor.IPlayerControllerMP;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;

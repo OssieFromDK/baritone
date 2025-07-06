@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.datatypes.RelativeCoordinate;
-import baritone.api.command.datatypes.RelativeGoal;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.helpers.TabCompleteHelper;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.process.ICustomGoalProcess;
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.datatypes.RelativeCoordinate;
+import burgertone.api.command.datatypes.RelativeGoal;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.process.ICustomGoalProcess;
+import burgertone.api.utils.BetterBlockPos;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,13 +34,13 @@ import java.util.stream.Stream;
 
 public class GoalCommand extends Command {
 
-    public GoalCommand(IBaritone baritone) {
-        super(baritone, "goal");
+    public GoalCommand(IBaritone burgertone) {
+        super(burgertone, "goal");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
-        ICustomGoalProcess goalProcess = baritone.getCustomGoalProcess();
+        ICustomGoalProcess goalProcess = burgertone.getCustomGoalProcess();
         if (args.hasAny() && Arrays.asList("reset", "clear", "none").contains(args.peekString())) {
             args.requireMax(1);
             if (goalProcess.getGoal() != null) {

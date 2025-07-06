@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.selection;
+package burgertone.api.selection;
 
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.utils.BetterBlockPos;
 import net.minecraft.core.Direction;
 
 /**

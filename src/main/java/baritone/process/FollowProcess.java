@@ -15,19 +15,19 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.process;
+package burgertone.process;
 
-import baritone.Baritone;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.goals.GoalBlock;
-import baritone.api.pathing.goals.GoalComposite;
-import baritone.api.pathing.goals.GoalNear;
-import baritone.api.pathing.goals.GoalXZ;
-import baritone.api.process.IFollowProcess;
-import baritone.api.process.PathingCommand;
-import baritone.api.process.PathingCommandType;
-import baritone.api.utils.BetterBlockPos;
-import baritone.utils.BaritoneProcessHelper;
+import burgertone.Baritone;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.goals.GoalBlock;
+import burgertone.api.pathing.goals.GoalComposite;
+import burgertone.api.pathing.goals.GoalNear;
+import burgertone.api.pathing.goals.GoalXZ;
+import burgertone.api.process.IFollowProcess;
+import burgertone.api.process.PathingCommand;
+import burgertone.api.process.PathingCommandType;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.utils.BaritoneProcessHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -48,8 +48,8 @@ public final class FollowProcess extends BaritoneProcessHelper implements IFollo
     private List<Entity> cache;
     private boolean into; // walk straight into the target, regardless of settings
 
-    public FollowProcess(Baritone baritone) {
-        super(baritone);
+    public FollowProcess(Baritone burgertone) {
+        super(burgertone);
     }
 
     @Override

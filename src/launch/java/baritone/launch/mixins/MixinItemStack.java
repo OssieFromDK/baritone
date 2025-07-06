@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.api.utils.accessor.IItemStack;
+import burgertone.api.utils.accessor.IItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;

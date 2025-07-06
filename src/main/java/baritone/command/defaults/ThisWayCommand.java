@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.pathing.goals.GoalXZ;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.pathing.goals.GoalXZ;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +29,8 @@ import java.util.stream.Stream;
 
 public class ThisWayCommand extends Command {
 
-    public ThisWayCommand(IBaritone baritone) {
-        super(baritone, "thisway", "forward");
+    public ThisWayCommand(IBaritone burgertone) {
+        super(burgertone, "thisway", "forward");
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ThisWayCommand extends Command {
                 ctx.player().getYHeadRot(),
                 args.getAs(Double.class)
         );
-        baritone.getCustomGoalProcess().setGoal(goal);
+        burgertone.getCustomGoalProcess().setGoal(goal);
         logDirect(String.format("Goal: %s", goal));
     }
 

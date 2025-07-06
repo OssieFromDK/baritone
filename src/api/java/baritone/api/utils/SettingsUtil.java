@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.utils;
+package burgertone.api.utils;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.Settings;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.Settings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -115,7 +115,7 @@ public class SettingsUtil {
     }
 
     private static Path settingsByName(String name) {
-        return Minecraft.getInstance().gameDirectory.toPath().resolve("baritone").resolve(name);
+        return Minecraft.getInstance().gameDirectory.toPath().resolve("burgertone").resolve(name);
     }
 
     public static List<Settings.Setting> modifiedSettings(Settings settings) {

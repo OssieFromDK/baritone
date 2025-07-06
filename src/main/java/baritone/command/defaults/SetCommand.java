@@ -15,20 +15,20 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.Settings;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.datatypes.RelativeFile;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.command.exception.CommandInvalidTypeException;
-import baritone.api.command.helpers.Paginator;
-import baritone.api.command.helpers.TabCompleteHelper;
-import baritone.api.utils.SettingsUtil;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.Settings;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.datatypes.RelativeFile;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.command.exception.CommandInvalidTypeException;
+import burgertone.api.command.helpers.Paginator;
+import burgertone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.utils.SettingsUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.ClickEvent;
@@ -42,13 +42,13 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
-import static baritone.api.utils.SettingsUtil.*;
+import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static burgertone.api.utils.SettingsUtil.*;
 
 public class SetCommand extends Command {
 
-    public SetCommand(IBaritone baritone) {
-        super(baritone, "set", "setting", "settings");
+    public SetCommand(IBaritone burgertone) {
+        super(burgertone, "set", "setting", "settings");
     }
 
     @Override
@@ -223,7 +223,7 @@ public class SetCommand extends Command {
                             .stream();
                 } else if (Arrays.asList("ld", "load").contains(arg.toLowerCase(Locale.US))) {
                     // settings always use the directory of the main Minecraft instance
-                    return RelativeFile.tabComplete(args, Minecraft.getInstance().gameDirectory.toPath().resolve("baritone").toFile());
+                    return RelativeFile.tabComplete(args, Minecraft.getInstance().gameDirectory.toPath().resolve("burgertone").toFile());
                 }
                 Settings.Setting setting = Baritone.settings().byLowerName.get(arg.toLowerCase(Locale.US));
                 if (setting != null) {
@@ -272,7 +272,7 @@ public class SetCommand extends Command {
                 "> set toggle <setting> - Toggle a boolean setting",
                 "> set save - Save all settings (this is automatic tho)",
                 "> set load - Load settings from settings.txt",
-                "> set load [filename] - Load settings from another file in your minecraft/baritone"
+                "> set load [filename] - Load settings from another file in your minecraft/burgertone"
         );
     }
 }

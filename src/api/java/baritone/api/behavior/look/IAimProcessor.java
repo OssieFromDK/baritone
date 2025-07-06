@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.behavior.look;
+package burgertone.api.behavior.look;
 
-import baritone.api.utils.Rotation;
+import burgertone.api.utils.Rotation;
 
 /**
  * @author Brady

@@ -9,50 +9,50 @@
 -overloadaggressively
 -dontusemixedcaseclassnames
 
-# instead of renaming to a, b, c, rename to baritone.a, baritone.b, baritone.c so as to not conflict with minecraft's obfd classes
+# instead of renaming to a, b, c, rename to burgertone.a, burgertone.b, burgertone.c so as to not conflict with minecraft's obfd classes
 -flattenpackagehierarchy
--repackageclasses 'baritone'
+-repackageclasses 'burgertone'
 
 # lwjgl is weird
 -dontwarn org.lwjgl.**
 # also lwjgl lol
 -dontwarn module-info
 # we dont have forge
--dontwarn baritone.launch.BaritoneForgeModXD
+-dontwarn burgertone.launch.BaritoneForgeModXD
 # progard doesn't like signature polymorphism
 -dontwarn java.lang.invoke.MethodHandle
 
 # please do not change the comment below
--keep class baritone.api.** { *; } # this is the keep api
+-keep class burgertone.api.** { *; } # this is the keep api
 
 # service provider needs these class names
--keep class baritone.BaritoneProvider
--keep class baritone.api.IBaritoneProvider
+-keep class burgertone.BaritoneProvider
+-keep class burgertone.api.IBaritoneProvider
 
--keep class baritone.api.utils.MyChunkPos { *; } # even in standalone we need to keep this for gson reflect
--keepname class baritone.api.utils.BlockOptionalMeta # this name is exposed to the user, so we need to keep it in all builds
+-keep class burgertone.api.utils.MyChunkPos { *; } # even in standalone we need to keep this for gson reflect
+-keepname class burgertone.api.utils.BlockOptionalMeta # this name is exposed to the user, so we need to keep it in all builds
 
 # Keep any class or member annotated with @KeepName so we dont have to put everything in the script
--keep,allowobfuscation @interface baritone.KeepName
--keep @baritone.KeepName class *
+-keep,allowobfuscation @interface burgertone.KeepName
+-keep @burgertone.KeepName class *
 -keepclassmembers class * {
-    @baritone.KeepName *;
+    @burgertone.KeepName *;
 }
 
 # setting names are reflected from field names, so keep field names
--keepclassmembers class baritone.api.Settings {
+-keepclassmembers class burgertone.api.Settings {
     public <fields>;
 }
 
 # need to keep mixin names
--keep class baritone.launch.** { *; }
+-keep class burgertone.launch.** { *; }
 
 #try to keep usage of schematica in separate classes
--keep class baritone.utils.schematic.schematica.**
--keep class baritone.utils.schematic.litematica.**
+-keep class burgertone.utils.schematic.schematica.**
+-keep class burgertone.utils.schematic.litematica.**
 #proguard doesnt like it when it cant find our fake schematica classes
--dontwarn baritone.utils.schematic.schematica.**
--dontwarn baritone.utils.schematic.litematica.**
+-dontwarn burgertone.utils.schematic.schematica.**
+-dontwarn burgertone.utils.schematic.litematica.**
 
 # nether-pathfinder uses JNI to acess its own classes
 # and some of our builds include it before running proguard

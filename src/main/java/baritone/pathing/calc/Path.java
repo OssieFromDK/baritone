@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.calc;
+package burgertone.pathing.calc;
 
-import baritone.api.pathing.calc.IPath;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.movement.IMovement;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.Helper;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.Moves;
-import baritone.pathing.path.CutoffPath;
-import baritone.utils.pathing.PathBase;
+import burgertone.api.pathing.calc.IPath;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.movement.IMovement;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.Helper;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.Moves;
+import burgertone.pathing.path.CutoffPath;
+import burgertone.utils.pathing.PathBase;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -88,7 +88,7 @@ class Path extends PathBase {
         // If the position the player is at is different from the position we told A* to start from,
         // and A* gave us no movements, then add a fake node that will allow a movement to be created
         // that gets us to the single position in the path.
-        // See PathingBehavior#createPathfinder and https://github.com/cabaletta/baritone/pull/4519
+        // See PathingBehavior#createPathfinder and https://github.com/cabaletta/burgertone/pull/4519
         var startNodePos = new BetterBlockPos(start.x, start.y, start.z);
         if (!realStart.equals(startNodePos) && start.equals(end)) {
             this.start = realStart;

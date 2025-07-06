@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.argument;
+package burgertone.api.command.argument;
 
-import baritone.api.command.ICommand;
-import baritone.api.command.argparser.IArgParser;
-import baritone.api.command.datatypes.IDatatype;
-import baritone.api.command.datatypes.IDatatypeFor;
-import baritone.api.command.datatypes.IDatatypePost;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidTypeException;
-import baritone.api.command.exception.CommandNotEnoughArgumentsException;
-import baritone.api.command.exception.CommandTooManyArgumentsException;
-import baritone.api.utils.Helper;
+import burgertone.api.command.ICommand;
+import burgertone.api.command.argparser.IArgParser;
+import burgertone.api.command.datatypes.IDatatype;
+import burgertone.api.command.datatypes.IDatatypeFor;
+import burgertone.api.command.datatypes.IDatatypePost;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidTypeException;
+import burgertone.api.command.exception.CommandNotEnoughArgumentsException;
+import burgertone.api.command.exception.CommandTooManyArgumentsException;
+import burgertone.api.utils.Helper;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.stream.Stream;

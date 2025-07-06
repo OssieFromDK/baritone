@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api;
+package burgertone.api;
 
-import baritone.api.behavior.ILookBehavior;
-import baritone.api.behavior.IPathingBehavior;
-import baritone.api.cache.IWorldProvider;
-import baritone.api.command.manager.ICommandManager;
-import baritone.api.event.listener.IEventBus;
-import baritone.api.pathing.calc.IPathingControlManager;
-import baritone.api.process.*;
-import baritone.api.selection.ISelectionManager;
-import baritone.api.utils.IInputOverrideHandler;
-import baritone.api.utils.IPlayerContext;
+import burgertone.api.behavior.ILookBehavior;
+import burgertone.api.behavior.IPathingBehavior;
+import burgertone.api.cache.IWorldProvider;
+import burgertone.api.command.manager.ICommandManager;
+import burgertone.api.event.listener.IEventBus;
+import burgertone.api.pathing.calc.IPathingControlManager;
+import burgertone.api.process.*;
+import burgertone.api.selection.ISelectionManager;
+import burgertone.api.utils.IInputOverrideHandler;
+import burgertone.api.utils.IPlayerContext;
 
 /**
  * @author Brady

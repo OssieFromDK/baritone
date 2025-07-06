@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.pathing.goals;
+package burgertone.api.pathing.goals;
 
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.SettingsUtil;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.SettingsUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 

@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.IBaritone;
-import baritone.api.event.events.PlayerUpdateEvent;
-import baritone.api.event.events.SprintStateEvent;
-import baritone.api.event.events.type.EventState;
-import baritone.behavior.LookBehavior;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.IBaritone;
+import burgertone.api.event.events.PlayerUpdateEvent;
+import burgertone.api.event.events.SprintStateEvent;
+import burgertone.api.event.events.type.EventState;
+import burgertone.behavior.LookBehavior;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.player.Abilities;
 import net.minecraft.world.entity.player.Input;
@@ -45,10 +45,10 @@ import java.lang.invoke.MethodType;
 @Mixin(LocalPlayer.class)
 public class MixinClientPlayerEntity {
     @Unique
-    private static final MethodHandle MAY_FLY = baritone$resolveMayFly();
+    private static final MethodHandle MAY_FLY = burgertone$resolveMayFly();
 
     @Unique
-    private static MethodHandle baritone$resolveMayFly() {
+    private static MethodHandle burgertone$resolveMayFly() {
         try {
             var lookup = MethodHandles.publicLookup();
             return lookup.findVirtual(LocalPlayer.class, "mayFly", MethodType.methodType(boolean.class));
@@ -68,9 +68,9 @@ public class MixinClientPlayerEntity {
             )
     )
     private void onPreUpdate(CallbackInfo ci) {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
-        if (baritone != null) {
-            baritone.getGameEventHandler().onPlayerUpdate(new PlayerUpdateEvent(EventState.PRE));
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
+        if (burgertone != null) {
+            burgertone.getGameEventHandler().onPlayerUpdate(new PlayerUpdateEvent(EventState.PRE));
         }
     }
 
@@ -83,11 +83,11 @@ public class MixinClientPlayerEntity {
     )
     @Group(name = "mayFly", min = 1, max = 1)
     private boolean isAllowFlying(Abilities capabilities) {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
-        if (baritone == null) {
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
+        if (burgertone == null) {
             return capabilities.mayfly;
         }
-        return !baritone.getPathingBehavior().isPathing() && capabilities.mayfly;
+        return !burgertone.getPathingBehavior().isPathing() && capabilities.mayfly;
     }
 
     @Redirect(
@@ -99,11 +99,11 @@ public class MixinClientPlayerEntity {
     )
     @Group(name = "mayFly", min = 1, max = 1)
     private boolean onMayFlyNeoforge(LocalPlayer instance) throws Throwable {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
-        if (baritone == null) {
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
+        if (burgertone == null) {
             return (boolean) MAY_FLY.invokeExact(instance);
         }
-        return !baritone.getPathingBehavior().isPathing() && (boolean) MAY_FLY.invokeExact(instance);
+        return !burgertone.getPathingBehavior().isPathing() && (boolean) MAY_FLY.invokeExact(instance);
     }
 
     @Redirect(
@@ -114,16 +114,16 @@ public class MixinClientPlayerEntity {
             )
     )
     private boolean redirectSprintInput(final Input instance) {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
-        if (baritone == null) {
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
+        if (burgertone == null) {
             return instance.sprint();
         }
         SprintStateEvent event = new SprintStateEvent();
-        baritone.getGameEventHandler().onPlayerSprintState(event);
+        burgertone.getGameEventHandler().onPlayerSprintState(event);
         if (event.getState() != null) {
             return event.getState();
         }
-        if (baritone != BaritoneAPI.getProvider().getPrimaryBaritone()) {
+        if (burgertone != BaritoneAPI.getProvider().getPrimaryBaritone()) {
             // hitting control shouldn't make all bots sprint
             return false;
         }
@@ -137,9 +137,9 @@ public class MixinClientPlayerEntity {
             )
     )
     private void updateRidden(CallbackInfo cb) {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
-        if (baritone != null) {
-            ((LookBehavior) baritone.getLookBehavior()).pig();
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer((LocalPlayer) (Object) this);
+        if (burgertone != null) {
+            ((LookBehavior) burgertone.getLookBehavior()).pig();
         }
     }
 
@@ -151,8 +151,8 @@ public class MixinClientPlayerEntity {
             )
     )
     private boolean tryToStartFallFlying(final LocalPlayer instance) {
-        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(instance);
-        if (baritone != null && baritone.getPathingBehavior().isPathing()) {
+        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer(instance);
+        if (burgertone != null && burgertone.getPathingBehavior().isPathing()) {
             return false;
         }
         return instance.tryToStartFallFlying();

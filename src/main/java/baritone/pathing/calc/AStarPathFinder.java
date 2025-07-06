@@ -15,20 +15,20 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.calc;
+package burgertone.pathing.calc;
 
-import baritone.Baritone;
-import baritone.api.pathing.calc.IPath;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.movement.ActionCosts;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.SettingsUtil;
-import baritone.pathing.calc.openset.BinaryHeapOpenSet;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Moves;
-import baritone.utils.pathing.BetterWorldBorder;
-import baritone.utils.pathing.Favoring;
-import baritone.utils.pathing.MutableMoveResult;
+import burgertone.Baritone;
+import burgertone.api.pathing.calc.IPath;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.movement.ActionCosts;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.SettingsUtil;
+import burgertone.pathing.calc.openset.BinaryHeapOpenSet;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Moves;
+import burgertone.utils.pathing.BetterWorldBorder;
+import burgertone.utils.pathing.Favoring;
+import burgertone.utils.pathing.MutableMoveResult;
 
 import java.util.Optional;
 

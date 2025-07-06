@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.utils.BlockStateInterface;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.utils.BlockStateInterface;
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 import net.minecraft.core.Direction;
@@ -38,8 +38,8 @@ public class MovementAscend extends Movement {
 
     private int ticksWithoutPlacement = 0;
 
-    public MovementAscend(IBaritone baritone, BetterBlockPos src, BetterBlockPos dest) {
-        super(baritone, src, dest, new BetterBlockPos[]{dest, src.above(2), dest.above()}, dest.below());
+    public MovementAscend(IBaritone burgertone, BetterBlockPos src, BetterBlockPos dest) {
+        super(burgertone, src, dest, new BetterBlockPos[]{dest, src.above(2), dest.above()}, dest.below());
     }
 
     @Override
@@ -174,7 +174,7 @@ public class MovementAscend extends Movement {
         BlockState jumpingOnto = BlockStateInterface.get(ctx, positionToPlace);
         if (!MovementHelper.canWalkOn(ctx, positionToPlace, jumpingOnto)) {
             ticksWithoutPlacement++;
-            if (MovementHelper.attemptToPlaceABlock(state, baritone, dest.below(), false, true) == PlaceResult.READY_TO_PLACE) {
+            if (MovementHelper.attemptToPlaceABlock(state, burgertone, dest.below(), false, true) == PlaceResult.READY_TO_PLACE) {
                 state.setInput(Input.SNEAK, true);
                 if (ctx.player().isCrouching()) {
                     state.setInput(Input.CLICK_RIGHT, true);

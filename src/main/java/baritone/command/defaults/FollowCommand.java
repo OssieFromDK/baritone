@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.KeepName;
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.datatypes.EntityClassById;
-import baritone.api.command.datatypes.IDatatypeFor;
-import baritone.api.command.datatypes.NearbyPlayer;
-import baritone.api.command.exception.CommandErrorMessageException;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.helpers.TabCompleteHelper;
+import burgertone.KeepName;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.datatypes.EntityClassById;
+import burgertone.api.command.datatypes.IDatatypeFor;
+import burgertone.api.command.datatypes.NearbyPlayer;
+import burgertone.api.command.exception.CommandErrorMessageException;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.helpers.TabCompleteHelper;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -40,8 +40,8 @@ import net.minecraft.world.entity.player.Player;
 
 public class FollowCommand extends Command {
 
-    public FollowCommand(IBaritone baritone) {
-        super(baritone, "follow");
+    public FollowCommand(IBaritone burgertone) {
+        super(burgertone, "follow");
     }
 
     @Override
@@ -52,7 +52,7 @@ public class FollowCommand extends Command {
         List<Entity> entities = new ArrayList<>();
         List<EntityType> classes = new ArrayList<>();
         if (args.hasExactlyOne()) {
-            baritone.getFollowProcess().follow((group = args.getEnum(FollowGroup.class)).filter);
+            burgertone.getFollowProcess().follow((group = args.getEnum(FollowGroup.class)).filter);
         } else {
             args.requireMin(2);
             group = null;
@@ -67,7 +67,7 @@ public class FollowCommand extends Command {
                 }
             }
 
-            baritone.getFollowProcess().follow(
+            burgertone.getFollowProcess().follow(
                     classes.isEmpty()
                             ? entities::contains
                             : e -> classes.stream().anyMatch(c -> e.getType().equals(c))

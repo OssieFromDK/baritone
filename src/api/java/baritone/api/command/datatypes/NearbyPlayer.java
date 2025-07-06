@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.datatypes;
+package burgertone.api.command.datatypes;
 
-import baritone.api.IBaritone;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.IBaritone;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.helpers.TabCompleteHelper;
 import java.util.List;
 import java.util.stream.Stream;
 import net.minecraft.network.chat.Component;

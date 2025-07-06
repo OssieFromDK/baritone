@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.process;
+package burgertone.api.process;
 
-import baritone.api.pathing.goals.Goal;
+import burgertone.api.pathing.goals.Goal;
 
 public interface ICustomGoalProcess extends IBaritoneProcess {
 

@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.exception;
+package burgertone.api.command.exception;
 
-import baritone.api.command.ICommand;
-import baritone.api.command.argument.ICommandArgument;
+import burgertone.api.command.ICommand;
+import burgertone.api.command.argument.ICommandArgument;
 
 import java.util.List;
 
-import static baritone.api.utils.Helper.HELPER;
+import static burgertone.api.utils.Helper.HELPER;
 
 public class CommandNotFoundException extends CommandException {
 

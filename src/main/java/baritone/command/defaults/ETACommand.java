@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.behavior.IPathingBehavior;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.pathing.calc.IPathingControlManager;
-import baritone.api.process.IBaritoneProcess;
+import burgertone.api.IBaritone;
+import burgertone.api.behavior.IPathingBehavior;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.pathing.calc.IPathingControlManager;
+import burgertone.api.process.IBaritoneProcess;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,19 +32,19 @@ import java.util.stream.Stream;
 
 public class ETACommand extends Command {
 
-    public ETACommand(IBaritone baritone) {
-        super(baritone, "eta");
+    public ETACommand(IBaritone burgertone) {
+        super(burgertone, "eta");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        IPathingControlManager pathingControlManager = baritone.getPathingControlManager();
+        IPathingControlManager pathingControlManager = burgertone.getPathingControlManager();
         IBaritoneProcess process = pathingControlManager.mostRecentInControl().orElse(null);
         if (process == null) {
             throw new CommandInvalidStateException("No process in control");
         }
-        IPathingBehavior pathingBehavior = baritone.getPathingBehavior();
+        IPathingBehavior pathingBehavior = burgertone.getPathingBehavior();
 
         double ticksRemainingInSegment = pathingBehavior.ticksRemainingInSegment().orElse(Double.NaN);
         double ticksRemainingInGoal = pathingBehavior.estimatedTicksToGoal().orElse(Double.NaN);

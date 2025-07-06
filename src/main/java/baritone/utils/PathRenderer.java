@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils;
+package burgertone.utils;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.event.events.RenderEvent;
-import baritone.api.pathing.goals.*;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.IPlayerContext;
-import baritone.api.utils.interfaces.IGoalRenderPos;
-import baritone.behavior.PathingBehavior;
-import baritone.pathing.path.PathExecutor;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.event.events.RenderEvent;
+import burgertone.api.pathing.goals.*;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.IPlayerContext;
+import burgertone.api.utils.interfaces.IGoalRenderPos;
+import burgertone.behavior.PathingBehavior;
+import burgertone.pathing.path.PathExecutor;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
@@ -202,7 +202,7 @@ public final class PathRenderer implements IRenderer {
         BufferBuilder bufferBuilder = IRenderer.startLines(color, settings.pathRenderLineWidthPixels.value);
 
         //BlockPos blockpos = movingObjectPositionIn.getBlockPos();
-        BlockStateInterface bsi = new BlockStateInterface(BaritoneAPI.getProvider().getPrimaryBaritone().getPlayerContext()); // TODO this assumes same dimension between primary baritone and render view? is this safe?
+        BlockStateInterface bsi = new BlockStateInterface(BaritoneAPI.getProvider().getPrimaryBaritone().getPlayerContext()); // TODO this assumes same dimension between primary burgertone and render view? is this safe?
 
         positions.forEach(pos -> {
             BlockState state = bsi.get0(pos);

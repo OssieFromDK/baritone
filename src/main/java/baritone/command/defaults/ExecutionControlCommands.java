@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.process.IBaritoneProcess;
-import baritone.api.process.PathingCommand;
-import baritone.api.process.PathingCommandType;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.process.IBaritoneProcess;
+import burgertone.api.process.PathingCommand;
+import burgertone.api.process.PathingCommandType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,10 +44,10 @@ public class ExecutionControlCommands {
     Command pausedCommand;
     Command cancelCommand;
 
-    public ExecutionControlCommands(IBaritone baritone) {
+    public ExecutionControlCommands(IBaritone burgertone) {
         // array for mutability, non-field so reflection can't touch it
         final boolean[] paused = {false};
-        baritone.getPathingControlManager().registerProcess(
+        burgertone.getPathingControlManager().registerProcess(
                 new IBaritoneProcess() {
                     @Override
                     public boolean isActive() {
@@ -56,7 +56,7 @@ public class ExecutionControlCommands {
 
                     @Override
                     public PathingCommand onTick(boolean calcFailed, boolean isSafeToCancel) {
-                        baritone.getInputOverrideHandler().clearAllKeys();
+                        burgertone.getInputOverrideHandler().clearAllKeys();
                         return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                     }
 
@@ -80,7 +80,7 @@ public class ExecutionControlCommands {
                     }
                 }
         );
-        pauseCommand = new Command(baritone, "pause", "p", "paws") {
+        pauseCommand = new Command(burgertone, "pause", "p", "paws") {
             @Override
             public void execute(String label, IArgConsumer args) throws CommandException {
                 args.requireMax(0);
@@ -113,11 +113,11 @@ public class ExecutionControlCommands {
                 );
             }
         };
-        resumeCommand = new Command(baritone, "resume", "r", "unpause", "unpaws") {
+        resumeCommand = new Command(burgertone, "resume", "r", "unpause", "unpaws") {
             @Override
             public void execute(String label, IArgConsumer args) throws CommandException {
                 args.requireMax(0);
-                baritone.getBuilderProcess().resume();
+                burgertone.getBuilderProcess().resume();
                 if (!paused[0]) {
                     throw new CommandInvalidStateException("Not paused");
                 }
@@ -145,7 +145,7 @@ public class ExecutionControlCommands {
                 );
             }
         };
-        pausedCommand = new Command(baritone, "paused") {
+        pausedCommand = new Command(burgertone, "paused") {
             @Override
             public void execute(String label, IArgConsumer args) throws CommandException {
                 args.requireMax(0);
@@ -172,14 +172,14 @@ public class ExecutionControlCommands {
                 );
             }
         };
-        cancelCommand = new Command(baritone, "cancel", "c", "stop") {
+        cancelCommand = new Command(burgertone, "cancel", "c", "stop") {
             @Override
             public void execute(String label, IArgConsumer args) throws CommandException {
                 args.requireMax(0);
                 if (paused[0]) {
                     paused[0] = false;
                 }
-                baritone.getPathingBehavior().cancelEverything();
+                burgertone.getPathingBehavior().cancelEverything();
                 logDirect("ok canceled");
             }
 

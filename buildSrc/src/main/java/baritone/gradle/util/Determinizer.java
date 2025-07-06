@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.gradle.util;
+package burgertone.gradle.util;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
@@ -71,10 +71,10 @@ public class Determinizer {
                     ByteArrayOutputStream cancer = new ByteArrayOutputStream();
                     copy(jarFile.getInputStream(entry), cancer);
                     String manifest = new String(cancer.toByteArray());
-                    if (!manifest.contains("baritone.launch.tweaker.BaritoneTweaker")) {
+                    if (!manifest.contains("burgertone.launch.tweaker.BaritoneTweaker")) {
                         throw new IllegalStateException("unable to replace");
                     }
-                    manifest = manifest.replace("baritone.launch.tweaker.BaritoneTweaker", "org.spongepowered.asm.launch.MixinTweaker");
+                    manifest = manifest.replace("burgertone.launch.tweaker.BaritoneTweaker", "org.spongepowered.asm.launch.MixinTweaker");
                     jos.write(manifest.getBytes());
                 } else {
                     copy(jarFile.getInputStream(entry), jos);

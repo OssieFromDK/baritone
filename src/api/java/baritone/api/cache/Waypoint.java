@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.cache;
+package burgertone.api.cache;
 
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.utils.BetterBlockPos;
 
 import java.util.Date;
 

@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils;
+package burgertone.utils;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.Settings;
-import baritone.utils.accessor.IEntityRenderManager;
-import baritone.utils.accessor.IRenderPipelines;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.Settings;
+import burgertone.utils.accessor.IEntityRenderManager;
+import burgertone.utils.accessor.IRenderPipelines;
 import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.DepthTestFunction;

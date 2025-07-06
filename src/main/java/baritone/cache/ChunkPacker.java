@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
-import baritone.api.utils.BlockUtils;
-import baritone.pathing.movement.MovementHelper;
-import baritone.utils.pathing.PathingBlockType;
+import burgertone.api.utils.BlockUtils;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.utils.pathing.PathingBlockType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;
@@ -37,7 +37,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.*;
 
-import static baritone.utils.BlockStateInterface.getFromChunk;
+import static burgertone.utils.BlockStateInterface.getFromChunk;
 
 /**
  * @author Brady

@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.process.elytra;
+package burgertone.process.elytra;
 
 import dev.babbaj.pathfinder.NetherPathfinder;
 import dev.babbaj.pathfinder.Octree;

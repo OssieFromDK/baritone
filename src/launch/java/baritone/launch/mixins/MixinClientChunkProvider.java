@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.utils.accessor.IChunkArray;
-import baritone.utils.accessor.IClientChunkProvider;
+import burgertone.utils.accessor.IChunkArray;
+import burgertone.utils.accessor.IClientChunkProvider;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

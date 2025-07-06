@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.registry;
+package burgertone.api.command.registry;
 
 import java.util.*;
 import java.util.function.Consumer;

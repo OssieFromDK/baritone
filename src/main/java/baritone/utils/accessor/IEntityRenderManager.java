@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils.accessor;
+package burgertone.utils.accessor;
 
 public interface IEntityRenderManager {
 

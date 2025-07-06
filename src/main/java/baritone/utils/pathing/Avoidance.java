@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils.pathing;
+package burgertone.utils.pathing;
 
-import baritone.Baritone;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.IPlayerContext;
+import burgertone.Baritone;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.IPlayerContext;
 import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
 import java.util.ArrayList;
 import java.util.Collections;

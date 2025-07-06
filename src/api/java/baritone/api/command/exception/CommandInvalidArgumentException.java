@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.exception;
+package burgertone.api.command.exception;
 
-import baritone.api.command.argument.ICommandArgument;
+import burgertone.api.command.argument.ICommandArgument;
 
 public abstract class CommandInvalidArgumentException extends CommandErrorMessageException {
 

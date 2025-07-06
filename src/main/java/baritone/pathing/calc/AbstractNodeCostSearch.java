@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.calc;
+package burgertone.pathing.calc;
 
-import baritone.Baritone;
-import baritone.api.pathing.calc.IPath;
-import baritone.api.pathing.calc.IPathFinder;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.Helper;
-import baritone.api.utils.PathCalculationResult;
-import baritone.pathing.movement.CalculationContext;
+import burgertone.Baritone;
+import burgertone.api.pathing.calc.IPath;
+import burgertone.api.pathing.calc.IPathFinder;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.Helper;
+import burgertone.api.utils.PathCalculationResult;
+import burgertone.pathing.movement.CalculationContext;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 import java.util.Optional;
@@ -46,7 +46,7 @@ public abstract class AbstractNodeCostSearch implements IPathFinder, Helper {
     private final CalculationContext context;
 
     /**
-     * @see <a href="https://github.com/cabaletta/baritone/issues/107">Issue #107</a>
+     * @see <a href="https://github.com/cabaletta/burgertone/issues/107">Issue #107</a>
      */
     private final Long2ObjectOpenHashMap<PathNode> map;
 
@@ -165,7 +165,7 @@ public abstract class AbstractNodeCostSearch implements IPathFinder, Helper {
      * @param z        The z position of the node
      * @param hashCode The hash code of the node, provided by {@link BetterBlockPos#longHash(int, int, int)}
      * @return The associated node
-     * @see <a href="https://github.com/cabaletta/baritone/issues/107">Issue #107</a>
+     * @see <a href="https://github.com/cabaletta/burgertone/issues/107">Issue #107</a>
      */
 
     protected PathNode getNodeAtPosition(int x, int y, int z, long hashCode) {

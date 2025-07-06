@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils;
+package burgertone.utils;
 
-import baritone.Baritone;
-import baritone.api.BaritoneAPI;
-import baritone.api.event.events.TickEvent;
-import baritone.api.utils.IInputOverrideHandler;
-import baritone.api.utils.input.Input;
-import baritone.behavior.Behavior;
+import burgertone.Baritone;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.event.events.TickEvent;
+import burgertone.api.utils.IInputOverrideHandler;
+import burgertone.api.utils.input.Input;
+import burgertone.behavior.Behavior;
 import net.minecraft.client.player.KeyboardInput;
 
 import java.util.HashMap;
@@ -46,10 +46,10 @@ public final class InputOverrideHandler extends Behavior implements IInputOverri
     private final BlockBreakHelper blockBreakHelper;
     private final BlockPlaceHelper blockPlaceHelper;
 
-    public InputOverrideHandler(Baritone baritone) {
-        super(baritone);
-        this.blockBreakHelper = new BlockBreakHelper(baritone.getPlayerContext());
-        this.blockPlaceHelper = new BlockPlaceHelper(baritone.getPlayerContext());
+    public InputOverrideHandler(Baritone burgertone) {
+        super(burgertone);
+        this.blockBreakHelper = new BlockBreakHelper(burgertone.getPlayerContext());
+        this.blockPlaceHelper = new BlockPlaceHelper(burgertone.getPlayerContext());
     }
 
     /**
@@ -113,7 +113,7 @@ public final class InputOverrideHandler extends Behavior implements IInputOverri
             }
         }
         // if we are not primary (a bot) we should set the movementinput even when idle (not pathing)
-        return baritone.getPathingBehavior().isPathing() || baritone != BaritoneAPI.getProvider().getPrimaryBaritone();
+        return burgertone.getPathingBehavior().isPathing() || burgertone != BaritoneAPI.getProvider().getPrimaryBaritone();
     }
 
     public BlockBreakHelper getBlockBreakHelper() {

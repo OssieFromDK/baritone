@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.exception;
+package burgertone.api.command.exception;
 
 public class CommandNotEnoughArgumentsException extends CommandErrorMessageException {
 

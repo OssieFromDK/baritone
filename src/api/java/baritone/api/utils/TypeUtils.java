@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.utils;
+package burgertone.api.utils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

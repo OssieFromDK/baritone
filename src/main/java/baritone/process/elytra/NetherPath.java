@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.process.elytra;
+package burgertone.process.elytra;
 
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.utils.BetterBlockPos;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.AbstractList;

@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.argparser;
+package burgertone.api.command.argparser;
 
-import baritone.api.command.argument.ICommandArgument;
-import baritone.api.command.exception.CommandInvalidTypeException;
-import baritone.api.command.registry.Registry;
+import burgertone.api.command.argument.ICommandArgument;
+import burgertone.api.command.exception.CommandInvalidTypeException;
+import burgertone.api.command.registry.Registry;
 
 /**
  * Used to retrieve {@link IArgParser} instances from the registry, by their target class.

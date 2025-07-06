@@ -15,19 +15,19 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.utils.BlockStateInterface;
-import baritone.utils.pathing.MutableMoveResult;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.utils.BlockStateInterface;
+import burgertone.utils.pathing.MutableMoveResult;
 import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,17 +43,17 @@ public class MovementDiagonal extends Movement {
 
     private static final double SQRT_2 = Math.sqrt(2);
 
-    public MovementDiagonal(IBaritone baritone, BetterBlockPos start, Direction dir1, Direction dir2, int dy) {
-        this(baritone, start, start.relative(dir1), start.relative(dir2), dir2, dy);
+    public MovementDiagonal(IBaritone burgertone, BetterBlockPos start, Direction dir1, Direction dir2, int dy) {
+        this(burgertone, start, start.relative(dir1), start.relative(dir2), dir2, dy);
         // super(start, start.offset(dir1).offset(dir2), new BlockPos[]{start.offset(dir1), start.offset(dir1).up(), start.offset(dir2), start.offset(dir2).up(), start.offset(dir1).offset(dir2), start.offset(dir1).offset(dir2).up()}, new BlockPos[]{start.offset(dir1).offset(dir2).down()});
     }
 
-    private MovementDiagonal(IBaritone baritone, BetterBlockPos start, BetterBlockPos dir1, BetterBlockPos dir2, Direction drr2, int dy) {
-        this(baritone, start, dir1.relative(drr2).above(dy), dir1, dir2);
+    private MovementDiagonal(IBaritone burgertone, BetterBlockPos start, BetterBlockPos dir1, BetterBlockPos dir2, Direction drr2, int dy) {
+        this(burgertone, start, dir1.relative(drr2).above(dy), dir1, dir2);
     }
 
-    private MovementDiagonal(IBaritone baritone, BetterBlockPos start, BetterBlockPos end, BetterBlockPos dir1, BetterBlockPos dir2) {
-        super(baritone, start, end, new BetterBlockPos[]{dir1, dir1.above(), dir2, dir2.above(), end, end.above()});
+    private MovementDiagonal(IBaritone burgertone, BetterBlockPos start, BetterBlockPos end, BetterBlockPos dir1, BetterBlockPos dir2) {
+        super(burgertone, start, end, new BetterBlockPos[]{dir1, dir1.above(), dir2, dir2.above(), end, end.above()});
     }
 
     @Override

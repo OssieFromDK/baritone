@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.process;
+package burgertone.api.process;
 
-import baritone.api.schematic.ISchematic;
+import burgertone.api.schematic.ISchematic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;

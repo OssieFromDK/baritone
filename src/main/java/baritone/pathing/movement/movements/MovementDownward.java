@@ -15,15 +15,15 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 import net.minecraft.world.level.block.Block;
@@ -34,8 +34,8 @@ public class MovementDownward extends Movement {
 
     private int numTicks = 0;
 
-    public MovementDownward(IBaritone baritone, BetterBlockPos start, BetterBlockPos end) {
-        super(baritone, start, end, new BetterBlockPos[]{end});
+    public MovementDownward(IBaritone burgertone, BetterBlockPos start, BetterBlockPos end) {
+        super(burgertone, start, end, new BetterBlockPos[]{end});
     }
 
     @Override

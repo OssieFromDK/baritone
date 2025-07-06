@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.goals;
+package burgertone.pathing.goals;
 
-import baritone.api.pathing.goals.GoalGetToBlock;
+import burgertone.api.pathing.goals.GoalGetToBlock;
 import org.junit.Test;
 
 import java.util.ArrayList;

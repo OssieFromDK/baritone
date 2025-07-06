@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.tweaker;
+package burgertone.launch.tweaker;
 
 import io.github.impactdevelopment.simpletweaker.SimpleTweaker;
 import net.minecraft.launchwrapper.Launch;
@@ -50,6 +50,6 @@ public class BaritoneTweaker extends SimpleTweaker {
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext(obfuscation);
 
-        Mixins.addConfiguration("mixins.baritone.json");
+        Mixins.addConfiguration("mixins.burgertone.json");
     }
 }

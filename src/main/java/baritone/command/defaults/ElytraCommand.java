@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.command.helpers.TabCompleteHelper;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.process.ICustomGoalProcess;
-import baritone.api.process.IElytraProcess;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.process.ICustomGoalProcess;
+import burgertone.api.process.IElytraProcess;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.network.chat.ClickEvent;
@@ -39,18 +39,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class ElytraCommand extends Command {
 
-    public ElytraCommand(IBaritone baritone) {
-        super(baritone, "elytra");
+    public ElytraCommand(IBaritone burgertone) {
+        super(burgertone, "elytra");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
-        final ICustomGoalProcess customGoalProcess = baritone.getCustomGoalProcess();
-        final IElytraProcess elytra = baritone.getElytraProcess();
+        final ICustomGoalProcess customGoalProcess = burgertone.getCustomGoalProcess();
+        final IElytraProcess elytra = burgertone.getElytraProcess();
         if (args.hasExactlyOne() && args.peekString().equals("supported")) {
             logDirect(elytra.isLoaded() ? "yes" : unsupportedSystemMessage());
             return;
@@ -202,13 +202,13 @@ public class ElytraCommand extends Command {
     @Override
     public List<String> getLongDesc() {
         return Arrays.asList(
-                "The elytra command tells baritone to, in the nether, automatically fly to the current goal.",
+                "The elytra command tells burgertone to, in the nether, automatically fly to the current goal.",
                 "",
                 "Usage:",
                 "> elytra - fly to the current goal",
                 "> elytra reset - Resets the state of the process, but will try to keep flying to the same goal.",
                 "> elytra repack - Queues all of the chunks in render distance to be given to the native library.",
-                "> elytra supported - Tells you if baritone ships a native library that is compatible with your PC."
+                "> elytra supported - Tells you if burgertone ships a native library that is compatible with your PC."
         );
     }
 

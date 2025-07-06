@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
-import baritone.api.utils.BlockUtils;
-import baritone.utils.pathing.PathingBlockType;
+import burgertone.api.utils.BlockUtils;
+import burgertone.utils.pathing.PathingBlockType;
 import com.google.common.collect.ImmutableSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;

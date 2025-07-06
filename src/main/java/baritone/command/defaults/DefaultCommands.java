@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.ICommand;
+import burgertone.api.IBaritone;
+import burgertone.api.command.ICommand;
 
 import java.util.*;
 
@@ -27,50 +27,50 @@ public final class DefaultCommands {
     private DefaultCommands() {
     }
 
-    public static List<ICommand> createAll(IBaritone baritone) {
-        Objects.requireNonNull(baritone);
+    public static List<ICommand> createAll(IBaritone burgertone) {
+        Objects.requireNonNull(burgertone);
         List<ICommand> commands = new ArrayList<>(Arrays.asList(
-                new HelpCommand(baritone),
-                new SetCommand(baritone),
-                new CommandAlias(baritone, Arrays.asList("modified", "mod", "baritone", "modifiedsettings"), "List modified settings", "set modified"),
-                new CommandAlias(baritone, "reset", "Reset all settings or just one", "set reset"),
-                new GoalCommand(baritone),
-                new GotoCommand(baritone),
-                new PathCommand(baritone),
-                new ProcCommand(baritone),
-                new ETACommand(baritone),
-                new VersionCommand(baritone),
-                new RepackCommand(baritone),
-                new BuildCommand(baritone),
-                //new SchematicaCommand(baritone),
-                new LitematicaCommand(baritone),
-                new ComeCommand(baritone),
-                new AxisCommand(baritone),
-                new ForceCancelCommand(baritone),
-                new GcCommand(baritone),
-                new InvertCommand(baritone),
-                new TunnelCommand(baritone),
-                new RenderCommand(baritone),
-                new FarmCommand(baritone),
-                new FollowCommand(baritone),
-                new PickupCommand(baritone),
-                new ExploreFilterCommand(baritone),
-                new ReloadAllCommand(baritone),
-                new SaveAllCommand(baritone),
-                new ExploreCommand(baritone),
-                new BlacklistCommand(baritone),
-                new FindCommand(baritone),
-                new MineCommand(baritone),
-                new ClickCommand(baritone),
-                new SurfaceCommand(baritone),
-                new ThisWayCommand(baritone),
-                new WaypointsCommand(baritone),
-                new CommandAlias(baritone, "sethome", "Sets your home waypoint", "waypoints save home"),
-                new CommandAlias(baritone, "home", "Path to your home waypoint", "waypoints goto home"),
-                new SelCommand(baritone),
-                new ElytraCommand(baritone)
+                new HelpCommand(burgertone),
+                new SetCommand(burgertone),
+                new CommandAlias(burgertone, Arrays.asList("modified", "mod", "burgertone", "modifiedsettings"), "List modified settings", "set modified"),
+                new CommandAlias(burgertone, "reset", "Reset all settings or just one", "set reset"),
+                new GoalCommand(burgertone),
+                new GotoCommand(burgertone),
+                new PathCommand(burgertone),
+                new ProcCommand(burgertone),
+                new ETACommand(burgertone),
+                new VersionCommand(burgertone),
+                new RepackCommand(burgertone),
+                new BuildCommand(burgertone),
+                //new SchematicaCommand(burgertone),
+                new LitematicaCommand(burgertone),
+                new ComeCommand(burgertone),
+                new AxisCommand(burgertone),
+                new ForceCancelCommand(burgertone),
+                new GcCommand(burgertone),
+                new InvertCommand(burgertone),
+                new TunnelCommand(burgertone),
+                new RenderCommand(burgertone),
+                new FarmCommand(burgertone),
+                new FollowCommand(burgertone),
+                new PickupCommand(burgertone),
+                new ExploreFilterCommand(burgertone),
+                new ReloadAllCommand(burgertone),
+                new SaveAllCommand(burgertone),
+                new ExploreCommand(burgertone),
+                new BlacklistCommand(burgertone),
+                new FindCommand(burgertone),
+                new MineCommand(burgertone),
+                new ClickCommand(burgertone),
+                new SurfaceCommand(burgertone),
+                new ThisWayCommand(burgertone),
+                new WaypointsCommand(burgertone),
+                new CommandAlias(burgertone, "sethome", "Sets your home waypoint", "waypoints save home"),
+                new CommandAlias(burgertone, "home", "Path to your home waypoint", "waypoints goto home"),
+                new SelCommand(burgertone),
+                new ElytraCommand(burgertone)
         ));
-        ExecutionControlCommands prc = new ExecutionControlCommands(baritone);
+        ExecutionControlCommands prc = new ExecutionControlCommands(burgertone);
         commands.add(prc.pauseCommand);
         commands.add(prc.resumeCommand);
         commands.add(prc.pausedCommand);

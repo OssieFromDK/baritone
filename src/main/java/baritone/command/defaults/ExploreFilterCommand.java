@@ -15,15 +15,15 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.datatypes.RelativeFile;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.exception.CommandInvalidStateException;
-import baritone.api.command.exception.CommandInvalidTypeException;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.datatypes.RelativeFile;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.exception.CommandInvalidStateException;
+import burgertone.api.command.exception.CommandInvalidTypeException;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.File;
@@ -34,8 +34,8 @@ import java.util.stream.Stream;
 
 public class ExploreFilterCommand extends Command {
 
-    public ExploreFilterCommand(IBaritone baritone) {
-        super(baritone, "explorefilter");
+    public ExploreFilterCommand(IBaritone burgertone) {
+        super(burgertone, "explorefilter");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ExploreFilterCommand extends Command {
             }
         }
         try {
-            baritone.getExploreProcess().applyJsonFilter(file.toPath().toAbsolutePath(), invert);
+            burgertone.getExploreProcess().applyJsonFilter(file.toPath().toAbsolutePath(), invert);
         } catch (NoSuchFileException e) {
             throw new CommandInvalidStateException("File not found");
         } catch (JsonSyntaxException e) {

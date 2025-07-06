@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.schematic;
+package burgertone.api.schematic;
 
-import baritone.api.schematic.mask.Mask;
+import burgertone.api.schematic.mask.Mask;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;

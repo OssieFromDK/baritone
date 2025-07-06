@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils.schematic;
+package burgertone.utils.schematic;
 
-import baritone.api.command.registry.Registry;
-import baritone.api.schematic.ISchematicSystem;
-import baritone.api.schematic.format.ISchematicFormat;
-import baritone.utils.schematic.format.DefaultSchematicFormats;
+import burgertone.api.command.registry.Registry;
+import burgertone.api.schematic.ISchematicSystem;
+import burgertone.api.schematic.format.ISchematicFormat;
+import burgertone.utils.schematic.format.DefaultSchematicFormats;
 
 import java.io.File;
 import java.util.Arrays;

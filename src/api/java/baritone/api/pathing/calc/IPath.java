@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.pathing.calc;
+package burgertone.api.pathing.calc;
 
-import baritone.api.Settings;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.movement.IMovement;
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.Settings;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.movement.IMovement;
+import burgertone.api.utils.BetterBlockPos;
 
 import java.util.HashSet;
 import java.util.List;

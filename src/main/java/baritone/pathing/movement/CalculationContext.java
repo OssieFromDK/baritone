@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement;
+package burgertone.pathing.movement;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.ActionCosts;
-import baritone.cache.WorldData;
-import baritone.pathing.precompute.PrecomputedData;
-import baritone.utils.BlockStateInterface;
-import baritone.utils.ToolSet;
-import baritone.utils.pathing.BetterWorldBorder;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.ActionCosts;
+import burgertone.cache.WorldData;
+import burgertone.pathing.precompute.PrecomputedData;
+import burgertone.utils.BlockStateInterface;
+import burgertone.utils.ToolSet;
+import burgertone.utils.pathing.BetterWorldBorder;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -42,7 +42,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baritone.api.pathing.movement.ActionCosts.COST_INF;
+import static burgertone.api.pathing.movement.ActionCosts.COST_INF;
 
 /**
  * @author Brady
@@ -53,7 +53,7 @@ public class CalculationContext {
     private static final ItemStack STACK_BUCKET_WATER = new ItemStack(Items.WATER_BUCKET);
 
     public final boolean safeForThreadedUse;
-    public final IBaritone baritone;
+    public final IBaritone burgertone;
     public final Level world;
     public final WorldData worldData;
     public final BlockStateInterface bsi;
@@ -86,20 +86,20 @@ public class CalculationContext {
 
     public final PrecomputedData precomputedData;
 
-    public CalculationContext(IBaritone baritone) {
-        this(baritone, false);
+    public CalculationContext(IBaritone burgertone) {
+        this(burgertone, false);
     }
 
-    public CalculationContext(IBaritone baritone, boolean forUseOnAnotherThread) {
+    public CalculationContext(IBaritone burgertone, boolean forUseOnAnotherThread) {
         this.precomputedData = new PrecomputedData();
         this.safeForThreadedUse = forUseOnAnotherThread;
-        this.baritone = baritone;
-        LocalPlayer player = baritone.getPlayerContext().player();
-        this.world = baritone.getPlayerContext().world();
-        this.worldData = (WorldData) baritone.getPlayerContext().worldData();
-        this.bsi = new BlockStateInterface(baritone.getPlayerContext(), forUseOnAnotherThread);
+        this.burgertone = burgertone;
+        LocalPlayer player = burgertone.getPlayerContext().player();
+        this.world = burgertone.getPlayerContext().world();
+        this.worldData = (WorldData) burgertone.getPlayerContext().worldData();
+        this.bsi = new BlockStateInterface(burgertone.getPlayerContext(), forUseOnAnotherThread);
         this.toolSet = new ToolSet(player);
-        this.hasThrowaway = Baritone.settings().allowPlace.value && ((Baritone) baritone).getInventoryBehavior().hasGenericThrowaway();
+        this.hasThrowaway = Baritone.settings().allowPlace.value && ((Baritone) burgertone).getInventoryBehavior().hasGenericThrowaway();
         this.hasWaterBucket = Baritone.settings().allowWaterBucketFall.value && Inventory.isHotbarSlot(player.getInventory().findSlotMatchingItem(STACK_BUCKET_WATER)) && world.dimension() != Level.NETHER;
         this.canSprint = Baritone.settings().allowSprint.value && player.getFoodData().getFoodLevel() > 6;
         this.placeBlockCost = Baritone.settings().blockPlacementPenalty.value;
@@ -114,7 +114,7 @@ public class CalculationContext {
         // todo: technically there can now be datapack enchants that replace blocks with any other at any range
         int frostWalkerLevel = 0;
         for (EquipmentSlot slot : EquipmentSlot.values()) {
-            ItemEnchantments itemEnchantments = baritone.getPlayerContext()
+            ItemEnchantments itemEnchantments = burgertone.getPlayerContext()
                 .player()
                 .getItemBySlot(slot)
                 .getEnchantments();
@@ -133,7 +133,7 @@ public class CalculationContext {
         this.maxFallHeightBucket = Baritone.settings().maxFallHeightBucket.value;
         float waterSpeedMultiplier = 1.0f;
         OUTER: for (EquipmentSlot slot : EquipmentSlot.values()) {
-            ItemEnchantments itemEnchantments = baritone.getPlayerContext()
+            ItemEnchantments itemEnchantments = burgertone.getPlayerContext()
                 .player()
                 .getItemBySlot(slot)
                 .getEnchantments();
@@ -160,7 +160,7 @@ public class CalculationContext {
     }
 
     public final IBaritone getBaritone() {
-        return baritone;
+        return burgertone;
     }
 
     public BlockState get(int x, int y, int z) {

@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
 import org.junit.Test;
 

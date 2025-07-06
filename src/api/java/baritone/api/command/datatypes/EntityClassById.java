@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.datatypes;
+package burgertone.api.command.datatypes;
 
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.helpers.TabCompleteHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;

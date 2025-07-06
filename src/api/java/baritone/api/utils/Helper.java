@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.utils;
+package burgertone.api.utils;
 
-import baritone.api.BaritoneAPI;
-import baritone.api.Settings;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.Settings;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.GuiMessageTag;
 import net.minecraft.client.Minecraft;
@@ -59,14 +59,14 @@ public interface Helper {
         // Inner text component
         final Calendar now = Calendar.getInstance();
         final boolean xd = now.get(Calendar.MONTH) == Calendar.APRIL && now.get(Calendar.DAY_OF_MONTH) <= 3;
-        MutableComponent baritone = Component.literal(xd ? "Baritoe" : BaritoneAPI.getSettings().shortBaritonePrefix.value ? "B" : "Baritone");
-        baritone.setStyle(baritone.getStyle().withColor(ChatFormatting.LIGHT_PURPLE));
+        MutableComponent burgertone = Component.literal(xd ? "Baritoe" : BaritoneAPI.getSettings().shortBaritonePrefix.value ? "B" : "Baritone");
+        burgertone.setStyle(burgertone.getStyle().withColor(ChatFormatting.LIGHT_PURPLE));
 
         // Outer brackets
         MutableComponent prefix = Component.literal("");
-        prefix.setStyle(baritone.getStyle().withColor(ChatFormatting.DARK_PURPLE));
+        prefix.setStyle(burgertone.getStyle().withColor(ChatFormatting.DARK_PURPLE));
         prefix.append("[");
-        prefix.append(baritone);
+        prefix.append(burgertone);
         prefix.append("]");
 
         return prefix;
@@ -238,7 +238,7 @@ public interface Helper {
 
     default void logUnhandledException(final Throwable exception) {
         HELPER.logDirect("An unhandled exception occurred. " +
-                        "The error is in your game's log, please report this at https://github.com/cabaletta/baritone/issues",
+                        "The error is in your game's log, please report this at https://github.com/cabaletta/burgertone/issues",
                 ChatFormatting.RED);
         exception.printStackTrace();
     }

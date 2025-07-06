@@ -1,9 +1,9 @@
-package baritone.selection;
+package burgertone.selection;
 
-import baritone.Baritone;
-import baritone.api.selection.ISelection;
-import baritone.api.selection.ISelectionManager;
-import baritone.api.utils.BetterBlockPos;
+import burgertone.Baritone;
+import burgertone.api.selection.ISelection;
+import burgertone.api.selection.ISelectionManager;
+import burgertone.api.utils.BetterBlockPos;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import net.minecraft.core.Direction;
@@ -13,8 +13,8 @@ public class SelectionManager implements ISelectionManager {
     private final LinkedList<ISelection> selections = new LinkedList<>();
     private ISelection[] selectionsArr = new ISelection[0];
 
-    public SelectionManager(Baritone baritone) {
-        new SelectionRenderer(baritone, this);
+    public SelectionManager(Baritone burgertone) {
+        new SelectionRenderer(burgertone, this);
     }
 
     private void resetSelectionsArr() {

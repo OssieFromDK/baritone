@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.utils.interfaces;
+package burgertone.api.utils.interfaces;
 
 import net.minecraft.core.BlockPos;
 

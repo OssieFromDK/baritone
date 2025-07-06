@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.Rotation;
-import baritone.api.utils.RotationUtils;
-import baritone.api.utils.VecUtils;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.pathing.movement.MovementState.MovementTarget;
-import baritone.utils.pathing.MutableMoveResult;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.Rotation;
+import burgertone.api.utils.RotationUtils;
+import burgertone.api.utils.VecUtils;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.pathing.movement.MovementState.MovementTarget;
+import burgertone.utils.pathing.MutableMoveResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -53,8 +53,8 @@ public class MovementFall extends Movement {
     private static final ItemStack STACK_BUCKET_WATER = new ItemStack(Items.WATER_BUCKET);
     private static final ItemStack STACK_BUCKET_EMPTY = new ItemStack(Items.BUCKET);
 
-    public MovementFall(IBaritone baritone, BetterBlockPos src, BetterBlockPos dest) {
-        super(baritone, src, dest, MovementFall.buildPositionsToBreak(src, dest));
+    public MovementFall(IBaritone burgertone, BetterBlockPos src, BetterBlockPos dest) {
+        super(burgertone, src, dest, MovementFall.buildPositionsToBreak(src, dest));
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MovementFall extends Movement {
     }
 
     private boolean willPlaceBucket() {
-        CalculationContext context = new CalculationContext(baritone);
+        CalculationContext context = new CalculationContext(burgertone);
         MutableMoveResult result = new MutableMoveResult();
         return MovementDescend.dynamicFallCost(context, src.x, src.y, src.z, dest.x, dest.z, 0, context.get(dest.x, src.y - 2, dest.z), result);
     }

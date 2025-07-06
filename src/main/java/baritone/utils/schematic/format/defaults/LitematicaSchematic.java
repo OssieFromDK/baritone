@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils.schematic.format.defaults;
+package burgertone.utils.schematic.format.defaults;
 
-import baritone.api.schematic.CompositeSchematic;
-import baritone.api.schematic.IStaticSchematic;
-import baritone.utils.schematic.StaticSchematic;
+import burgertone.api.schematic.CompositeSchematic;
+import burgertone.api.schematic.IStaticSchematic;
+import burgertone.utils.schematic.StaticSchematic;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -38,7 +38,7 @@ import java.util.Optional;
 
 /**
  * Based on EmersonDove's work
- * <a href="https://github.com/cabaletta/baritone/pull/2544">...</a>
+ * <a href="https://github.com/cabaletta/burgertone/pull/2544">...</a>
  *
  * @author rycbar
  * @since 22.09.2022

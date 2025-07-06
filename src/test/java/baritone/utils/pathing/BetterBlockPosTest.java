@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils.pathing;
+package burgertone.utils.pathing;
 
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.utils.BetterBlockPos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import org.junit.Test;

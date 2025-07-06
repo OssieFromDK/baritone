@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.cache;
+package burgertone.cache;
 
-import baritone.api.cache.IWaypoint;
-import baritone.api.cache.IWaypointCollection;
-import baritone.api.cache.Waypoint;
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.cache.IWaypoint;
+import burgertone.api.cache.IWaypointCollection;
+import burgertone.api.cache.Waypoint;
+import burgertone.api.utils.BetterBlockPos;
 
 import java.io.*;
 import java.nio.file.Files;

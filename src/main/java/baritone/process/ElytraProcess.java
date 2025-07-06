@@ -15,34 +15,34 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.process;
+package burgertone.process;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.event.events.*;
-import baritone.api.event.events.type.EventState;
-import baritone.api.event.listener.AbstractGameEventListener;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.goals.GoalBlock;
-import baritone.api.pathing.goals.GoalXZ;
-import baritone.api.pathing.goals.GoalYLevel;
-import baritone.api.pathing.movement.IMovement;
-import baritone.api.pathing.path.IPathExecutor;
-import baritone.api.process.IBaritoneProcess;
-import baritone.api.process.IElytraProcess;
-import baritone.api.process.PathingCommand;
-import baritone.api.process.PathingCommandType;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.Rotation;
-import baritone.api.utils.RotationUtils;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.movements.MovementFall;
-import baritone.process.elytra.ElytraBehavior;
-import baritone.process.elytra.NetherPathfinderContext;
-import baritone.process.elytra.NullElytraProcess;
-import baritone.utils.BaritoneProcessHelper;
-import baritone.utils.PathingCommandContext;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.event.events.*;
+import burgertone.api.event.events.type.EventState;
+import burgertone.api.event.listener.AbstractGameEventListener;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.goals.GoalBlock;
+import burgertone.api.pathing.goals.GoalXZ;
+import burgertone.api.pathing.goals.GoalYLevel;
+import burgertone.api.pathing.movement.IMovement;
+import burgertone.api.pathing.path.IPathExecutor;
+import burgertone.api.process.IBaritoneProcess;
+import burgertone.api.process.IElytraProcess;
+import burgertone.api.process.PathingCommand;
+import burgertone.api.process.PathingCommandType;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.Rotation;
+import burgertone.api.utils.RotationUtils;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.movements.MovementFall;
+import burgertone.process.elytra.ElytraBehavior;
+import burgertone.process.elytra.NetherPathfinderContext;
+import burgertone.process.elytra.NullElytraProcess;
+import burgertone.utils.BaritoneProcessHelper;
+import burgertone.utils.PathingCommandContext;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -58,7 +58,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.*;
 
-import static baritone.api.pathing.movement.ActionCosts.COST_INF;
+import static burgertone.api.pathing.movement.ActionCosts.COST_INF;
 
 public class ElytraProcess extends BaritoneProcessHelper implements IBaritoneProcess, IElytraProcess, AbstractGameEventListener {
     public State state;
@@ -79,15 +79,15 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
         destroyBehaviorAsync();
     }
 
-    private ElytraProcess(Baritone baritone) {
-        super(baritone);
-        baritone.getGameEventHandler().registerEventListener(this);
+    private ElytraProcess(Baritone burgertone) {
+        super(burgertone);
+        burgertone.getGameEventHandler().registerEventListener(this);
     }
 
-    public static IElytraProcess create(final Baritone baritone) {
+    public static IElytraProcess create(final Baritone burgertone) {
         return NetherPathfinderContext.isSupported()
-                ? new ElytraProcess(baritone)
-                : new NullElytraProcess(baritone);
+                ? new ElytraProcess(burgertone)
+                : new NullElytraProcess(burgertone);
     }
 
     @Override
@@ -176,7 +176,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
                 Vec3 from = ctx.player().position();
                 Vec3 to = new Vec3(((double) endPos.x) + 0.5, from.y, ((double) endPos.z) + 0.5);
                 Rotation rotation = RotationUtils.calcRotationFromVec3d(from, to, ctx.playerRotations());
-                baritone.getLookBehavior().updateTarget(new Rotation(rotation.getYaw(), 0), false); // this will be overwritten, probably, by behavior tick
+                burgertone.getLookBehavior().updateTarget(new Rotation(rotation.getYaw(), 0), false); // this will be overwritten, probably, by behavior tick
 
                 if (ctx.player().position().y < endPos.y - LANDING_COLUMN_HEIGHT) {
                     logDirect("bad landing spot, trying again...");
@@ -188,17 +188,17 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
         if (ctx.player().isFallFlying()) {
             behavior.landingMode = this.state == State.LANDING;
             this.goal = null;
-            baritone.getInputOverrideHandler().clearAllKeys();
+            burgertone.getInputOverrideHandler().clearAllKeys();
             behavior.tick();
             return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
         } else if (this.state == State.LANDING) {
             if (ctx.playerMotion().multiply(1, 0, 1).length() > 0.001) {
                 logDirect("Landed, but still moving, waiting for velocity to die down... ");
-                baritone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
+                burgertone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
                 return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
             }
             logDirect("Done :)");
-            baritone.getInputOverrideHandler().clearAllKeys();
+            burgertone.getInputOverrideHandler().clearAllKeys();
             this.onLostControl();
             return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
         }
@@ -218,7 +218,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
             if (this.goal == null) {
                 this.goal = new GoalYLevel(31);
             }
-            final IPathExecutor executor = baritone.getPathingBehavior().getCurrent();
+            final IPathExecutor executor = burgertone.getPathingBehavior().getCurrent();
             if (executor != null && executor.getPath().getGoal() == this.goal) {
                 final IMovement fall = executor.getPath().movements().stream()
                         .filter(movement -> movement instanceof MovementFall)
@@ -244,7 +244,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
                     return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
                 }
             }
-            return new PathingCommandContext(this.goal, PathingCommandType.SET_GOAL_AND_PAUSE, new WalkOffCalculationContext(baritone));
+            return new PathingCommandContext(this.goal, PathingCommandType.SET_GOAL_AND_PAUSE, new WalkOffCalculationContext(burgertone));
         }
 
         // yucky
@@ -253,7 +253,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
         }
 
         if (this.state == State.GET_TO_JUMP) {
-            final IPathExecutor executor = baritone.getPathingBehavior().getCurrent();
+            final IPathExecutor executor = burgertone.getPathingBehavior().getCurrent();
             // TODO 1.21.5: replace `ctx.player().getDeltaMovement().y < -0.377` with `ctx.player().fallDistance > 1.0f`
             final boolean canStartFlying = ctx.player().getDeltaMovement().y < -0.377
                     && !isSafeToCancel
@@ -270,12 +270,12 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
         if (this.state == State.START_FLYING) {
             if (!isSafeToCancel) {
                 // owned
-                baritone.getPathingBehavior().secretInternalSegmentCancel();
+                burgertone.getPathingBehavior().secretInternalSegmentCancel();
             }
-            baritone.getInputOverrideHandler().clearAllKeys();
+            burgertone.getInputOverrideHandler().clearAllKeys();
             // TODO 1.21.5: replace `ctx.player().getDeltaMovement().y < -0.377` with `ctx.player().fallDistance > 1.0f`
             if (ctx.player().getDeltaMovement().y < -0.377) {
-                baritone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
+                burgertone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
             }
         }
         return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
@@ -329,7 +329,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
         }
         this.onLostControl();
         this.predictingTerrain = Baritone.settings().elytraPredictTerrain.value;
-        this.behavior = new ElytraBehavior(this.baritone, this, destination, appendDestination);
+        this.behavior = new ElytraBehavior(this.burgertone, this, destination, appendDestination);
         if (ctx.world() != null) {
             this.behavior.repackChunks();
         }
@@ -435,7 +435,7 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
 
     @Override
     public void onPostTick(TickEvent event) {
-        IBaritoneProcess procThisTick = baritone.getPathingControlManager().mostRecentInControl().orElse(null);
+        IBaritoneProcess procThisTick = burgertone.getPathingControlManager().mostRecentInControl().orElse(null);
         if (this.behavior != null && procThisTick == this) this.behavior.onPostTick(event);
     }
 
@@ -444,8 +444,8 @@ public class ElytraProcess extends BaritoneProcessHelper implements IBaritonePro
      */
     public static final class WalkOffCalculationContext extends CalculationContext {
 
-        public WalkOffCalculationContext(IBaritone baritone) {
-            super(baritone, true);
+        public WalkOffCalculationContext(IBaritone burgertone) {
+            super(burgertone, true);
             this.allowFallIntoLava = true;
             this.minFallHeight = 8;
             this.maxFallHeightNoWater = 10000;

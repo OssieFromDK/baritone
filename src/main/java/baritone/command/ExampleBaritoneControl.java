@@ -15,24 +15,24 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command;
+package burgertone.command;
 
-import baritone.Baritone;
-import baritone.api.BaritoneAPI;
-import baritone.api.Settings;
-import baritone.api.command.argument.ICommandArgument;
-import baritone.api.command.exception.CommandNotEnoughArgumentsException;
-import baritone.api.command.exception.CommandNotFoundException;
-import baritone.api.command.helpers.TabCompleteHelper;
-import baritone.api.command.manager.ICommandManager;
-import baritone.api.event.events.ChatEvent;
-import baritone.api.event.events.TabCompleteEvent;
-import baritone.api.utils.Helper;
-import baritone.api.utils.SettingsUtil;
-import baritone.behavior.Behavior;
-import baritone.command.argument.ArgConsumer;
-import baritone.command.argument.CommandArguments;
-import baritone.command.manager.CommandManager;
+import burgertone.Baritone;
+import burgertone.api.BaritoneAPI;
+import burgertone.api.Settings;
+import burgertone.api.command.argument.ICommandArgument;
+import burgertone.api.command.exception.CommandNotEnoughArgumentsException;
+import burgertone.api.command.exception.CommandNotFoundException;
+import burgertone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.command.manager.ICommandManager;
+import burgertone.api.event.events.ChatEvent;
+import burgertone.api.event.events.TabCompleteEvent;
+import burgertone.api.utils.Helper;
+import burgertone.api.utils.SettingsUtil;
+import burgertone.behavior.Behavior;
+import burgertone.command.argument.ArgConsumer;
+import burgertone.command.argument.CommandArguments;
+import burgertone.command.manager.CommandManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.ClickEvent;
@@ -45,16 +45,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Stream;
 
-import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class ExampleBaritoneControl extends Behavior implements Helper {
 
     private static final Settings settings = BaritoneAPI.getSettings();
     private final ICommandManager manager;
 
-    public ExampleBaritoneControl(Baritone baritone) {
-        super(baritone);
-        this.manager = baritone.getCommandManager();
+    public ExampleBaritoneControl(Baritone burgertone) {
+        super(burgertone);
+        this.manager = burgertone.getCommandManager();
     }
 
     @Override

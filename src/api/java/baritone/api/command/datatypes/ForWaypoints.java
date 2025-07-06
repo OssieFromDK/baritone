@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.datatypes;
+package burgertone.api.command.datatypes;
 
-import baritone.api.IBaritone;
-import baritone.api.cache.IWaypoint;
-import baritone.api.cache.IWaypointCollection;
-import baritone.api.command.exception.CommandException;
-import baritone.api.command.helpers.TabCompleteHelper;
+import burgertone.api.IBaritone;
+import burgertone.api.cache.IWaypoint;
+import burgertone.api.cache.IWaypointCollection;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.command.helpers.TabCompleteHelper;
 
 import java.util.Comparator;
 import java.util.stream.Stream;
@@ -50,31 +50,31 @@ public enum ForWaypoints implements IDatatypeFor<IWaypoint[]> {
                 .stream();
     }
 
-    public static IWaypointCollection waypoints(IBaritone baritone) {
-        return baritone.getWorldProvider().getCurrentWorld().getWaypoints();
+    public static IWaypointCollection waypoints(IBaritone burgertone) {
+        return burgertone.getWorldProvider().getCurrentWorld().getWaypoints();
     }
 
-    public static IWaypoint[] getWaypoints(IBaritone baritone) {
-        return waypoints(baritone).getAllWaypoints().stream()
+    public static IWaypoint[] getWaypoints(IBaritone burgertone) {
+        return waypoints(burgertone).getAllWaypoints().stream()
                 .sorted(Comparator.comparingLong(IWaypoint::getCreationTimestamp).reversed())
                 .toArray(IWaypoint[]::new);
     }
 
-    public static String[] getWaypointNames(IBaritone baritone) {
-        return Stream.of(getWaypoints(baritone))
+    public static String[] getWaypointNames(IBaritone burgertone) {
+        return Stream.of(getWaypoints(burgertone))
                 .map(IWaypoint::getName)
                 .filter(name -> !name.isEmpty())
                 .toArray(String[]::new);
     }
 
-    public static IWaypoint[] getWaypointsByTag(IBaritone baritone, IWaypoint.Tag tag) {
-        return waypoints(baritone).getByTag(tag).stream()
+    public static IWaypoint[] getWaypointsByTag(IBaritone burgertone, IWaypoint.Tag tag) {
+        return waypoints(burgertone).getByTag(tag).stream()
                 .sorted(Comparator.comparingLong(IWaypoint::getCreationTimestamp).reversed())
                 .toArray(IWaypoint[]::new);
     }
 
-    public static IWaypoint[] getWaypointsByName(IBaritone baritone, String name) {
-        return Stream.of(getWaypoints(baritone))
+    public static IWaypoint[] getWaypointsByName(IBaritone burgertone, String name) {
+        return Stream.of(getWaypoints(burgertone))
                 .filter(waypoint -> waypoint.getName().equalsIgnoreCase(name))
                 .toArray(IWaypoint[]::new);
     }

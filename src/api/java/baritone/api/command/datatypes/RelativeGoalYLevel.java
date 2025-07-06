@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.datatypes;
+package burgertone.api.command.datatypes;
 
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.pathing.goals.GoalYLevel;
-import baritone.api.utils.BetterBlockPos;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.pathing.goals.GoalYLevel;
+import burgertone.api.utils.BetterBlockPos;
 import java.util.stream.Stream;
 import net.minecraft.util.Mth;
 

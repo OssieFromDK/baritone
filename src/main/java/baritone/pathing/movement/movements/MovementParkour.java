@@ -15,19 +15,19 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.utils.BlockStateInterface;
-import baritone.utils.pathing.MutableMoveResult;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.utils.BlockStateInterface;
+import burgertone.utils.pathing.MutableMoveResult;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -46,8 +46,8 @@ public class MovementParkour extends Movement {
     private final int dist;
     private final boolean ascend;
 
-    private MovementParkour(IBaritone baritone, BetterBlockPos src, int dist, Direction dir, boolean ascend) {
-        super(baritone, src, src.relative(dir, dist).above(ascend ? 1 : 0), EMPTY, src.relative(dir, dist).below(ascend ? 0 : 1));
+    private MovementParkour(IBaritone burgertone, BetterBlockPos src, int dist, Direction dir, boolean ascend) {
+        super(burgertone, src, src.relative(dir, dist).above(ascend ? 1 : 0), EMPTY, src.relative(dir, dist).below(ascend ? 0 : 1));
         this.direction = dir;
         this.dist = dist;
         this.ascend = ascend;
@@ -276,10 +276,10 @@ public class MovementParkour extends Movement {
         } else if (!ctx.playerFeet().equals(src)) {
             if (ctx.playerFeet().equals(src.relative(direction)) || ctx.player().position().y - src.y > 0.0001) {
                 if (Baritone.settings().allowPlace.value // see PR #3775
-                        && ((Baritone) baritone).getInventoryBehavior().hasGenericThrowaway()
+                        && ((Baritone) burgertone).getInventoryBehavior().hasGenericThrowaway()
                         && !MovementHelper.canWalkOn(ctx, dest.below())
                         && !ctx.player().onGround()
-                        && MovementHelper.attemptToPlaceABlock(state, baritone, dest.below(), true, false) == PlaceResult.READY_TO_PLACE
+                        && MovementHelper.attemptToPlaceABlock(state, burgertone, dest.below(), true, false) == PlaceResult.READY_TO_PLACE
                 ) {
                     // go in the opposite order to check DOWN before all horizontals -- down is preferable because you don't have to look to the side while in midair, which could mess up the trajectory
                     state.setInput(Input.CLICK_RIGHT, true);

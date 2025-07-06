@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.movement.movements;
+package burgertone.pathing.movement.movements;
 
-import baritone.Baritone;
-import baritone.api.IBaritone;
-import baritone.api.pathing.movement.MovementStatus;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.Rotation;
-import baritone.api.utils.RotationUtils;
-import baritone.api.utils.VecUtils;
-import baritone.api.utils.input.Input;
-import baritone.pathing.movement.CalculationContext;
-import baritone.pathing.movement.Movement;
-import baritone.pathing.movement.MovementHelper;
-import baritone.pathing.movement.MovementState;
-import baritone.utils.BlockStateInterface;
+import burgertone.Baritone;
+import burgertone.api.IBaritone;
+import burgertone.api.pathing.movement.MovementStatus;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.Rotation;
+import burgertone.api.utils.RotationUtils;
+import burgertone.api.utils.VecUtils;
+import burgertone.api.utils.input.Input;
+import burgertone.pathing.movement.CalculationContext;
+import burgertone.pathing.movement.Movement;
+import burgertone.pathing.movement.MovementHelper;
+import burgertone.pathing.movement.MovementState;
+import burgertone.utils.BlockStateInterface;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.AirBlock;
@@ -54,8 +54,8 @@ public class MovementTraverse extends Movement {
      */
     private boolean wasTheBridgeBlockAlwaysThere = true;
 
-    public MovementTraverse(IBaritone baritone, BetterBlockPos from, BetterBlockPos to) {
-        super(baritone, from, to, new BetterBlockPos[]{to.above(), to}, to.below());
+    public MovementTraverse(IBaritone burgertone, BetterBlockPos from, BetterBlockPos to) {
+        super(burgertone, from, to, new BetterBlockPos[]{to.above(), to}, to.below());
     }
 
     @Override
@@ -276,7 +276,7 @@ public class MovementTraverse extends Movement {
             BlockState destDown = BlockStateInterface.get(ctx, dest.below());
             BlockPos against = positionsToBreak[0];
             if (feet.getY() != dest.getY() && ladder && (destDown.getBlock() == Blocks.VINE || destDown.getBlock() == Blocks.LADDER)) {
-                against = destDown.getBlock() == Blocks.VINE ? MovementPillar.getAgainst(new CalculationContext(baritone), dest.below()) : dest.relative(destDown.getValue(LadderBlock.FACING).getOpposite());
+                against = destDown.getBlock() == Blocks.VINE ? MovementPillar.getAgainst(new CalculationContext(burgertone), dest.below()) : dest.relative(destDown.getValue(LadderBlock.FACING).getOpposite());
                 if (against == null) {
                     logDirect("Unable to climb vines. Consider disabling allowVines.");
                     return state.setStatus(MovementStatus.UNREACHABLE);
@@ -296,7 +296,7 @@ public class MovementTraverse extends Movement {
                 }
             }
             double dist1 = Math.max(Math.abs(ctx.player().position().x - (dest.getX() + 0.5D)), Math.abs(ctx.player().position().z - (dest.getZ() + 0.5D)));
-            PlaceResult p = MovementHelper.attemptToPlaceABlock(state, baritone, dest.below(), false, true);
+            PlaceResult p = MovementHelper.attemptToPlaceABlock(state, burgertone, dest.below(), false, true);
             if ((p == PlaceResult.READY_TO_PLACE || dist1 < 0.6) && !Baritone.settings().assumeSafeWalk.value) {
                 state.setInput(Input.SNEAK, true);
             }

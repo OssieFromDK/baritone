@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.command.argument;
+package burgertone.api.command.argument;
 
-import baritone.api.command.argparser.IArgParser;
-import baritone.api.command.exception.CommandInvalidTypeException;
+import burgertone.api.command.argparser.IArgParser;
+import burgertone.api.command.exception.CommandInvalidTypeException;
 import net.minecraft.core.Direction;
 
 /**

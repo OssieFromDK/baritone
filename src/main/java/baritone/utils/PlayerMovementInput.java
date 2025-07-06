@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.utils;
+package burgertone.utils;
 
-import baritone.api.utils.input.Input;
+import burgertone.api.utils.input.Input;
 import net.minecraft.client.player.ClientInput;
 import net.minecraft.world.phys.Vec2;
 

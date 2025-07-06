@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.utils;
+package burgertone.api.utils;
 
-import baritone.api.behavior.IBehavior;
-import baritone.api.utils.input.Input;
+import burgertone.api.behavior.IBehavior;
+import burgertone.api.utils.input.Input;
 
 /**
  * @author Brady

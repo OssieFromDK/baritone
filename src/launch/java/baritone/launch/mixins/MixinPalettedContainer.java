@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.launch.mixins;
+package burgertone.launch.mixins;
 
-import baritone.utils.accessor.IPalettedContainer;
-import baritone.utils.accessor.IPalettedContainer.IData;
+import burgertone.utils.accessor.IPalettedContainer;
+import burgertone.utils.accessor.IPalettedContainer.IData;
 import net.minecraft.util.BitStorage;
 import net.minecraft.world.level.chunk.Palette;
 import net.minecraft.world.level.chunk.PalettedContainer;

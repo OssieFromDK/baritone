@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.pathing.goals.GoalStrictDirection;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.pathing.goals.GoalStrictDirection;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -31,8 +31,8 @@ import net.minecraft.core.Direction;
 
 public class TunnelCommand extends Command {
 
-    public TunnelCommand(IBaritone baritone) {
-        super(baritone, "tunnel");
+    public TunnelCommand(IBaritone burgertone) {
+        super(burgertone, "tunnel");
     }
 
     @Override
@@ -77,14 +77,14 @@ public class TunnelCommand extends Command {
                         throw new IllegalStateException("Unexpected value: " + enumFacing);
                 }
                 logDirect(String.format("Creating a tunnel %s block(s) high, %s block(s) wide, and %s block(s) deep", height + 1, width + 1, depth));
-                baritone.getBuilderProcess().clearArea(corner1, corner2);
+                burgertone.getBuilderProcess().clearArea(corner1, corner2);
             }
         } else {
             Goal goal = new GoalStrictDirection(
                     ctx.playerFeet(),
                     ctx.player().getDirection()
             );
-            baritone.getCustomGoalProcess().setGoalAndPath(goal);
+            burgertone.getCustomGoalProcess().setGoalAndPath(goal);
             logDirect(String.format("Goal: %s", goal.toString()));
         }
     }

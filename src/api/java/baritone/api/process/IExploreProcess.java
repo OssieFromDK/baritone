@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.process;
+package burgertone.api.process;
 
 import java.nio.file.Path;
 

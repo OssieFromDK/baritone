@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.schematic;
+package burgertone.api.schematic;
 
-import baritone.api.utils.BlockOptionalMetaLookup;
+import burgertone.api.utils.BlockOptionalMetaLookup;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ReplaceSchematic extends MaskSchematic {

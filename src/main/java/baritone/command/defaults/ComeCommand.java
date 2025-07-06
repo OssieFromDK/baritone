@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.exception.CommandException;
-import baritone.api.pathing.goals.GoalBlock;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.pathing.goals.GoalBlock;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,14 +29,14 @@ import java.util.stream.Stream;
 
 public class ComeCommand extends Command {
 
-    public ComeCommand(IBaritone baritone) {
-        super(baritone, "come");
+    public ComeCommand(IBaritone burgertone) {
+        super(burgertone, "come");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        baritone.getCustomGoalProcess().setGoalAndPath(new GoalBlock(ctx.viewerPos()));
+        burgertone.getCustomGoalProcess().setGoalAndPath(new GoalBlock(ctx.viewerPos()));
         logDirect("Coming");
     }
 

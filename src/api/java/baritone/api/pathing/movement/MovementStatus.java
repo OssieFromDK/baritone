@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.api.pathing.movement;
+package burgertone.api.pathing.movement;
 
 /**
  * @author Brady

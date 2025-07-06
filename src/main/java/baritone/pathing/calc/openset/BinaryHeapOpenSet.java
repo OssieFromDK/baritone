@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.pathing.calc.openset;
+package burgertone.pathing.calc.openset;
 
-import baritone.pathing.calc.PathNode;
+import burgertone.pathing.calc.PathNode;
 
 import java.util.Arrays;
 

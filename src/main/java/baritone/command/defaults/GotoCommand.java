@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package baritone.command.defaults;
+package burgertone.command.defaults;
 
-import baritone.api.IBaritone;
-import baritone.api.command.Command;
-import baritone.api.command.argument.IArgConsumer;
-import baritone.api.command.datatypes.ForBlockOptionalMeta;
-import baritone.api.command.datatypes.RelativeCoordinate;
-import baritone.api.command.datatypes.RelativeGoal;
-import baritone.api.command.exception.CommandException;
-import baritone.api.pathing.goals.Goal;
-import baritone.api.utils.BetterBlockPos;
-import baritone.api.utils.BlockOptionalMeta;
+import burgertone.api.IBaritone;
+import burgertone.api.command.Command;
+import burgertone.api.command.argument.IArgConsumer;
+import burgertone.api.command.datatypes.ForBlockOptionalMeta;
+import burgertone.api.command.datatypes.RelativeCoordinate;
+import burgertone.api.command.datatypes.RelativeGoal;
+import burgertone.api.command.exception.CommandException;
+import burgertone.api.pathing.goals.Goal;
+import burgertone.api.utils.BetterBlockPos;
+import burgertone.api.utils.BlockOptionalMeta;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,8 +34,8 @@ import java.util.stream.Stream;
 
 public class GotoCommand extends Command {
 
-    protected GotoCommand(IBaritone baritone) {
-        super(baritone, "goto");
+    protected GotoCommand(IBaritone burgertone) {
+        super(burgertone, "goto");
     }
 
     @Override
@@ -48,12 +48,12 @@ public class GotoCommand extends Command {
             BetterBlockPos origin = ctx.playerFeet();
             Goal goal = args.getDatatypePost(RelativeGoal.INSTANCE, origin);
             logDirect(String.format("Going to: %s", goal.toString()));
-            baritone.getCustomGoalProcess().setGoalAndPath(goal);
+            burgertone.getCustomGoalProcess().setGoalAndPath(goal);
             return;
         }
         args.requireMax(1);
         BlockOptionalMeta destination = args.getDatatypeFor(ForBlockOptionalMeta.INSTANCE);
-        baritone.getGetToBlockProcess().getToBlock(destination);
+        burgertone.getGetToBlockProcess().getToBlock(destination);
     }
 
     @Override

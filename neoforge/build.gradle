@@ -15,8 +15,8 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import baritone.gradle.task.CreateDistTask
-import baritone.gradle.task.ProguardTask
+import burgertone.gradle.task.CreateDistTask
+import burgertone.gradle.task.ProguardTask
 
 plugins {
     id "com.github.johnrengelman.shadow" version "8.0.0"
@@ -28,7 +28,7 @@ unimined.minecraft {
 
     neoForge {
         loader project.neoforge_version
-        mixinConfig ["mixins.baritone.json"]
+        mixinConfig ["mixins.burgertone.json"]
     }
 
     minecraftRemapper.config {
@@ -43,7 +43,7 @@ unimined.minecraft {
 
 //loom {
 //    forge {
-//        mixinConfig 'mixins.baritone.json'
+//        mixinConfig 'mixins.burgertone.json'
 //    }
 //}
 
@@ -89,8 +89,8 @@ jar {
 
     manifest {
         attributes(
-                'MixinConfigs': 'mixins.baritone.json',
-                "MixinConnector": "baritone.launch.BaritoneMixinConnector",
+                'MixinConfigs': 'mixins.burgertone.json',
+                "MixinConnector": "burgertone.launch.BaritoneMixinConnector",
 
                 'Implementation-Title': 'Baritone',
                 'Implementation-Version': version,
