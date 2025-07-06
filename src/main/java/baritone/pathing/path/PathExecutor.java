@@ -15,30 +15,30 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.path;
+package baritone.pathing.path;
 
-import burgertone.Baritone;
-import burgertone.api.pathing.calc.IPath;
-import burgertone.api.pathing.movement.ActionCosts;
-import burgertone.api.pathing.movement.IMovement;
-import burgertone.api.pathing.movement.MovementStatus;
-import burgertone.api.pathing.path.IPathExecutor;
-import burgertone.api.utils.*;
-import burgertone.api.utils.input.Input;
-import burgertone.behavior.PathingBehavior;
-import burgertone.pathing.calc.AbstractNodeCostSearch;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.Movement;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.pathing.movement.movements.*;
-import burgertone.utils.BlockStateInterface;
+import baritone.Baritone;
+import baritone.api.pathing.calc.IPath;
+import baritone.api.pathing.movement.ActionCosts;
+import baritone.api.pathing.movement.IMovement;
+import baritone.api.pathing.movement.MovementStatus;
+import baritone.api.pathing.path.IPathExecutor;
+import baritone.api.utils.*;
+import baritone.api.utils.input.Input;
+import baritone.behavior.PathingBehavior;
+import baritone.pathing.calc.AbstractNodeCostSearch;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.Movement;
+import baritone.pathing.movement.MovementHelper;
+import baritone.pathing.movement.movements.*;
+import baritone.utils.BlockStateInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.phys.Vec3;
 import java.util.*;
 
-import static burgertone.api.pathing.movement.MovementStatus.*;
+import static baritone.api.pathing.movement.MovementStatus.*;
 
 /**
  * Behavior to execute a precomputed path
@@ -54,7 +54,7 @@ public class PathExecutor implements IPathExecutor, Helper {
      * Default value is equal to 10 seconds. It's find to decrease it, but it must be at least 5.5s (110 ticks).
      * For more information, see issue #102.
      *
-     * @see <a href="https://github.com/cabaletta/burgertone/issues/102">Issue #102</a>
+     * @see <a href="https://github.com/cabaletta/baritone/issues/102">Issue #102</a>
      * @see <a href="https://i.imgur.com/5s5GLnI.png">Anime</a>
      */
     private static final double MAX_TICKS_AWAY = 200;
@@ -184,7 +184,7 @@ public class PathExecutor implements IPathExecutor, Helper {
         }*/
         if (pathPosition < path.movements().size() - 1) {
             IMovement next = path.movements().get(pathPosition + 1);
-            if (!behavior.burgertone.bsi.worldContainsLoadedChunk(next.getDest().x, next.getDest().z)) {
+            if (!behavior.baritone.bsi.worldContainsLoadedChunk(next.getDest().x, next.getDest().z)) {
                 logDebug("Pausing since destination is at edge of loaded chunks");
                 clearKeys();
                 return true;
@@ -342,13 +342,13 @@ public class PathExecutor implements IPathExecutor, Helper {
     }
 
     private boolean shouldSprintNextTick() {
-        boolean requested = behavior.burgertone.getInputOverrideHandler().isInputForcedDown(Input.SPRINT);
+        boolean requested = behavior.baritone.getInputOverrideHandler().isInputForcedDown(Input.SPRINT);
 
         // we'll take it from here, no need for minecraft to see we're holding down control and sprint for us
-        behavior.burgertone.getInputOverrideHandler().setInputForceState(Input.SPRINT, false);
+        behavior.baritone.getInputOverrideHandler().setInputForceState(Input.SPRINT, false);
 
         // first and foremost, if allowSprint is off, or if we don't have enough hunger, don't try and sprint
-        if (!new CalculationContext(behavior.burgertone, false).canSprint) {
+        if (!new CalculationContext(behavior.baritone, false).canSprint) {
             return false;
         }
         IMovement current = path.movements().get(pathPosition);
@@ -362,7 +362,7 @@ public class PathExecutor implements IPathExecutor, Helper {
                     pathPosition++;
                     onChangeInPathPosition();
                     onTick();
-                    behavior.burgertone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
+                    behavior.baritone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
                     return true;
                 } else {
                     logDebug("Too far to the side to safely sprint ascend");
@@ -385,7 +385,7 @@ public class PathExecutor implements IPathExecutor, Helper {
                     // frostwalker only works if you cross the edge of the block on ground so in some cases we may not overshoot
                     // Since MovementDescend can't know the next movement we have to tell it
                     if (next instanceof MovementTraverse || next instanceof MovementParkour) {
-                        boolean couldPlaceInstead = Baritone.settings().allowPlace.value && behavior.burgertone.getInventoryBehavior().hasGenericThrowaway() && next instanceof MovementParkour; // traverse doesn't react fast enough
+                        boolean couldPlaceInstead = Baritone.settings().allowPlace.value && behavior.baritone.getInventoryBehavior().hasGenericThrowaway() && next instanceof MovementParkour; // traverse doesn't react fast enough
                         // this is true if the next movement does not ascend or descends and goes into the same cardinal direction (N-NE-E-SE-S-SW-W-NW) as the descend
                         // in that case current.getDirection() is e.g. (0, -1, 1) and next.getDirection() is e.g. (0, 0, 3) so the cross product of (0, 0, 1) and (0, 0, 3) is taken, which is (0, 0, 0) because the vectors are colinear (don't form a plane)
                         // since movements in exactly the opposite direction (e.g. descend (0, -1, 1) and traverse (0, 0, -1)) would also pass this check we also have to rule out that case
@@ -442,7 +442,7 @@ public class PathExecutor implements IPathExecutor, Helper {
                 // farmland is 0.9375
                 // 0.07 is to account for farmland
                 if (ctx.player().position().y >= center.getY() - 0.07) {
-                    behavior.burgertone.getInputOverrideHandler().setInputForceState(Input.JUMP, false);
+                    behavior.baritone.getInputOverrideHandler().setInputForceState(Input.JUMP, false);
                     return true;
                 }
             }
@@ -466,8 +466,8 @@ public class PathExecutor implements IPathExecutor, Helper {
                     return true;
                 }
                 clearKeys();
-                behavior.burgertone.getLookBehavior().updateTarget(RotationUtils.calcRotationFromVec3d(ctx.playerHead(), data.getA(), ctx.playerRotations()), false);
-                behavior.burgertone.getInputOverrideHandler().setInputForceState(Input.MOVE_FORWARD, true);
+                behavior.baritone.getLookBehavior().updateTarget(RotationUtils.calcRotationFromVec3d(ctx.playerHead(), data.getA(), ctx.playerRotations()), false);
+                behavior.baritone.getInputOverrideHandler().setInputForceState(Input.MOVE_FORWARD, true);
                 return true;
             }
         }
@@ -584,12 +584,12 @@ public class PathExecutor implements IPathExecutor, Helper {
 
     private void clearKeys() {
         // i'm just sick and tired of this snippet being everywhere lol
-        behavior.burgertone.getInputOverrideHandler().clearAllKeys();
+        behavior.baritone.getInputOverrideHandler().clearAllKeys();
     }
 
     private void cancel() {
         clearKeys();
-        behavior.burgertone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
+        behavior.baritone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
         pathPosition = path.length() + 3;
         failed = true;
     }

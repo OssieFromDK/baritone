@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.pathing;
+package baritone.utils.pathing;
 
 import net.minecraft.world.level.border.WorldBorder;
 

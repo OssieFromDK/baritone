@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process.elytra;
+package baritone.process.elytra;
 
-import burgertone.api.utils.BetterBlockPos;
+import baritone.api.utils.BetterBlockPos;
 import dev.babbaj.pathfinder.PathSegment;
 
 import java.util.Arrays;

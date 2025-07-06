@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.pathing.calc;
+package baritone.api.pathing.calc;
 
-import burgertone.api.process.IBaritoneProcess;
-import burgertone.api.process.PathingCommand;
+import baritone.api.process.IBaritoneProcess;
+import baritone.api.process.PathingCommand;
 
 import java.util.Optional;
 

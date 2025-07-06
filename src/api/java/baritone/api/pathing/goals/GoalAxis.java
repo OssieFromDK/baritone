@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.pathing.goals;
+package baritone.api.pathing.goals;
 
-import burgertone.api.BaritoneAPI;
+import baritone.api.BaritoneAPI;
 
 public class GoalAxis implements Goal {
 

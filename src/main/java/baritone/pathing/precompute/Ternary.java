@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.precompute;
+package baritone.pathing.precompute;
 
 public enum Ternary {
     YES, MAYBE, NO

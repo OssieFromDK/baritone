@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.behavior;
+package baritone.api.behavior;
 
-import burgertone.api.pathing.calc.IPath;
-import burgertone.api.pathing.calc.IPathFinder;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.path.IPathExecutor;
+import baritone.api.pathing.calc.IPath;
+import baritone.api.pathing.calc.IPathFinder;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.path.IPathExecutor;
 
 import java.util.Optional;
 

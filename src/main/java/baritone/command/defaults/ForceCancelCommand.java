@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.behavior.IPathingBehavior;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
+import baritone.api.IBaritone;
+import baritone.api.behavior.IPathingBehavior;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,14 +29,14 @@ import java.util.stream.Stream;
 
 public class ForceCancelCommand extends Command {
 
-    public ForceCancelCommand(IBaritone burgertone) {
-        super(burgertone, "forcecancel");
+    public ForceCancelCommand(IBaritone baritone) {
+        super(baritone, "forcecancel");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        IPathingBehavior pathingBehavior = burgertone.getPathingBehavior();
+        IPathingBehavior pathingBehavior = baritone.getPathingBehavior();
         pathingBehavior.cancelEverything();
         pathingBehavior.forceCancel();
         logDirect("ok force canceled");

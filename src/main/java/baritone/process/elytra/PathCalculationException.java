@@ -16,7 +16,7 @@
  */
 
 
-package burgertone.process.elytra;
+package baritone.process.elytra;
 
 /**
  * @author Brady

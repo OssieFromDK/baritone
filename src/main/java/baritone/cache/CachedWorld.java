@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.cache;
+package baritone.cache;
 
-import burgertone.Baritone;
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.cache.ICachedWorld;
-import burgertone.api.cache.IWorldData;
-import burgertone.api.utils.Helper;
+import baritone.Baritone;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.cache.ICachedWorld;
+import baritone.api.cache.IWorldData;
+import baritone.api.utils.Helper;
 import com.google.common.cache.CacheBuilder;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;

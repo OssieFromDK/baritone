@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch;
+package baritone.launch;
 
 import org.spongepowered.asm.mixin.Mixins;
 import org.spongepowered.asm.mixin.connect.IMixinConnector;
@@ -24,6 +24,6 @@ public class BaritoneMixinConnector implements IMixinConnector {
 
     @Override
     public void connect() {
-        Mixins.addConfiguration("mixins.burgertone.json");
+        Mixins.addConfiguration("mixins.baritone.json");
     }
 }

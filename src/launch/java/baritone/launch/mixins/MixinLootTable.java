@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch.mixins;
+package baritone.launch.mixins;
 
-import burgertone.api.utils.accessor.ILootTable;
+import baritone.api.utils.accessor.ILootTable;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;

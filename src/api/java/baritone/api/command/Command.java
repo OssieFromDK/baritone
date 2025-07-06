@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command;
+package baritone.api.command;
 
-import burgertone.api.IBaritone;
-import burgertone.api.utils.IPlayerContext;
+import baritone.api.IBaritone;
+import baritone.api.utils.IPlayerContext;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +39,7 @@ import java.util.stream.Stream;
  */
 public abstract class Command implements ICommand {
 
-    protected IBaritone burgertone;
+    protected IBaritone baritone;
     protected IPlayerContext ctx;
 
     /**
@@ -52,12 +52,12 @@ public abstract class Command implements ICommand {
      *
      * @param names The names of this command. This is what you put after the command prefix.
      */
-    protected Command(IBaritone burgertone, String... names) {
+    protected Command(IBaritone baritone, String... names) {
         this.names = Collections.unmodifiableList(Stream.of(names)
                 .map(s -> s.toLowerCase(Locale.US))
                 .collect(Collectors.toList()));
-        this.burgertone = burgertone;
-        this.ctx = burgertone.getPlayerContext();
+        this.baritone = baritone;
+        this.ctx = baritone.getPlayerContext();
     }
 
     @Override

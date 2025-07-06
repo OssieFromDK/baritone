@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.argparser;
+package baritone.command.argparser;
 
-import burgertone.api.command.argparser.IArgParser;
-import burgertone.api.command.argparser.IArgParserManager;
-import burgertone.api.command.argument.ICommandArgument;
-import burgertone.api.command.exception.CommandInvalidTypeException;
-import burgertone.api.command.exception.CommandNoParserForTypeException;
-import burgertone.api.command.registry.Registry;
+import baritone.api.command.argparser.IArgParser;
+import baritone.api.command.argparser.IArgParserManager;
+import baritone.api.command.argument.ICommandArgument;
+import baritone.api.command.exception.CommandInvalidTypeException;
+import baritone.api.command.exception.CommandNoParserForTypeException;
+import baritone.api.command.registry.Registry;
 
 public enum ArgParserManager implements IArgParserManager {
     INSTANCE;

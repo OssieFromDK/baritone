@@ -15,17 +15,17 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.process;
+package baritone.api.process;
 
-import burgertone.api.behavior.IPathingBehavior;
-import burgertone.api.event.events.PathEvent;
+import baritone.api.behavior.IPathingBehavior;
+import baritone.api.event.events.PathEvent;
 
 /**
  * A process that can control the PathingBehavior.
  * <p>
- * Differences between a burgertone process and a behavior:
+ * Differences between a baritone process and a behavior:
  * <ul>
- * <li>Only one burgertone process can be active at a time</li>
+ * <li>Only one baritone process can be active at a time</li>
  * <li>PathingBehavior can only be controlled by a process</li>
  * </ul>
  * <p>

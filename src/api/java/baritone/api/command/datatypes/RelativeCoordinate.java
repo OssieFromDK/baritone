@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.datatypes;
+package baritone.api.command.datatypes;
 
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -15,15 +15,15 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.cache;
+package baritone.cache;
 
-import burgertone.api.cache.ICachedWorld;
-import burgertone.api.cache.IWorldScanner;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.BlockOptionalMeta;
-import burgertone.api.utils.BlockOptionalMetaLookup;
-import burgertone.api.utils.IPlayerContext;
-import burgertone.utils.accessor.IPalettedContainer;
+import baritone.api.cache.ICachedWorld;
+import baritone.api.cache.IWorldScanner;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.BlockOptionalMeta;
+import baritone.api.utils.BlockOptionalMetaLookup;
+import baritone.api.utils.IPlayerContext;
+import baritone.utils.accessor.IPalettedContainer;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.IdMapper;

@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.pathing.goals.*;
-import burgertone.api.process.IGetToBlockProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.api.utils.BlockOptionalMeta;
-import burgertone.api.utils.BlockOptionalMetaLookup;
-import burgertone.api.utils.Rotation;
-import burgertone.api.utils.RotationUtils;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.pathing.goals.*;
+import baritone.api.process.IGetToBlockProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.api.utils.BlockOptionalMeta;
+import baritone.api.utils.BlockOptionalMetaLookup;
+import baritone.api.utils.Rotation;
+import baritone.api.utils.RotationUtils;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.MovementHelper;
+import baritone.utils.BaritoneProcessHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.Block;
@@ -48,8 +48,8 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
     private int tickCount = 0;
     private int arrivalTickCount = 0;
 
-    public GetToBlockProcess(Baritone burgertone) {
-        super(burgertone);
+    public GetToBlockProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override
@@ -112,7 +112,7 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
             CalculationContext context = new GetToBlockCalculationContext(true);
             Baritone.getExecutor().execute(() -> rescan(current, context));
         }
-        if (goal.isInGoal(ctx.playerFeet()) && goal.isInGoal(burgertone.getPathingBehavior().pathStart()) && isSafeToCancel) {
+        if (goal.isInGoal(ctx.playerFeet()) && goal.isInGoal(baritone.getPathingBehavior().pathStart()) && isSafeToCancel) {
             // we're there
             if (rightClickOnArrival(gettingTo.getBlock())) {
                 if (rightClick()) {
@@ -159,7 +159,7 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
     public class GetToBlockCalculationContext extends CalculationContext {
 
         public GetToBlockCalculationContext(boolean forUseOnAnotherThread) {
-            super(GetToBlockProcess.super.burgertone, forUseOnAnotherThread);
+            super(GetToBlockProcess.super.baritone, forUseOnAnotherThread);
         }
 
         @Override
@@ -182,7 +182,7 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
         knownLocations = null;
         start = null;
         blacklist = null;
-        burgertone.getInputOverrideHandler().clearAllKeys();
+        baritone.getInputOverrideHandler().clearAllKeys();
     }
 
     @Override
@@ -203,7 +203,7 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
         if (walkIntoInsteadOfAdjacent(gettingTo.getBlock())) {
             return new GoalTwoBlocks(pos);
         }
-        if (blockOnTopMustBeRemoved(gettingTo.getBlock()) && MovementHelper.isBlockNormalCube(burgertone.bsi.get0(pos.above()))) { // TODO this should be the check for chest openability
+        if (blockOnTopMustBeRemoved(gettingTo.getBlock()) && MovementHelper.isBlockNormalCube(baritone.bsi.get0(pos.above()))) { // TODO this should be the check for chest openability
             return new GoalBlock(pos.above());
         }
         return new GoalGetToBlock(pos);
@@ -213,9 +213,9 @@ public final class GetToBlockProcess extends BaritoneProcessHelper implements IG
         for (BlockPos pos : knownLocations) {
             Optional<Rotation> reachable = RotationUtils.reachable(ctx, pos, ctx.playerController().getBlockReachDistance());
             if (reachable.isPresent()) {
-                burgertone.getLookBehavior().updateTarget(reachable.get(), true);
+                baritone.getLookBehavior().updateTarget(reachable.get(), true);
                 if (knownLocations.contains(ctx.getSelectedBlock().orElse(null))) {
-                    burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true); // TODO find some way to right click even if we're in an ESC menu
+                    baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true); // TODO find some way to right click even if we're in an ESC menu
                     System.out.println(ctx.player().containerMenu);
                     if (!(ctx.player().containerMenu instanceof InventoryMenu)) {
                         return true;

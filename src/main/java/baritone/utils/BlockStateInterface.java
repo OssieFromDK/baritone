@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
-import burgertone.Baritone;
-import burgertone.api.utils.IPlayerContext;
-import burgertone.cache.CachedRegion;
-import burgertone.cache.WorldData;
-import burgertone.utils.accessor.IClientChunkProvider;
-import burgertone.utils.pathing.BetterWorldBorder;
+import baritone.Baritone;
+import baritone.api.utils.IPlayerContext;
+import baritone.cache.CachedRegion;
+import baritone.cache.WorldData;
+import baritone.utils.accessor.IClientChunkProvider;
+import baritone.utils.pathing.BetterWorldBorder;
 import net.minecraft.client.multiplayer.ClientChunkCache;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;

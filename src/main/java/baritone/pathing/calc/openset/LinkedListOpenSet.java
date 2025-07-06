@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.calc.openset;
+package baritone.pathing.calc.openset;
 
-import burgertone.pathing.calc.PathNode;
+import baritone.pathing.calc.PathNode;
 
 /**
  * A linked list implementation of an open set. This is the original implementation from MineBot.

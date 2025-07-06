@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch.mixins;
+package baritone.launch.mixins;
 
-import burgertone.utils.accessor.IRenderPipelines;
+import baritone.utils.accessor.IRenderPipelines;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import net.minecraft.client.renderer.RenderPipelines;
 import org.spongepowered.asm.mixin.Final;

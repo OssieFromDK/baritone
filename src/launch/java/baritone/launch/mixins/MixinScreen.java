@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch.mixins;
+package baritone.launch.mixins;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.event.events.ChatEvent;
-import burgertone.utils.accessor.IGuiScreen;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.event.events.ChatEvent;
+import baritone.utils.accessor.IGuiScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Style;
@@ -29,7 +29,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 @Mixin(Screen.class)
 public abstract class MixinScreen implements IGuiScreen {
@@ -48,9 +48,9 @@ public abstract class MixinScreen implements IGuiScreen {
         if (!command.startsWith(FORCE_COMMAND_PREFIX)) {
             return;
         }
-        IBaritone burgertone = BaritoneAPI.getProvider().getPrimaryBaritone();
-        if (burgertone != null) {
-            burgertone.getGameEventHandler().onSendChatMessage(new ChatEvent(command));
+        IBaritone baritone = BaritoneAPI.getProvider().getPrimaryBaritone();
+        if (baritone != null) {
+            baritone.getGameEventHandler().onSendChatMessage(new ChatEvent(command));
         }
         cir.setReturnValue(true);
         cir.cancel();

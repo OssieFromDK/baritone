@@ -15,20 +15,20 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.cache.ICachedWorld;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalComposite;
-import burgertone.api.pathing.goals.GoalXZ;
-import burgertone.api.pathing.goals.GoalYLevel;
-import burgertone.api.process.IExploreProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.api.utils.MyChunkPos;
-import burgertone.cache.CachedWorld;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.cache.ICachedWorld;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalComposite;
+import baritone.api.pathing.goals.GoalXZ;
+import baritone.api.pathing.goals.GoalYLevel;
+import baritone.api.process.IExploreProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.api.utils.MyChunkPos;
+import baritone.cache.CachedWorld;
+import baritone.utils.BaritoneProcessHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
@@ -48,8 +48,8 @@ public final class ExploreProcess extends BaritoneProcessHelper implements IExpl
 
     private int distanceCompleted;
 
-    public ExploreProcess(Baritone burgertone) {
-        super(burgertone);
+    public ExploreProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override
@@ -188,7 +188,7 @@ public final class ExploreProcess extends BaritoneProcessHelper implements IExpl
 
     private class BaritoneChunkCache implements IChunkFilter {
 
-        private final ICachedWorld cache = burgertone.getWorldProvider().getCurrentWorld().getCachedWorld();
+        private final ICachedWorld cache = baritone.getWorldProvider().getCurrentWorld().getCachedWorld();
 
         @Override
         public Status isAlreadyExplored(int chunkX, int chunkZ) {
@@ -237,7 +237,7 @@ public final class ExploreProcess extends BaritoneProcessHelper implements IExpl
                 return Status.EXPLORED;
             } else {
                 // either it's not on the list of explored chunks, or it's on the list of unexplored chunks
-                // either way, it depends on if burgertone has cached it so defer to that
+                // either way, it depends on if baritone has cached it so defer to that
                 return Status.UNKNOWN;
             }
         }

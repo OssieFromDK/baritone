@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.manager;
+package baritone.command.manager;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.command.ICommand;
-import burgertone.api.command.argument.ICommandArgument;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandUnhandledException;
-import burgertone.api.command.exception.ICommandException;
-import burgertone.api.command.helpers.TabCompleteHelper;
-import burgertone.api.command.manager.ICommandManager;
-import burgertone.api.command.registry.Registry;
-import burgertone.command.argument.ArgConsumer;
-import burgertone.command.argument.CommandArguments;
-import burgertone.command.defaults.DefaultCommands;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.command.ICommand;
+import baritone.api.command.argument.ICommandArgument;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandUnhandledException;
+import baritone.api.command.exception.ICommandException;
+import baritone.api.command.helpers.TabCompleteHelper;
+import baritone.api.command.manager.ICommandManager;
+import baritone.api.command.registry.Registry;
+import baritone.command.argument.ArgConsumer;
+import baritone.command.argument.CommandArguments;
+import baritone.command.defaults.DefaultCommands;
 import net.minecraft.util.Tuple;
 
 import java.util.List;
@@ -46,16 +46,16 @@ import java.util.stream.Stream;
 public class CommandManager implements ICommandManager {
 
     private final Registry<ICommand> registry = new Registry<>();
-    private final Baritone burgertone;
+    private final Baritone baritone;
 
-    public CommandManager(Baritone burgertone) {
-        this.burgertone = burgertone;
-        DefaultCommands.createAll(burgertone).forEach(this.registry::register);
+    public CommandManager(Baritone baritone) {
+        this.baritone = baritone;
+        DefaultCommands.createAll(baritone).forEach(this.registry::register);
     }
 
     @Override
     public IBaritone getBaritone() {
-        return this.burgertone;
+        return this.baritone;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class CommandManager implements ICommandManager {
         List<ICommandArgument> args = pair.getB();
         if (args.isEmpty()) {
             return new TabCompleteHelper()
-                    .addCommands(this.burgertone.getCommandManager())
+                    .addCommands(this.baritone.getCommandManager())
                     .filterPrefix(label)
                     .stream();
         } else {

@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.utils;
+package baritone.api.utils;
 
-import burgertone.api.pathing.calc.IPath;
+import baritone.api.pathing.calc.IPath;
 
 import java.util.Objects;
 import java.util.Optional;

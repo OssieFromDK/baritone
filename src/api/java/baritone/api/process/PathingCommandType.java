@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.process;
+package baritone.api.process;
 
-import burgertone.api.Settings;
+import baritone.api.Settings;
 
 public enum PathingCommandType {
 

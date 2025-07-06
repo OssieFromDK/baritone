@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.schematic.format;
+package baritone.utils.schematic.format;
 
-import burgertone.api.schematic.IStaticSchematic;
-import burgertone.api.schematic.format.ISchematicFormat;
-import burgertone.utils.schematic.format.defaults.LitematicaSchematic;
-import burgertone.utils.schematic.format.defaults.MCEditSchematic;
-import burgertone.utils.schematic.format.defaults.SpongeSchematic;
+import baritone.api.schematic.IStaticSchematic;
+import baritone.api.schematic.format.ISchematicFormat;
+import baritone.utils.schematic.format.defaults.LitematicaSchematic;
+import baritone.utils.schematic.format.defaults.MCEditSchematic;
+import baritone.utils.schematic.format.defaults.SpongeSchematic;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;

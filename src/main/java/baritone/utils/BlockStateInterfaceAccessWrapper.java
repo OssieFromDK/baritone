@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;

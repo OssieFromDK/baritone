@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.ICommand;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandNotFoundException;
-import burgertone.api.command.helpers.Paginator;
-import burgertone.api.command.helpers.TabCompleteHelper;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.ICommand;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandNotFoundException;
+import baritone.api.command.helpers.Paginator;
+import baritone.api.command.helpers.TabCompleteHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -36,12 +36,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class HelpCommand extends Command {
 
-    public HelpCommand(IBaritone burgertone) {
-        super(burgertone, "help", "?");
+    public HelpCommand(IBaritone baritone) {
+        super(baritone, "help", "?");
     }
 
     @Override
@@ -50,7 +50,7 @@ public class HelpCommand extends Command {
         if (!args.hasAny() || args.is(Integer.class)) {
             Paginator.paginate(
                     args, new Paginator<>(
-                            this.burgertone.getCommandManager().getRegistry().descendingStream()
+                            this.baritone.getCommandManager().getRegistry().descendingStream()
                                     .filter(command -> !command.hiddenFromHelp())
                                     .collect(Collectors.toList())
                     ),
@@ -80,7 +80,7 @@ public class HelpCommand extends Command {
             );
         } else {
             String commandName = args.getString().toLowerCase();
-            ICommand command = this.burgertone.getCommandManager().getCommand(commandName);
+            ICommand command = this.baritone.getCommandManager().getCommand(commandName);
             if (command == null) {
                 throw new CommandNotFoundException(commandName);
             }
@@ -100,7 +100,7 @@ public class HelpCommand extends Command {
     public Stream<String> tabComplete(String label, IArgConsumer args) throws CommandException {
         if (args.hasExactlyOne()) {
             return new TabCompleteHelper()
-                    .addCommands(this.burgertone.getCommandManager())
+                    .addCommands(this.baritone.getCommandManager())
                     .filterPrefix(args.getString())
                     .stream();
         }

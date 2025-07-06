@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.pathing.path;
+package baritone.api.pathing.path;
 
-import burgertone.api.pathing.calc.IPath;
+import baritone.api.pathing.calc.IPath;
 
 /**
  * @author Brady

@@ -15,25 +15,25 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.cache.IWaypoint;
-import burgertone.api.cache.IWorldData;
-import burgertone.api.cache.Waypoint;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.ForWaypoints;
-import burgertone.api.command.datatypes.RelativeBlockPos;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandInvalidStateException;
-import burgertone.api.command.exception.CommandInvalidTypeException;
-import burgertone.api.command.helpers.Paginator;
-import burgertone.api.command.helpers.TabCompleteHelper;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalBlock;
-import burgertone.api.utils.BetterBlockPos;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.cache.IWaypoint;
+import baritone.api.cache.IWorldData;
+import baritone.api.cache.Waypoint;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.ForWaypoints;
+import baritone.api.command.datatypes.RelativeBlockPos;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandInvalidStateException;
+import baritone.api.command.exception.CommandInvalidTypeException;
+import baritone.api.command.helpers.Paginator;
+import baritone.api.command.helpers.TabCompleteHelper;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalBlock;
+import baritone.api.utils.BetterBlockPos;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -46,14 +46,14 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class WaypointsCommand extends Command {
 
     private Map<IWorldData, List<IWaypoint>> deletedWaypoints = new HashMap<>();
 
-    public WaypointsCommand(IBaritone burgertone) {
-        super(burgertone, "waypoints", "waypoint", "wp");
+    public WaypointsCommand(IBaritone baritone) {
+        super(baritone, "waypoints", "waypoint", "wp");
     }
 
     @Override
@@ -98,8 +98,8 @@ public class WaypointsCommand extends Command {
                 args.get();
             }
             IWaypoint[] waypoints = tag != null
-                    ? ForWaypoints.getWaypointsByTag(this.burgertone, tag)
-                    : ForWaypoints.getWaypoints(this.burgertone);
+                    ? ForWaypoints.getWaypointsByTag(this.baritone, tag)
+                    : ForWaypoints.getWaypoints(this.baritone);
             if (waypoints.length > 0) {
                 args.requireMax(1);
                 Paginator.paginate(
@@ -140,7 +140,7 @@ public class WaypointsCommand extends Command {
                     : ctx.playerFeet();
             args.requireMax(0);
             IWaypoint waypoint = new Waypoint(name, tag, pos);
-            ForWaypoints.waypoints(this.burgertone).addWaypoint(waypoint);
+            ForWaypoints.waypoints(this.baritone).addWaypoint(waypoint);
             MutableComponent component = Component.literal("Waypoint added: ");
             component.setStyle(component.getStyle().withColor(ChatFormatting.GRAY));
             component.append(toComponent.apply(waypoint, Action.INFO));
@@ -152,11 +152,11 @@ public class WaypointsCommand extends Command {
             if (tag == null) {
                 throw new CommandInvalidStateException("Invalid tag, \"" + name + "\"");
             }
-            IWaypoint[] waypoints = ForWaypoints.getWaypointsByTag(this.burgertone, tag);
+            IWaypoint[] waypoints = ForWaypoints.getWaypointsByTag(this.baritone, tag);
             for (IWaypoint waypoint : waypoints) {
-                ForWaypoints.waypoints(this.burgertone).removeWaypoint(waypoint);
+                ForWaypoints.waypoints(this.baritone).removeWaypoint(waypoint);
             }
-            deletedWaypoints.computeIfAbsent(burgertone.getWorldProvider().getCurrentWorld(), k -> new ArrayList<>()).addAll(Arrays.<IWaypoint>asList(waypoints));
+            deletedWaypoints.computeIfAbsent(baritone.getWorldProvider().getCurrentWorld(), k -> new ArrayList<>()).addAll(Arrays.<IWaypoint>asList(waypoints));
             MutableComponent textComponent = Component.literal(String.format("Cleared %d waypoints, click to restore them", waypoints.length));
             textComponent.setStyle(textComponent.getStyle().withClickEvent(new ClickEvent.RunCommand(
                     String.format(
@@ -169,7 +169,7 @@ public class WaypointsCommand extends Command {
             logDirect(textComponent);
         } else if (action == Action.RESTORE) {
             List<IWaypoint> waypoints = new ArrayList<>();
-            List<IWaypoint> deletedWaypoints = this.deletedWaypoints.getOrDefault(burgertone.getWorldProvider().getCurrentWorld(), Collections.emptyList());
+            List<IWaypoint> deletedWaypoints = this.deletedWaypoints.getOrDefault(baritone.getWorldProvider().getCurrentWorld(), Collections.emptyList());
             if (args.peekString().equals("@")) {
                 args.get();
                 // no args.requireMin(1) because if the user clears an empty tag there is nothing to restore
@@ -188,7 +188,7 @@ public class WaypointsCommand extends Command {
                 int amount = Math.min(size, args.getAs(Integer.class));
                 waypoints = new ArrayList<>(deletedWaypoints.subList(size - amount, size));
             }
-            waypoints.forEach(ForWaypoints.waypoints(this.burgertone)::addWaypoint);
+            waypoints.forEach(ForWaypoints.waypoints(this.baritone)::addWaypoint);
             deletedWaypoints.removeIf(waypoints::contains);
             logDirect(String.format("Restored %d waypoints", waypoints.size()));
         } else {
@@ -283,8 +283,8 @@ public class WaypointsCommand extends Command {
                     logDirect(recreateComponent);
                     logDirect(backComponent);
                 } else if (action == Action.DELETE) {
-                    ForWaypoints.waypoints(this.burgertone).removeWaypoint(waypoint);
-                    deletedWaypoints.computeIfAbsent(burgertone.getWorldProvider().getCurrentWorld(), k -> new ArrayList<>()).add(waypoint);
+                    ForWaypoints.waypoints(this.baritone).removeWaypoint(waypoint);
+                    deletedWaypoints.computeIfAbsent(baritone.getWorldProvider().getCurrentWorld(), k -> new ArrayList<>()).add(waypoint);
                     MutableComponent textComponent = Component.literal("That waypoint has successfully been deleted, click to restore it");
                     textComponent.setStyle(textComponent.getStyle().withClickEvent(new ClickEvent.RunCommand(
                             String.format(
@@ -297,11 +297,11 @@ public class WaypointsCommand extends Command {
                     logDirect(textComponent);
                 } else if (action == Action.GOAL) {
                     Goal goal = new GoalBlock(waypoint.getLocation());
-                    burgertone.getCustomGoalProcess().setGoal(goal);
+                    baritone.getCustomGoalProcess().setGoal(goal);
                     logDirect(String.format("Goal: %s", goal));
                 } else if (action == Action.GOTO) {
                     Goal goal = new GoalBlock(waypoint.getLocation());
-                    burgertone.getCustomGoalProcess().setGoalAndPath(goal);
+                    baritone.getCustomGoalProcess().setGoalAndPath(goal);
                     logDirect(String.format("Going to: %s", goal));
                 }
             }

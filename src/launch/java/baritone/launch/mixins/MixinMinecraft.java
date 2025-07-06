@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch.mixins;
+package baritone.launch.mixins;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.event.events.PlayerUpdateEvent;
-import burgertone.api.event.events.TickEvent;
-import burgertone.api.event.events.WorldEvent;
-import burgertone.api.event.events.type.EventState;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.event.events.PlayerUpdateEvent;
+import baritone.api.event.events.TickEvent;
+import baritone.api.event.events.WorldEvent;
+import baritone.api.event.events.type.EventState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.gui.screens.Screen;
@@ -83,11 +83,11 @@ public class MixinMinecraft {
     private void runTick(CallbackInfo ci) {
         this.tickProvider = TickEvent.createNextProvider();
 
-        for (IBaritone burgertone : BaritoneAPI.getProvider().getAllBaritones()) {
-            TickEvent.Type type = burgertone.getPlayerContext().player() != null && burgertone.getPlayerContext().world() != null
+        for (IBaritone baritone : BaritoneAPI.getProvider().getAllBaritones()) {
+            TickEvent.Type type = baritone.getPlayerContext().player() != null && baritone.getPlayerContext().world() != null
                     ? TickEvent.Type.IN
                     : TickEvent.Type.OUT;
-            burgertone.getGameEventHandler().onTick(this.tickProvider.apply(EventState.PRE, type));
+            baritone.getGameEventHandler().onTick(this.tickProvider.apply(EventState.PRE, type));
         }
     }
 
@@ -100,11 +100,11 @@ public class MixinMinecraft {
             return;
         }
 
-        for (IBaritone burgertone : BaritoneAPI.getProvider().getAllBaritones()) {
-            TickEvent.Type type = burgertone.getPlayerContext().player() != null && burgertone.getPlayerContext().world() != null
+        for (IBaritone baritone : BaritoneAPI.getProvider().getAllBaritones()) {
+            TickEvent.Type type = baritone.getPlayerContext().player() != null && baritone.getPlayerContext().world() != null
                     ? TickEvent.Type.IN
                     : TickEvent.Type.OUT;
-            burgertone.getGameEventHandler().onPostTick(this.tickProvider.apply(EventState.POST, type));
+            baritone.getGameEventHandler().onPostTick(this.tickProvider.apply(EventState.POST, type));
         }
 
         this.tickProvider = null;
@@ -119,11 +119,11 @@ public class MixinMinecraft {
             )
     )
     private void postUpdateEntities(CallbackInfo ci) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.player);
-        if (burgertone != null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.player);
+        if (baritone != null) {
             // Intentionally call this after all entities have been updated. That way, any modification to rotations
             // can be recognized by other entity code. (Fireworks and Pigs, for example)
-            burgertone.getGameEventHandler().onPlayerUpdate(new PlayerUpdateEvent(EventState.POST));
+            baritone.getGameEventHandler().onPlayerUpdate(new PlayerUpdateEvent(EventState.POST));
         }
     }
 
@@ -137,7 +137,7 @@ public class MixinMinecraft {
             return;
         }
 
-        // mc.world changing is only the primary burgertone
+        // mc.world changing is only the primary baritone
 
         BaritoneAPI.getProvider().getPrimaryBaritone().getGameEventHandler().onWorldEvent(
                 new WorldEvent(
@@ -154,7 +154,7 @@ public class MixinMinecraft {
     private void postLoadWorld(ClientLevel world, ReceivingLevelScreen.Reason arg2, CallbackInfo ci) {
         // still fire event for both null, as that means we've just finished exiting a world
 
-        // mc.world changing is only the primary burgertone
+        // mc.world changing is only the primary baritone
         BaritoneAPI.getProvider().getPrimaryBaritone().getGameEventHandler().onWorldEvent(
                 new WorldEvent(
                         world,
@@ -182,7 +182,7 @@ public class MixinMinecraft {
             )
     )
     private Screen passEvents(Minecraft instance) {
-        // allow user input is only the primary burgertone
+        // allow user input is only the primary baritone
         if (BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && player != null) {
             return null;
         }

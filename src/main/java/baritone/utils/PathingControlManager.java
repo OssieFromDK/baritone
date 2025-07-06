@@ -15,36 +15,36 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
-import burgertone.Baritone;
-import burgertone.api.event.events.TickEvent;
-import burgertone.api.event.listener.AbstractGameEventListener;
-import burgertone.api.pathing.calc.IPathingControlManager;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.process.IBaritoneProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.behavior.PathingBehavior;
-import burgertone.pathing.path.PathExecutor;
+import baritone.Baritone;
+import baritone.api.event.events.TickEvent;
+import baritone.api.event.listener.AbstractGameEventListener;
+import baritone.api.pathing.calc.IPathingControlManager;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.process.IBaritoneProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.behavior.PathingBehavior;
+import baritone.pathing.path.PathExecutor;
 import net.minecraft.core.BlockPos;
 
 import java.util.*;
 
 public class PathingControlManager implements IPathingControlManager {
 
-    private final Baritone burgertone;
+    private final Baritone baritone;
     private final HashSet<IBaritoneProcess> processes; // unGh
     private final List<IBaritoneProcess> active;
     private IBaritoneProcess inControlLastTick;
     private IBaritoneProcess inControlThisTick;
     private PathingCommand command;
 
-    public PathingControlManager(Baritone burgertone) {
-        this.burgertone = burgertone;
+    public PathingControlManager(Baritone baritone) {
+        this.baritone = baritone;
         this.processes = new HashSet<>();
         this.active = new ArrayList<>();
-        burgertone.getGameEventHandler().registerEventListener(new AbstractGameEventListener() { // needs to be after all behavior ticks
+        baritone.getGameEventHandler().registerEventListener(new AbstractGameEventListener() { // needs to be after all behavior ticks
             @Override
             public void onTick(TickEvent event) {
                 if (event.getType() == TickEvent.Type.IN) {
@@ -86,7 +86,7 @@ public class PathingControlManager implements IPathingControlManager {
     public void preTick() {
         inControlLastTick = inControlThisTick;
         inControlThisTick = null;
-        PathingBehavior p = burgertone.getPathingBehavior();
+        PathingBehavior p = baritone.getPathingBehavior();
         command = executeProcesses();
         if (command == null) {
             p.cancelSegmentIfSafe();
@@ -133,7 +133,7 @@ public class PathingControlManager implements IPathingControlManager {
         if (command == null) {
             return;
         }
-        PathingBehavior p = burgertone.getPathingBehavior();
+        PathingBehavior p = baritone.getPathingBehavior();
         switch (command.commandType) {
             case FORCE_REVALIDATE_GOAL_AND_PATH:
                 if (command.goal == null || forceRevalidate(command.goal) || revalidateGoal(command.goal)) {
@@ -153,7 +153,7 @@ public class PathingControlManager implements IPathingControlManager {
     }
 
     public boolean forceRevalidate(Goal newGoal) {
-        PathExecutor current = burgertone.getPathingBehavior().getCurrent();
+        PathExecutor current = baritone.getPathingBehavior().getCurrent();
         if (current != null) {
             if (newGoal.isInGoal(current.getPath().getDest())) {
                 return false;
@@ -164,7 +164,7 @@ public class PathingControlManager implements IPathingControlManager {
     }
 
     public boolean revalidateGoal(Goal newGoal) {
-        PathExecutor current = burgertone.getPathingBehavior().getCurrent();
+        PathExecutor current = baritone.getPathingBehavior().getCurrent();
         if (current != null) {
             Goal intended = current.getPath().getGoal();
             BlockPos end = current.getPath().getDest();
@@ -196,7 +196,7 @@ public class PathingControlManager implements IPathingControlManager {
         while (iterator.hasNext()) {
             IBaritoneProcess proc = iterator.next();
 
-            PathingCommand exec = proc.onTick(Objects.equals(proc, inControlLastTick) && burgertone.getPathingBehavior().calcFailedLastTick(), burgertone.getPathingBehavior().isSafeToCancel());
+            PathingCommand exec = proc.onTick(Objects.equals(proc, inControlLastTick) && baritone.getPathingBehavior().calcFailedLastTick(), baritone.getPathingBehavior().isSafeToCancel());
             if (exec == null) {
                 if (proc.isActive()) {
                     throw new IllegalStateException(proc.displayName() + " actively returned null PathingCommand");

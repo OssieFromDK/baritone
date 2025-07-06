@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.utils;
+package baritone.api.utils;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -268,8 +268,8 @@ public final class RotationUtils {
 
     @Deprecated
     public static Optional<Rotation> reachable(LocalPlayer entity, BlockPos pos, double blockReachDistance, boolean wouldSneak) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer(entity);
-        IPlayerContext ctx = burgertone.getPlayerContext();
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(entity);
+        IPlayerContext ctx = baritone.getPlayerContext();
         return reachable(ctx, pos, blockReachDistance, wouldSneak);
     }
 

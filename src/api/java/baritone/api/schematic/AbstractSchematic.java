@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.schematic;
+package baritone.api.schematic;
 
 public abstract class AbstractSchematic implements ISchematic {
 

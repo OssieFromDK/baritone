@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.behavior;
+package baritone.behavior;
 
-import burgertone.Baritone;
-import burgertone.api.behavior.IBehavior;
-import burgertone.api.utils.IPlayerContext;
+import baritone.Baritone;
+import baritone.api.behavior.IBehavior;
+import baritone.api.utils.IPlayerContext;
 
 /**
  * A type of game event listener that is given {@link Baritone} instance context.
@@ -29,11 +29,11 @@ import burgertone.api.utils.IPlayerContext;
  */
 public class Behavior implements IBehavior {
 
-    public final Baritone burgertone;
+    public final Baritone baritone;
     public final IPlayerContext ctx;
 
-    protected Behavior(Baritone burgertone) {
-        this.burgertone = burgertone;
-        this.ctx = burgertone.getPlayerContext();
+    protected Behavior(Baritone baritone) {
+        this.baritone = baritone;
+        this.ctx = baritone.getPlayerContext();
     }
 }

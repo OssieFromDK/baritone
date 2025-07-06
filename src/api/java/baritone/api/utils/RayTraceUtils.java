@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.utils;
+package baritone.api.utils;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Pose;

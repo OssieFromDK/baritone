@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.datatypes;
+package baritone.api.command.datatypes;
 
-import burgertone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandException;
 
 import java.util.function.Supplier;
 

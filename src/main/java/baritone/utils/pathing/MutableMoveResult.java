@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.pathing;
+package baritone.utils.pathing;
 
-import burgertone.api.pathing.movement.ActionCosts;
+import baritone.api.pathing.movement.ActionCosts;
 
 /**
  * The result of a calculated movement, with destination x, y, z, and the cost of performing the movement

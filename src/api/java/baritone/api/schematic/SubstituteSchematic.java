@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.schematic;
+package baritone.api.schematic;
 
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;

@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.schematic.schematica;
+package baritone.utils.schematic.schematica;
 
-import burgertone.api.schematic.IStaticSchematic;
+import baritone.api.schematic.IStaticSchematic;
 import com.github.lunatrius.schematica.Schematica;
 import com.github.lunatrius.schematica.proxy.ClientProxy;
 import net.minecraft.core.BlockPos;

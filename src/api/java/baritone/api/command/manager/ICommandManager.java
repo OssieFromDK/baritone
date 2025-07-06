@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.manager;
+package baritone.api.command.manager;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.ICommand;
-import burgertone.api.command.argument.ICommandArgument;
-import burgertone.api.command.registry.Registry;
+import baritone.api.IBaritone;
+import baritone.api.command.ICommand;
+import baritone.api.command.argument.ICommandArgument;
+import baritone.api.command.registry.Registry;
 import net.minecraft.util.Tuple;
 
 import java.util.List;

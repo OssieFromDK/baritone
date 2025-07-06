@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.process.ICustomGoalProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.process.ICustomGoalProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.utils.BaritoneProcessHelper;
 
 /**
  * As set by ExampleBaritoneControl or something idk
@@ -48,16 +48,16 @@ public final class CustomGoalProcess extends BaritoneProcessHelper implements IC
      */
     private State state;
 
-    public CustomGoalProcess(Baritone burgertone) {
-        super(burgertone);
+    public CustomGoalProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override
     public void setGoal(Goal goal) {
         this.goal = goal;
         this.mostRecentGoal = goal;
-        if (burgertone.getElytraProcess().isActive()) {
-            burgertone.getElytraProcess().pathTo(goal);
+        if (baritone.getElytraProcess().isActive()) {
+            baritone.getElytraProcess().pathTo(goal);
         }
         if (this.state == State.NONE) {
             this.state = State.GOAL_SET;
@@ -102,7 +102,7 @@ public final class CustomGoalProcess extends BaritoneProcessHelper implements IC
                     onLostControl();
                     return new PathingCommand(this.goal, PathingCommandType.CANCEL_AND_SET_GOAL);
                 }
-                if (this.goal == null || (this.goal.isInGoal(ctx.playerFeet()) && this.goal.isInGoal(burgertone.getPathingBehavior().pathStart()))) {
+                if (this.goal == null || (this.goal.isInGoal(ctx.playerFeet()) && this.goal.isInGoal(baritone.getPathingBehavior().pathStart()))) {
                     onLostControl(); // we're there xd
                     if (Baritone.settings().disconnectOnArrival.value) {
                         ctx.world().disconnect();

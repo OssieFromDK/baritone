@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command;
+package baritone.command;
 
-import burgertone.api.command.ICommandSystem;
-import burgertone.api.command.argparser.IArgParserManager;
-import burgertone.command.argparser.ArgParserManager;
+import baritone.api.command.ICommandSystem;
+import baritone.api.command.argparser.IArgParserManager;
+import baritone.command.argparser.ArgParserManager;
 
 /**
  * @author Brady

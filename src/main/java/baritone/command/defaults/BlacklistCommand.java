@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandInvalidStateException;
-import burgertone.api.process.IGetToBlockProcess;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandInvalidStateException;
+import baritone.api.process.IGetToBlockProcess;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,14 +30,14 @@ import java.util.stream.Stream;
 
 public class BlacklistCommand extends Command {
 
-    public BlacklistCommand(IBaritone burgertone) {
-        super(burgertone, "blacklist");
+    public BlacklistCommand(IBaritone baritone) {
+        super(baritone, "blacklist");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        IGetToBlockProcess proc = burgertone.getGetToBlockProcess();
+        IGetToBlockProcess proc = baritone.getGetToBlockProcess();
         if (!proc.isActive()) {
             throw new CommandInvalidStateException("GetToBlockProcess is not currently active");
         }

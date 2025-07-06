@@ -15,15 +15,15 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.precompute;
+package baritone.pathing.precompute;
 
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.utils.BlockStateInterface;
+import baritone.pathing.movement.MovementHelper;
+import baritone.utils.BlockStateInterface;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-import static burgertone.pathing.precompute.Ternary.MAYBE;
-import static burgertone.pathing.precompute.Ternary.YES;
+import static baritone.pathing.precompute.Ternary.MAYBE;
+import static baritone.pathing.precompute.Ternary.YES;
 
 public class PrecomputedData {
 

@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process.elytra;
+package baritone.process.elytra;
 
-import burgertone.Baritone;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.process.IElytraProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.process.IElytraProcess;
+import baritone.api.process.PathingCommand;
+import baritone.utils.BaritoneProcessHelper;
 import net.minecraft.core.BlockPos;
 
 /**
@@ -29,8 +29,8 @@ import net.minecraft.core.BlockPos;
  */
 public final class NullElytraProcess extends BaritoneProcessHelper implements IElytraProcess {
 
-    public NullElytraProcess(Baritone burgertone) {
-        super(burgertone);
+    public NullElytraProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override

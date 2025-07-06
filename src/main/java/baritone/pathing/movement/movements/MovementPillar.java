@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement.movements;
+package baritone.pathing.movement.movements;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.pathing.movement.MovementStatus;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.Rotation;
-import burgertone.api.utils.RotationUtils;
-import burgertone.api.utils.VecUtils;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.Movement;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.pathing.movement.MovementState;
-import burgertone.utils.BlockStateInterface;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.pathing.movement.MovementStatus;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.Rotation;
+import baritone.api.utils.RotationUtils;
+import baritone.api.utils.VecUtils;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.Movement;
+import baritone.pathing.movement.MovementHelper;
+import baritone.pathing.movement.MovementState;
+import baritone.utils.BlockStateInterface;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.*;
@@ -41,8 +41,8 @@ import java.util.Set;
 
 public class MovementPillar extends Movement {
 
-    public MovementPillar(IBaritone burgertone, BetterBlockPos start, BetterBlockPos end) {
-        super(burgertone, start, end, new BetterBlockPos[]{start.above(2)}, start);
+    public MovementPillar(IBaritone baritone, BetterBlockPos start, BetterBlockPos end) {
+        super(baritone, start, end, new BetterBlockPos[]{start.above(2)}, start);
     }
 
     @Override
@@ -196,7 +196,7 @@ public class MovementPillar extends Movement {
 
         boolean blockIsThere = MovementHelper.canWalkOn(ctx, src) || ladder;
         if (ladder) {
-            BlockPos against = vine ? getAgainst(new CalculationContext(burgertone), src) : src.relative(fromDown.getValue(LadderBlock.FACING).getOpposite());
+            BlockPos against = vine ? getAgainst(new CalculationContext(baritone), src) : src.relative(fromDown.getValue(LadderBlock.FACING).getOpposite());
             if (against == null) {
                 logDirect("Unable to climb vines. Consider disabling allowVines.");
                 return state.setStatus(MovementStatus.UNREACHABLE);
@@ -218,7 +218,7 @@ public class MovementPillar extends Movement {
             return state;
         } else {
             // Get ready to place a throwaway block
-            if (!((Baritone) burgertone).getInventoryBehavior().selectThrowawayForLocation(true, src.x, src.y, src.z)) {
+            if (!((Baritone) baritone).getInventoryBehavior().selectThrowawayForLocation(true, src.x, src.y, src.z)) {
                 return state.setStatus(MovementStatus.UNREACHABLE);
             }
 
@@ -231,7 +231,7 @@ public class MovementPillar extends Movement {
             double dist = Math.sqrt(diffX * diffX + diffZ * diffZ);
             double flatMotion = Math.sqrt(ctx.player().getDeltaMovement().x * ctx.player().getDeltaMovement().x + ctx.player().getDeltaMovement().z * ctx.player().getDeltaMovement().z);
             if (dist > 0.17) {//why 0.17? because it seemed like a good number, that's why
-                //[explanation added after burgertone port lol] also because it needs to be less than 0.2 because of the 0.3 sneak limit
+                //[explanation added after baritone port lol] also because it needs to be less than 0.2 because of the 0.3 sneak limit
                 //and 0.17 is reasonably less than 0.2
 
                 // If it's been more than forty ticks of trying to jump and we aren't done yet, go forward, maybe we are stuck

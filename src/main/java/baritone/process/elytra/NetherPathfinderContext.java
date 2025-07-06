@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process.elytra;
+package baritone.process.elytra;
 
-import burgertone.Baritone;
-import burgertone.api.event.events.BlockChangeEvent;
-import burgertone.utils.accessor.IPalettedContainer;
+import baritone.Baritone;
+import baritone.api.event.events.BlockChangeEvent;
+import baritone.utils.accessor.IPalettedContainer;
 import dev.babbaj.pathfinder.NetherPathfinder;
 import dev.babbaj.pathfinder.Octree;
 import dev.babbaj.pathfinder.PathSegment;

@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.behavior;
+package baritone.api.behavior;
 
-import burgertone.api.event.listener.AbstractGameEventListener;
-import burgertone.api.event.listener.IGameEventListener;
+import baritone.api.event.listener.AbstractGameEventListener;
+import baritone.api.event.listener.IGameEventListener;
 
 /**
  * A behavior is simply a type that is able to listen to events.

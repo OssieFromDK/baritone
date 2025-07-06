@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.event.listener;
+package baritone.api.event.listener;
 
-import burgertone.api.event.events.*;
+import baritone.api.event.events.*;
 
 /**
  * An implementation of {@link IGameEventListener} that has all methods

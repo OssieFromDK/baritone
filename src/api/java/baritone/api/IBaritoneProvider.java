@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api;
+package baritone.api;
 
-import burgertone.api.cache.IWorldScanner;
-import burgertone.api.command.ICommand;
-import burgertone.api.command.ICommandSystem;
-import burgertone.api.schematic.ISchematicSystem;
+import baritone.api.cache.IWorldScanner;
+import baritone.api.command.ICommand;
+import baritone.api.command.ICommandSystem;
+import baritone.api.schematic.ISchematicSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.player.LocalPlayer;
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Provides the present {@link IBaritone} instances, as well as non-burgertone instance related APIs.
+ * Provides the present {@link IBaritone} instances, as well as non-baritone instance related APIs.
  *
  * @author leijurv
  */
@@ -60,9 +60,9 @@ public interface IBaritoneProvider {
      * @return The {@link IBaritone} instance.
      */
     default IBaritone getBaritoneForPlayer(LocalPlayer player) {
-        for (IBaritone burgertone : this.getAllBaritones()) {
-            if (Objects.equals(player, burgertone.getPlayerContext().player())) {
-                return burgertone;
+        for (IBaritone baritone : this.getAllBaritones()) {
+            if (Objects.equals(player, baritone.getPlayerContext().player())) {
+                return baritone;
             }
         }
         return null;
@@ -75,9 +75,9 @@ public interface IBaritoneProvider {
      * @return The {@link IBaritone} instance.
      */
     default IBaritone getBaritoneForMinecraft(Minecraft minecraft) {
-        for (IBaritone burgertone : this.getAllBaritones()) {
-            if (Objects.equals(minecraft, burgertone.getPlayerContext().minecraft())) {
-                return burgertone;
+        for (IBaritone baritone : this.getAllBaritones()) {
+            if (Objects.equals(minecraft, baritone.getPlayerContext().minecraft())) {
+                return baritone;
             }
         }
         return null;
@@ -90,10 +90,10 @@ public interface IBaritoneProvider {
      * @return The {@link IBaritone} instance.
      */
     default IBaritone getBaritoneForConnection(ClientPacketListener connection) {
-        for (IBaritone burgertone : this.getAllBaritones()) {
-            final LocalPlayer player = burgertone.getPlayerContext().player();
+        for (IBaritone baritone : this.getAllBaritones()) {
+            final LocalPlayer player = baritone.getPlayerContext().player();
             if (player != null && player.connection == connection) {
-                return burgertone;
+                return baritone;
             }
         }
         return null;
@@ -110,12 +110,12 @@ public interface IBaritoneProvider {
 
     /**
      * Destroys and removes the specified {@link IBaritone} instance. If the specified instance is the
-     * {@link #getPrimaryBaritone() primary burgertone}, this operation has no effect and will return {@code false}.
+     * {@link #getPrimaryBaritone() primary baritone}, this operation has no effect and will return {@code false}.
      *
-     * @param burgertone The burgertone instance to remove
-     * @return Whether the burgertone instance was removed
+     * @param baritone The baritone instance to remove
+     * @return Whether the baritone instance was removed
      */
-    boolean destroyBaritone(IBaritone burgertone);
+    boolean destroyBaritone(IBaritone baritone);
 
     /**
      * Returns the {@link IWorldScanner} instance. This is not a type returned by

@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api;
+package baritone.api;
 
-import burgertone.api.utils.SettingsUtil;
+import baritone.api.utils.SettingsUtil;
 
 /**
  * Exposes the {@link IBaritoneProvider} instance and the {@link Settings} instance for API usage.
@@ -35,7 +35,7 @@ public final class BaritoneAPI {
         SettingsUtil.readAndApply(settings, SettingsUtil.SETTINGS_DEFAULT_NAME);
 
         try {
-            provider = (IBaritoneProvider) Class.forName("burgertone.BaritoneProvider").newInstance();
+            provider = (IBaritoneProvider) Class.forName("baritone.BaritoneProvider").newInstance();
         } catch (ReflectiveOperationException ex) {
             throw new RuntimeException(ex);
         }

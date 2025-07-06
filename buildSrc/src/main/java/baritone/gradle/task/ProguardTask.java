@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.gradle.task;
+package baritone.gradle.task;
 
-import burgertone.gradle.util.Determinizer;
+import baritone.gradle.util.Determinizer;
 import org.gradle.api.plugins.JavaPluginConvention;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.SourceSetContainer;

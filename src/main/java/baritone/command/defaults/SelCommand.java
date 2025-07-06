@@ -15,33 +15,33 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.ForAxis;
-import burgertone.api.command.datatypes.ForBlockOptionalMeta;
-import burgertone.api.command.datatypes.ForDirection;
-import burgertone.api.command.datatypes.RelativeBlockPos;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandInvalidStateException;
-import burgertone.api.command.exception.CommandInvalidTypeException;
-import burgertone.api.command.helpers.TabCompleteHelper;
-import burgertone.api.event.events.RenderEvent;
-import burgertone.api.event.listener.AbstractGameEventListener;
-import burgertone.api.schematic.*;
-import burgertone.api.schematic.mask.shape.CylinderMask;
-import burgertone.api.schematic.mask.shape.SphereMask;
-import burgertone.api.selection.ISelection;
-import burgertone.api.selection.ISelectionManager;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.BlockOptionalMeta;
-import burgertone.api.utils.BlockOptionalMetaLookup;
-import burgertone.utils.BlockStateInterface;
-import burgertone.utils.IRenderer;
-import burgertone.utils.schematic.StaticSchematic;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.ForAxis;
+import baritone.api.command.datatypes.ForBlockOptionalMeta;
+import baritone.api.command.datatypes.ForDirection;
+import baritone.api.command.datatypes.RelativeBlockPos;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandInvalidStateException;
+import baritone.api.command.exception.CommandInvalidTypeException;
+import baritone.api.command.helpers.TabCompleteHelper;
+import baritone.api.event.events.RenderEvent;
+import baritone.api.event.listener.AbstractGameEventListener;
+import baritone.api.schematic.*;
+import baritone.api.schematic.mask.shape.CylinderMask;
+import baritone.api.schematic.mask.shape.SphereMask;
+import baritone.api.selection.ISelection;
+import baritone.api.selection.ISelectionManager;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.BlockOptionalMeta;
+import baritone.api.utils.BlockOptionalMetaLookup;
+import baritone.utils.BlockStateInterface;
+import baritone.utils.IRenderer;
+import baritone.utils.schematic.StaticSchematic;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -58,14 +58,14 @@ import java.util.stream.Stream;
 
 public class SelCommand extends Command {
 
-    private ISelectionManager manager = burgertone.getSelectionManager();
+    private ISelectionManager manager = baritone.getSelectionManager();
     private BetterBlockPos pos1 = null;
     private ISchematic clipboard = null;
     private Vec3i clipboardOffset = null;
 
-    public SelCommand(IBaritone burgertone) {
-        super(burgertone, "sel", "selection", "s");
-        burgertone.getGameEventHandler().registerEventListener(new AbstractGameEventListener() {
+    public SelCommand(IBaritone baritone) {
+        super(baritone, "sel", "selection", "s");
+        baritone.getGameEventHandler().registerEventListener(new AbstractGameEventListener() {
             @Override
             public void onRenderPass(RenderEvent event) {
                 if (!Baritone.settings().renderSelectionCorners.value || pos1 == null) {
@@ -195,7 +195,7 @@ public class SelCommand extends Command {
                 ISchematic schematic = create.apply(new FillSchematic(size.getX(), size.getY(), size.getZ(), type));
                 composite.put(schematic, min.x - origin.x, min.y - origin.y, min.z - origin.z);
             }
-            burgertone.getBuilderProcess().build("Fill", composite, origin);
+            baritone.getBuilderProcess().build("Fill", composite, origin);
             logDirect("Filling now");
         } else if (action == Action.COPY) {
             BetterBlockPos playerPos = ctx.viewerPos();
@@ -240,7 +240,7 @@ public class SelCommand extends Command {
             if (clipboard == null) {
                 throw new CommandInvalidStateException("You need to copy a selection first");
             }
-            burgertone.getBuilderProcess().build("Fill", clipboard, pos.offset(clipboardOffset));
+            baritone.getBuilderProcess().build("Fill", clipboard, pos.offset(clipboardOffset));
             logDirect("Building now");
         } else if (action == Action.EXPAND || action == Action.CONTRACT || action == Action.SHIFT) {
             args.requireExactly(3);

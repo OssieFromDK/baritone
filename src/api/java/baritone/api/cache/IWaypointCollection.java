@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.cache;
+package baritone.api.cache;
 
 import java.util.Set;
 

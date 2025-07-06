@@ -15,15 +15,15 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.ForBlockOptionalMeta;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.utils.BlockOptionalMeta;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.ForBlockOptionalMeta;
+import baritone.api.command.exception.CommandException;
+import baritone.api.utils.BlockOptionalMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,8 +32,8 @@ import java.util.stream.Stream;
 
 public class MineCommand extends Command {
 
-    public MineCommand(IBaritone burgertone) {
-        super(burgertone, "mine");
+    public MineCommand(IBaritone baritone) {
+        super(baritone, "mine");
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MineCommand extends Command {
         }
         BaritoneAPI.getProvider().getWorldScanner().repack(ctx);
         logDirect(String.format("Mining %s", boms.toString()));
-        burgertone.getMineProcess().mine(quantity, boms.toArray(new BlockOptionalMeta[0]));
+        baritone.getMineProcess().mine(quantity, boms.toArray(new BlockOptionalMeta[0]));
     }
 
     @Override

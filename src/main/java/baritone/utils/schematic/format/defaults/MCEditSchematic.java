@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.schematic.format.defaults;
+package baritone.utils.schematic.format.defaults;
 
-import burgertone.utils.schematic.StaticSchematic;
+import baritone.utils.schematic.StaticSchematic;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;

@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.pathing;
+package baritone.utils.pathing;
 
-import burgertone.api.pathing.calc.IPath;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.Helper;
-import burgertone.api.utils.IPlayerContext;
-import burgertone.pathing.movement.CalculationContext;
+import baritone.api.pathing.calc.IPath;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.Helper;
+import baritone.api.utils.IPlayerContext;
+import baritone.pathing.movement.CalculationContext;
 import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
 
 public final class Favoring {

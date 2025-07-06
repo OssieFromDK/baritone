@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement;
+package baritone.pathing.movement;
 
 import org.junit.Test;
 
-import static burgertone.api.pathing.movement.ActionCosts.*;
+import static baritone.api.pathing.movement.ActionCosts.*;
 import static org.junit.Assert.assertEquals;
 
 public class ActionCostsTest {

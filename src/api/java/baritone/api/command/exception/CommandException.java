@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.exception;
+package baritone.api.command.exception;
 
 public abstract class CommandException extends Exception implements ICommandException {
 

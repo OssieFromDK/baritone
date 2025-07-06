@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.argparser;
+package baritone.command.argparser;
 
-import burgertone.api.command.argparser.IArgParser;
-import burgertone.api.command.argument.ICommandArgument;
+import baritone.api.command.argparser.IArgParser;
+import baritone.api.command.argument.ICommandArgument;
 
 import java.util.Arrays;
 import java.util.List;

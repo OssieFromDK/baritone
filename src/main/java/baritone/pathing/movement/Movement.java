@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement;
+package baritone.pathing.movement;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.pathing.movement.IMovement;
-import burgertone.api.pathing.movement.MovementStatus;
-import burgertone.api.utils.*;
-import burgertone.api.utils.input.Input;
-import burgertone.behavior.PathingBehavior;
-import burgertone.utils.BlockStateInterface;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.pathing.movement.IMovement;
+import baritone.api.pathing.movement.MovementStatus;
+import baritone.api.utils.*;
+import baritone.api.utils.input.Input;
+import baritone.behavior.PathingBehavior;
+import baritone.utils.BlockStateInterface;
 import java.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,7 +35,7 @@ public abstract class Movement implements IMovement, MovementHelper {
 
     public static final Direction[] HORIZONTALS_BUT_ALSO_DOWN_____SO_EVERY_DIRECTION_EXCEPT_UP = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.DOWN};
 
-    protected final IBaritone burgertone;
+    protected final IBaritone baritone;
     protected final IPlayerContext ctx;
 
     private MovementState currentState = new MovementState().setStatus(MovementStatus.PREPPING);
@@ -64,17 +64,17 @@ public abstract class Movement implements IMovement, MovementHelper {
 
     private Boolean calculatedWhileLoaded;
 
-    protected Movement(IBaritone burgertone, BetterBlockPos src, BetterBlockPos dest, BetterBlockPos[] toBreak, BetterBlockPos toPlace) {
-        this.burgertone = burgertone;
-        this.ctx = burgertone.getPlayerContext();
+    protected Movement(IBaritone baritone, BetterBlockPos src, BetterBlockPos dest, BetterBlockPos[] toBreak, BetterBlockPos toPlace) {
+        this.baritone = baritone;
+        this.ctx = baritone.getPlayerContext();
         this.src = src;
         this.dest = dest;
         this.positionsToBreak = toBreak;
         this.positionToPlace = toPlace;
     }
 
-    protected Movement(IBaritone burgertone, BetterBlockPos src, BetterBlockPos dest, BetterBlockPos[] toBreak) {
-        this(burgertone, src, dest, toBreak, null);
+    protected Movement(IBaritone baritone, BetterBlockPos src, BetterBlockPos dest, BetterBlockPos[] toBreak) {
+        this(baritone, src, dest, toBreak, null);
     }
 
     public double getCost() throws NullPointerException {
@@ -110,7 +110,7 @@ public abstract class Movement implements IMovement, MovementHelper {
     }
 
     protected boolean playerInValidPosition() {
-        return getValidPositions().contains(ctx.playerFeet()) || getValidPositions().contains(((PathingBehavior) burgertone.getPathingBehavior()).pathStart());
+        return getValidPositions().contains(ctx.playerFeet()) || getValidPositions().contains(((PathingBehavior) baritone.getPathingBehavior()).pathStart());
     }
 
     /**
@@ -133,18 +133,18 @@ public abstract class Movement implements IMovement, MovementHelper {
 
         // If the movement target has to force the new rotations, or we aren't using silent move, then force the rotations
         currentState.getTarget().getRotation().ifPresent(rotation ->
-                burgertone.getLookBehavior().updateTarget(
+                baritone.getLookBehavior().updateTarget(
                         rotation,
                         currentState.getTarget().hasToForceRotations()));
-        burgertone.getInputOverrideHandler().clearAllKeys();
+        baritone.getInputOverrideHandler().clearAllKeys();
         currentState.getInputStates().forEach((input, forced) -> {
-            burgertone.getInputOverrideHandler().setInputForceState(input, forced);
+            baritone.getInputOverrideHandler().setInputForceState(input, forced);
         });
         currentState.getInputStates().clear();
 
         // If the current status indicates a completed movement
         if (currentState.getStatus().isComplete()) {
-            burgertone.getInputOverrideHandler().clearAllKeys();
+            baritone.getInputOverrideHandler().clearAllKeys();
         }
 
         return currentState.getStatus();

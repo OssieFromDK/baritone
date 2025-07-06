@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.utils.accessor;
+package baritone.api.utils.accessor;
 
 public interface IItemStack {
 

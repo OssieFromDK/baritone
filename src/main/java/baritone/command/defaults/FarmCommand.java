@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.cache.IWaypoint;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.ForWaypoints;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandInvalidStateException;
-import burgertone.api.utils.BetterBlockPos;
+import baritone.api.IBaritone;
+import baritone.api.cache.IWaypoint;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.ForWaypoints;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandInvalidStateException;
+import baritone.api.utils.BetterBlockPos;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,8 +32,8 @@ import java.util.stream.Stream;
 
 public class FarmCommand extends Command {
 
-    public FarmCommand(IBaritone burgertone) {
-        super(burgertone, "farm");
+    public FarmCommand(IBaritone baritone) {
+        super(baritone, "farm");
     }
 
     @Override
@@ -61,7 +61,7 @@ public class FarmCommand extends Command {
             origin = waypoint.getLocation();
         }
 
-        burgertone.getFarmProcess().farm(range, origin);
+        baritone.getFarmProcess().farm(range, origin);
         logDirect("Farming");
     }
 

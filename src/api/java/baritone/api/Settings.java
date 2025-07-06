@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api;
+package baritone.api;
 
-import burgertone.api.utils.Helper;
-import burgertone.api.utils.NotificationHelper;
-import burgertone.api.utils.SettingsUtil;
-import burgertone.api.utils.TypeUtils;
-import burgertone.api.utils.gui.BaritoneToast;
+import baritone.api.utils.Helper;
+import baritone.api.utils.NotificationHelper;
+import baritone.api.utils.SettingsUtil;
+import baritone.api.utils.TypeUtils;
+import baritone.api.utils.gui.BaritoneToast;
 import net.minecraft.client.GuiMessageTag;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Vec3i;
@@ -63,7 +63,7 @@ public final class Settings {
     public final Setting<Boolean> allowBreak = new Setting<>(true);
 
     /**
-     * Blocks that burgertone will be allowed to break even with allowBreak set to false
+     * Blocks that baritone will be allowed to break even with allowBreak set to false
      */
     public final Setting<List<Block>> allowBreakAnyway = new Setting<>(new ArrayList<>());
 
@@ -103,7 +103,7 @@ public final class Settings {
     public final Setting<Boolean> inventoryMoveOnlyIfStationary = new Setting<>(false);
 
     /**
-     * Disable burgertone's auto-tool at runtime, but still assume that another mod will provide auto tool functionality
+     * Disable baritone's auto-tool at runtime, but still assume that another mod will provide auto tool functionality
      * <p>
      * Specifically, path calculation will still assume that an auto tool will run at execution time, even though
      * Baritone itself will not do that.
@@ -249,7 +249,7 @@ public final class Settings {
     ));
 
     /**
-     * blocks that burgertone shouldn't break, but can if it needs to.
+     * blocks that baritone shouldn't break, but can if it needs to.
      */
     public final Setting<List<Block>> blocksToAvoidBreaking = new Setting<>(new ArrayList<>(Arrays.asList( // TODO can this be a HashSet or ImmutableSet?
             Blocks.CRAFTING_TABLE,
@@ -286,7 +286,7 @@ public final class Settings {
      * <p>
      * If a schematic asks for a block on this mapping, all blocks on the mapped list will be accepted at that location as well
      * <p>
-     * Syntax same as <a href="https://burgertone.leijurv.com/burgertone/api/Settings.html#buildSubstitutes">buildSubstitutes</a>
+     * Syntax same as <a href="https://baritone.leijurv.com/baritone/api/Settings.html#buildSubstitutes">buildSubstitutes</a>
      */
     public final Setting<Map<Block, List<Block>>> buildValidSubstitutes = new Setting<>(new HashMap<>());
 
@@ -443,7 +443,7 @@ public final class Settings {
     /**
      * Set to 1.0 to effectively disable this feature
      *
-     * @see <a href="https://github.com/cabaletta/burgertone/issues/18">Issue #18</a>
+     * @see <a href="https://github.com/cabaletta/baritone/issues/18">Issue #18</a>
      */
     public final Setting<Double> backtrackCostFavoringCoefficient = new Setting<>(0.5);
 
@@ -505,7 +505,7 @@ public final class Settings {
      * <p>
      * This is much safer to leave off now, and makes pathing more efficient. More explanation in the issue.
      *
-     * @see <a href="https://github.com/cabaletta/burgertone/issues/114">Issue #114</a>
+     * @see <a href="https://github.com/cabaletta/baritone/issues/114">Issue #114</a>
      */
     public final Setting<Boolean> cutoffAtLoadBoundary = new Setting<>(false);
 
@@ -631,12 +631,12 @@ public final class Settings {
 
 
     /**
-     * allows burgertone to save bed waypoints when interacting with beds
+     * allows baritone to save bed waypoints when interacting with beds
      */
     public final Setting<Boolean> doBedWaypoints = new Setting<>(true);
 
     /**
-     * allows burgertone to save death waypoints
+     * allows baritone to save death waypoints
      */
     public final Setting<Boolean> doDeathWaypoints = new Setting<>(true);
 
@@ -652,7 +652,7 @@ public final class Settings {
      * <p>
      * Temporarily reenabled
      *
-     * @see <a href="https://github.com/cabaletta/burgertone/issues/248">Issue #248</a>
+     * @see <a href="https://github.com/cabaletta/baritone/issues/248">Issue #248</a>
      */
     public final Setting<Boolean> pruneRegionsFromRAM = new Setting<>(true);
 
@@ -817,7 +817,7 @@ public final class Settings {
     public final Setting<Boolean> blacklistClosestOnFailure = new Setting<>(true);
 
     /**
-     * 😎 Render cached chunks as semitransparent. Doesn't work with OptiFine 😭 Rarely randomly crashes, see <a href="https://github.com/cabaletta/burgertone/issues/327">this issue</a>.
+     * 😎 Render cached chunks as semitransparent. Doesn't work with OptiFine 😭 Rarely randomly crashes, see <a href="https://github.com/cabaletta/baritone/issues/327">this issue</a>.
      * <p>
      * Can be very useful on servers with low render distance. After enabling, you may need to reload the world in order for it to have an effect
      * (e.g. disconnect and reconnect, enter then exit the nether, die and respawn, etc). This may literally kill your FPS and CPU because
@@ -941,7 +941,7 @@ public final class Settings {
     public final Setting<Integer> maxYLevelWhileMining = new Setting<>(2031);
 
     /**
-     * This will only allow burgertone to mine exposed ores, can be used to stop ore obfuscators on servers that use them.
+     * This will only allow baritone to mine exposed ores, can be used to stop ore obfuscators on servers that use them.
      */
     public final Setting<Boolean> allowOnlyExposedOres = new Setting<>(false);
 
@@ -1063,7 +1063,7 @@ public final class Settings {
     public final Setting<Boolean> goalBreakFromAbove = new Setting<>(false);
 
     /**
-     * Build in map art mode, which makes burgertone only care about the top block in each column
+     * Build in map art mode, which makes baritone only care about the top block in each column
      */
     public final Setting<Boolean> mapArtMode = new Setting<>(false);
 

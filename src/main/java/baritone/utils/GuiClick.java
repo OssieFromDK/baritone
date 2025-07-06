@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
-import burgertone.Baritone;
-import burgertone.api.BaritoneAPI;
-import burgertone.api.pathing.goals.GoalBlock;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.Helper;
+import baritone.Baritone;
+import baritone.api.BaritoneAPI;
+import baritone.api.pathing.goals.GoalBlock;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.Helper;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
@@ -44,7 +44,7 @@ import org.joml.Vector4f;
 import java.awt.*;
 import java.util.Collections;
 
-import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class GuiClick extends Screen implements Helper {
 

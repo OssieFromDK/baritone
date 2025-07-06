@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.player;
+package baritone.utils.player;
 
-import burgertone.Baritone;
-import burgertone.api.cache.IWorldData;
-import burgertone.api.utils.*;
+import baritone.Baritone;
+import baritone.api.cache.IWorldData;
+import baritone.api.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
@@ -34,12 +34,12 @@ import net.minecraft.world.phys.HitResult;
  */
 public final class BaritonePlayerContext implements IPlayerContext {
 
-    private final Baritone burgertone;
+    private final Baritone baritone;
     private final Minecraft mc;
     private final IPlayerController playerController;
 
-    public BaritonePlayerContext(Baritone burgertone, Minecraft mc) {
-        this.burgertone = burgertone;
+    public BaritonePlayerContext(Baritone baritone, Minecraft mc) {
+        this.baritone = baritone;
         this.mc = mc;
         this.playerController = new BaritonePlayerController(mc);
     }
@@ -66,7 +66,7 @@ public final class BaritonePlayerContext implements IPlayerContext {
 
     @Override
     public IWorldData worldData() {
-        return this.burgertone.getWorldProvider().getCurrentWorld();
+        return this.baritone.getWorldProvider().getCurrentWorld();
     }
 
     @Override
@@ -77,7 +77,7 @@ public final class BaritonePlayerContext implements IPlayerContext {
 
     @Override
     public Rotation playerRotations() {
-        return this.burgertone.getLookBehavior().getEffectiveRotation().orElseGet(IPlayerContext.super::playerRotations);
+        return this.baritone.getLookBehavior().getEffectiveRotation().orElseGet(IPlayerContext.super::playerRotations);
     }
 
     @Override

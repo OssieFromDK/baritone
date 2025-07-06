@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.accessor;
+package baritone.utils.accessor;
 
 import net.minecraft.util.BitStorage;
 import net.minecraft.world.level.chunk.Palette;

@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.schematic;
+package baritone.utils.schematic;
 
-import burgertone.api.schematic.ISchematic;
-import burgertone.api.schematic.MaskSchematic;
-import burgertone.api.selection.ISelection;
+import baritone.api.schematic.ISchematic;
+import baritone.api.schematic.MaskSchematic;
+import baritone.api.selection.ISelection;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.level.block.state.BlockState;

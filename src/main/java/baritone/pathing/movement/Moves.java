@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement;
+package baritone.pathing.movement;
 
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.pathing.movement.movements.*;
-import burgertone.utils.pathing.MutableMoveResult;
+import baritone.api.utils.BetterBlockPos;
+import baritone.pathing.movement.movements.*;
+import baritone.utils.pathing.MutableMoveResult;
 import net.minecraft.core.Direction;
 
 /**

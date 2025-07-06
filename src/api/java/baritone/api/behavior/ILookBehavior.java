@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.behavior;
+package baritone.api.behavior;
 
-import burgertone.api.Settings;
-import burgertone.api.behavior.look.IAimProcessor;
-import burgertone.api.utils.Rotation;
+import baritone.api.Settings;
+import baritone.api.behavior.look.IAimProcessor;
+import baritone.api.utils.Rotation;
 
 /**
  * @author Brady

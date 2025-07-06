@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.utils.BaritoneProcessHelper;
 
 public class InventoryPauserProcess extends BaritoneProcessHelper {
 
@@ -28,8 +28,8 @@ public class InventoryPauserProcess extends BaritoneProcessHelper {
     boolean safeToCancelLastTick;
     int ticksOfStationary;
 
-    public InventoryPauserProcess(Baritone burgertone) {
-        super(burgertone);
+    public InventoryPauserProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override

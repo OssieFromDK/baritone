@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.ItemById;
-import burgertone.api.command.exception.CommandException;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.ItemById;
+import baritone.api.command.exception.CommandException;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -34,8 +34,8 @@ import java.util.stream.Stream;
 
 public class PickupCommand extends Command {
 
-    public PickupCommand(IBaritone burgertone) {
-        super(burgertone, "pickup");
+    public PickupCommand(IBaritone baritone) {
+        super(baritone, "pickup");
     }
 
     @Override
@@ -46,10 +46,10 @@ public class PickupCommand extends Command {
             collecting.add(item);
         }
         if (collecting.isEmpty()) {
-            burgertone.getFollowProcess().pickup(stack -> true);
+            baritone.getFollowProcess().pickup(stack -> true);
             logDirect("Picking up all items");
         } else {
-            burgertone.getFollowProcess().pickup(stack -> collecting.contains(stack.getItem()));
+            baritone.getFollowProcess().pickup(stack -> collecting.contains(stack.getItem()));
             logDirect("Picking up these items:");
             collecting.stream().map(BuiltInRegistries.ITEM::getKey).map(ResourceLocation::toString).forEach(this::logDirect);
         }

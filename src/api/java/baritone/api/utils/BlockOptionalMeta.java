@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.utils;
+package baritone.api.utils;
 
-import burgertone.api.utils.accessor.IItemStack;
-import burgertone.api.utils.accessor.ILootTable;
+import baritone.api.utils.accessor.IItemStack;
+import baritone.api.utils.accessor.ILootTable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.Minecraft;

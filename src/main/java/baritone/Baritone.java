@@ -15,27 +15,27 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone;
+package baritone;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.Settings;
-import burgertone.api.behavior.IBehavior;
-import burgertone.api.event.listener.IEventBus;
-import burgertone.api.process.IBaritoneProcess;
-import burgertone.api.process.IElytraProcess;
-import burgertone.api.utils.IPlayerContext;
-import burgertone.behavior.*;
-import burgertone.cache.WorldProvider;
-import burgertone.command.manager.CommandManager;
-import burgertone.event.GameEventHandler;
-import burgertone.process.*;
-import burgertone.selection.SelectionManager;
-import burgertone.utils.BlockStateInterface;
-import burgertone.utils.GuiClick;
-import burgertone.utils.InputOverrideHandler;
-import burgertone.utils.PathingControlManager;
-import burgertone.utils.player.BaritonePlayerContext;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.Settings;
+import baritone.api.behavior.IBehavior;
+import baritone.api.event.listener.IEventBus;
+import baritone.api.process.IBaritoneProcess;
+import baritone.api.process.IElytraProcess;
+import baritone.api.utils.IPlayerContext;
+import baritone.behavior.*;
+import baritone.cache.WorldProvider;
+import baritone.command.manager.CommandManager;
+import baritone.event.GameEventHandler;
+import baritone.process.*;
+import baritone.selection.SelectionManager;
+import baritone.utils.BlockStateInterface;
+import baritone.utils.GuiClick;
+import baritone.utils.InputOverrideHandler;
+import baritone.utils.PathingControlManager;
+import baritone.utils.player.BaritonePlayerContext;
 import net.minecraft.client.Minecraft;
 
 import java.io.IOException;
@@ -94,7 +94,7 @@ public class Baritone implements IBaritone {
         this.mc = mc;
         this.gameEventHandler = new GameEventHandler(this);
 
-        this.directory = mc.gameDirectory.toPath().resolve("burgertone");
+        this.directory = mc.gameDirectory.toPath().resolve("baritone");
         if (!Files.exists(this.directory)) {
             try {
                 Files.createDirectories(this.directory);

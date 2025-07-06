@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.process;
+package baritone.api.process;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;

@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.argument;
+package baritone.command.argument;
 
-import burgertone.api.command.argument.ICommandArgument;
-import burgertone.api.command.exception.CommandInvalidTypeException;
-import burgertone.command.argparser.ArgParserManager;
+import baritone.api.command.argument.ICommandArgument;
+import baritone.api.command.exception.CommandInvalidTypeException;
+import baritone.command.argparser.ArgParserManager;
 
 import java.util.stream.Stream;
 

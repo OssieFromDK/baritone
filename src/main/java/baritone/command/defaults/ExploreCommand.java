@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.RelativeGoalXZ;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.pathing.goals.GoalXZ;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.RelativeGoalXZ;
+import baritone.api.command.exception.CommandException;
+import baritone.api.pathing.goals.GoalXZ;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,8 +30,8 @@ import java.util.stream.Stream;
 
 public class ExploreCommand extends Command {
 
-    public ExploreCommand(IBaritone burgertone) {
-        super(burgertone, "explore");
+    public ExploreCommand(IBaritone baritone) {
+        super(baritone, "explore");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ExploreCommand extends Command {
         GoalXZ goal = args.hasAny()
                 ? args.getDatatypePost(RelativeGoalXZ.INSTANCE, ctx.playerFeet())
                 : new GoalXZ(ctx.playerFeet());
-        burgertone.getExploreProcess().explore(goal.getX(), goal.getZ());
+        baritone.getExploreProcess().explore(goal.getX(), goal.getZ());
         logDirect(String.format("Exploring from %s", goal.toString()));
     }
 

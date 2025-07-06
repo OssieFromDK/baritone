@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.helpers;
+package baritone.api.command.helpers;
 
-import burgertone.api.BaritoneAPI;
-import burgertone.api.Settings;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.manager.ICommandManager;
-import burgertone.api.event.events.TabCompleteEvent;
-import burgertone.api.utils.SettingsUtil;
+import baritone.api.BaritoneAPI;
+import baritone.api.Settings;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.manager.ICommandManager;
+import baritone.api.event.events.TabCompleteEvent;
+import baritone.api.utils.SettingsUtil;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;

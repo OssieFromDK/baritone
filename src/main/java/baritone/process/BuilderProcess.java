@@ -15,32 +15,32 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalBlock;
-import burgertone.api.pathing.goals.GoalComposite;
-import burgertone.api.pathing.goals.GoalGetToBlock;
-import burgertone.api.process.IBuilderProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.api.schematic.*;
-import burgertone.api.schematic.format.ISchematicFormat;
-import burgertone.api.utils.*;
-import burgertone.api.utils.Rotation;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.Movement;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.utils.BaritoneProcessHelper;
-import burgertone.utils.BlockStateInterface;
-import burgertone.utils.PathingCommandContext;
-import burgertone.utils.schematic.MapArtSchematic;
-import burgertone.utils.schematic.SchematicSystem;
-import burgertone.utils.schematic.SelectionSchematic;
-import burgertone.utils.schematic.litematica.LitematicaHelper;
-import burgertone.utils.schematic.schematica.SchematicaHelper;
+import baritone.Baritone;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalBlock;
+import baritone.api.pathing.goals.GoalComposite;
+import baritone.api.pathing.goals.GoalGetToBlock;
+import baritone.api.process.IBuilderProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.api.schematic.*;
+import baritone.api.schematic.format.ISchematicFormat;
+import baritone.api.utils.*;
+import baritone.api.utils.Rotation;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.Movement;
+import baritone.pathing.movement.MovementHelper;
+import baritone.utils.BaritoneProcessHelper;
+import baritone.utils.BlockStateInterface;
+import baritone.utils.PathingCommandContext;
+import baritone.utils.schematic.MapArtSchematic;
+import baritone.utils.schematic.SchematicSystem;
+import baritone.utils.schematic.SelectionSchematic;
+import baritone.utils.schematic.litematica.LitematicaHelper;
+import baritone.utils.schematic.schematica.SchematicaHelper;
 import com.google.common.collect.ImmutableSet;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.core.BlockPos;
@@ -67,7 +67,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static burgertone.api.pathing.movement.ActionCosts.COST_INF;
+import static baritone.api.pathing.movement.ActionCosts.COST_INF;
 
 public final class BuilderProcess extends BaritoneProcessHelper implements IBuilderProcess {
 
@@ -92,8 +92,8 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
     private List<BlockState> approxPlaceable;
     public int stopAtHeight = 0;
 
-    public BuilderProcess(Baritone burgertone) {
-        super(burgertone);
+    public BuilderProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override
@@ -136,12 +136,12 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
         this.layer = Baritone.settings().startAtLayer.value;
         this.stopAtHeight = schematic.heightY();
         if (Baritone.settings().buildOnlySelection.value && buildingSelectionSchematic) {  // currently redundant but safer maybe
-            if (burgertone.getSelectionManager().getSelections().length == 0) {
+            if (baritone.getSelectionManager().getSelections().length == 0) {
                 logDirect("Poor little kitten forgot to set a selection while BuildOnlySelection is true");
                 this.stopAtHeight = 0;
             } else if (Baritone.settings().buildInLayers.value) {
-                OptionalInt minim = Stream.of(burgertone.getSelectionManager().getSelections()).mapToInt(sel -> sel.min().y).min();
-                OptionalInt maxim = Stream.of(burgertone.getSelectionManager().getSelections()).mapToInt(sel -> sel.max().y).max();
+                OptionalInt minim = Stream.of(baritone.getSelectionManager().getSelections()).mapToInt(sel -> sel.min().y).min();
+                OptionalInt maxim = Stream.of(baritone.getSelectionManager().getSelections()).mapToInt(sel -> sel.max().y).max();
                 if (minim.isPresent() && maxim.isPresent()) {
                     int startAtHeight = Baritone.settings().layerOrder.value ? y + schematic.heightY() - maxim.getAsInt() : minim.getAsInt() - y;
                     this.stopAtHeight = (Baritone.settings().layerOrder.value ? y + schematic.heightY() - minim.getAsInt() : maxim.getAsInt() - y) + 1;
@@ -195,7 +195,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
             schematic = new MapArtSchematic(parsed);
         }
         if (Baritone.settings().buildOnlySelection.value) {
-            schematic = new SelectionSchematic(schematic, origin, burgertone.getSelectionManager().getSelections());
+            schematic = new SelectionSchematic(schematic, origin, baritone.getSelectionManager().getSelections());
         }
         return schematic;
     }
@@ -268,7 +268,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
 
     private Optional<Tuple<BetterBlockPos, Rotation>> toBreakNearPlayer(BuilderCalculationContext bcc) {
         BetterBlockPos center = ctx.playerFeet();
-        BetterBlockPos pathStart = burgertone.getPathingBehavior().pathStart();
+        BetterBlockPos pathStart = baritone.getPathingBehavior().pathStart();
         for (int dx = -5; dx <= 5; dx++) {
             for (int dy = Baritone.settings().breakFromAbove.value ? -1 : 0; dy <= 5; dy++) {
                 for (int dz = -5; dz <= 5; dz++) {
@@ -368,7 +368,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
                 double placeY = placeAgainstPos.y + aabb.minY * placementMultiplier.y + aabb.maxY * (1 - placementMultiplier.y);
                 double placeZ = placeAgainstPos.z + aabb.minZ * placementMultiplier.z + aabb.maxZ * (1 - placementMultiplier.z);
                 Rotation rot = RotationUtils.calcRotationFromVec3d(RayTraceUtils.inferSneakingEyePosition(ctx.player()), new Vec3(placeX, placeY, placeZ), ctx.playerRotations());
-                Rotation actualRot = burgertone.getLookBehavior().getAimProcessor().peekRotation(rot);
+                Rotation actualRot = baritone.getLookBehavior().getAimProcessor().peekRotation(rot);
                 HitResult result = RayTraceUtils.rayTraceTowards(ctx.player(), actualRot, ctx.playerController().getBlockReachDistance(), true);
                 if (result != null && result.getType() == HitResult.Type.BLOCK && ((BlockHitResult) result).getBlockPos().equals(placeAgainstPos) && ((BlockHitResult) result).getDirection() == against.getOpposite()) {
                     OptionalInt hotbar = hasAnyItemThatWouldPlace(toPlace, result, actualRot);
@@ -443,12 +443,12 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
             return new PathingCommand(null, PathingCommandType.SET_GOAL_AND_PATH);
         }
         approxPlaceable = approxPlaceable(36);
-        if (burgertone.getInputOverrideHandler().isInputForcedDown(Input.CLICK_LEFT)) {
+        if (baritone.getInputOverrideHandler().isInputForcedDown(Input.CLICK_LEFT)) {
             ticks = 5;
         } else {
             ticks--;
         }
-        burgertone.getInputOverrideHandler().clearAllKeys();
+        baritone.getInputOverrideHandler().clearAllKeys();
         if (paused) {
             return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
         }
@@ -537,16 +537,16 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
             // only change look direction if it's safe (don't want to fuck up an in progress parkour for example
             Rotation rot = toBreak.get().getB();
             BetterBlockPos pos = toBreak.get().getA();
-            burgertone.getLookBehavior().updateTarget(rot, true);
+            baritone.getLookBehavior().updateTarget(rot, true);
             MovementHelper.switchToBestToolFor(ctx, bcc.get(pos));
             if (ctx.player().isCrouching()) {
                 // really horrible bug where a block is visible for breaking while sneaking but not otherwise
                 // so you can't see it, it goes to place something else, sneaks, then the next tick it tries to break
                 // and is unable since it's unsneaked in the intermediary tick
-                burgertone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
+                baritone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
             }
             if (ctx.isLookingAt(pos) || ctx.playerRotations().isReallyCloseTo(rot)) {
-                burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_LEFT, true);
+                baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_LEFT, true);
             }
             return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
         }
@@ -554,11 +554,11 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
         Optional<Placement> toPlace = searchForPlacables(bcc, desirableOnHotbar);
         if (toPlace.isPresent() && isSafeToCancel && ctx.player().onGround() && ticks <= 0) {
             Rotation rot = toPlace.get().rot;
-            burgertone.getLookBehavior().updateTarget(rot, true);
+            baritone.getLookBehavior().updateTarget(rot, true);
             ctx.player().getInventory().setSelectedSlot(toPlace.get().hotbarSelection);
-            burgertone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
+            baritone.getInputOverrideHandler().setInputForceState(Input.SNEAK, true);
             if ((ctx.isLookingAt(toPlace.get().placeAgainst) && ((BlockHitResult) ctx.objectMouseOver()).getDirection().equals(toPlace.get().side)) || ctx.playerRotations().isReallyCloseTo(rot)) {
-                burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
+                baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
             }
             return new PathingCommand(null, PathingCommandType.CANCEL_AND_SET_GOAL);
         }
@@ -581,7 +581,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
             for (int i = 9; i < 36; i++) {
                 for (BlockState desired : noValidHotbarOption) {
                     if (valid(approxPlaceable.get(i), desired, true)) {
-                        if (!burgertone.getInventoryBehavior().attemptToPutOnHotbar(i, usefulSlots::contains)) {
+                        if (!baritone.getInventoryBehavior().attemptToPutOnHotbar(i, usefulSlots::contains)) {
                             // awaiting inventory move, so pause
                             return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                         }
@@ -1095,7 +1095,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
         private final int originZ;
 
         public BuilderCalculationContext() {
-            super(BuilderProcess.this.burgertone, true); // wew lad
+            super(BuilderProcess.this.baritone, true); // wew lad
             this.placeable = approxPlaceable(9);
             this.schematic = BuilderProcess.this.schematic;
             this.originX = origin.getX();

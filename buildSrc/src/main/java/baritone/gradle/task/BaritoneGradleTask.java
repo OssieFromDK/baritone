@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.gradle.task;
+package baritone.gradle.task;
 
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.Input;

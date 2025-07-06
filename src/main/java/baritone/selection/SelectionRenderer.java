@@ -1,10 +1,10 @@
-package burgertone.selection;
+package baritone.selection;
 
-import burgertone.Baritone;
-import burgertone.api.event.events.RenderEvent;
-import burgertone.api.event.listener.AbstractGameEventListener;
-import burgertone.api.selection.ISelection;
-import burgertone.utils.IRenderer;
+import baritone.Baritone;
+import baritone.api.event.events.RenderEvent;
+import baritone.api.event.listener.AbstractGameEventListener;
+import baritone.api.selection.ISelection;
+import baritone.utils.IRenderer;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.phys.AABB;
@@ -15,9 +15,9 @@ public class SelectionRenderer implements IRenderer, AbstractGameEventListener {
 
     private final SelectionManager manager;
 
-    SelectionRenderer(Baritone burgertone, SelectionManager manager) {
+    SelectionRenderer(Baritone baritone, SelectionManager manager) {
         this.manager = manager;
-        burgertone.getGameEventHandler().registerEventListener(this);
+        baritone.getGameEventHandler().registerEventListener(this);
     }
 
     public static void renderSelections(PoseStack stack, ISelection[] selections) {

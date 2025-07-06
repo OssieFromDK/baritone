@@ -15,16 +15,16 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.BlockById;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.helpers.TabCompleteHelper;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.cache.CachedChunk;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.BlockById;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.helpers.TabCompleteHelper;
+import baritone.api.utils.BetterBlockPos;
+import baritone.cache.CachedChunk;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.ClickEvent;
@@ -38,12 +38,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static burgertone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
+import static baritone.api.command.IBaritoneChatControl.FORCE_COMMAND_PREFIX;
 
 public class FindCommand extends Command {
 
-    public FindCommand(IBaritone burgertone) {
-        super(burgertone, "find");
+    public FindCommand(IBaritone baritone) {
+        super(baritone, "find");
     }
 
     @Override

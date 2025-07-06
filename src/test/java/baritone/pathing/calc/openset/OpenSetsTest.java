@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.calc.openset;
+package baritone.pathing.calc.openset;
 
-import burgertone.api.pathing.goals.Goal;
-import burgertone.pathing.calc.PathNode;
+import baritone.api.pathing.goals.Goal;
+import baritone.pathing.calc.PathNode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

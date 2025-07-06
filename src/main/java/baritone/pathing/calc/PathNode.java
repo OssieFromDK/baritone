@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.calc;
+package baritone.pathing.calc;
 
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.movement.ActionCosts;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.SettingsUtil;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.movement.ActionCosts;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.SettingsUtil;
 
 /**
  * A node in the path, containing the cost and steps to get to it.

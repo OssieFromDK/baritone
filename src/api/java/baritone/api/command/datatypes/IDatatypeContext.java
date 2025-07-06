@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.datatypes;
+package baritone.api.command.datatypes;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.argument.IArgConsumer;
+import baritone.api.IBaritone;
+import baritone.api.command.argument.IArgConsumer;
 
 /**
  * Provides an {@link IDatatype} with contextual information so

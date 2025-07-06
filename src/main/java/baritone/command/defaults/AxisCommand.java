@@ -15,14 +15,14 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalAxis;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalAxis;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,15 +30,15 @@ import java.util.stream.Stream;
 
 public class AxisCommand extends Command {
 
-    public AxisCommand(IBaritone burgertone) {
-        super(burgertone, "axis", "highway");
+    public AxisCommand(IBaritone baritone) {
+        super(baritone, "axis", "highway");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
         Goal goal = new GoalAxis();
-        burgertone.getCustomGoalProcess().setGoal(goal);
+        baritone.getCustomGoalProcess().setGoal(goal);
         logDirect(String.format("Goal: %s", goal.toString()));
     }
 

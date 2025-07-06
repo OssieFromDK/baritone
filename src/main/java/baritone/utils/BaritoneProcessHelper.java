@@ -15,21 +15,21 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
-import burgertone.Baritone;
-import burgertone.api.process.IBaritoneProcess;
-import burgertone.api.utils.Helper;
-import burgertone.api.utils.IPlayerContext;
+import baritone.Baritone;
+import baritone.api.process.IBaritoneProcess;
+import baritone.api.utils.Helper;
+import baritone.api.utils.IPlayerContext;
 
 public abstract class BaritoneProcessHelper implements IBaritoneProcess, Helper {
 
-    protected final Baritone burgertone;
+    protected final Baritone baritone;
     protected final IPlayerContext ctx;
 
-    public BaritoneProcessHelper(Baritone burgertone) {
-        this.burgertone = burgertone;
-        this.ctx = burgertone.getPlayerContext();
+    public BaritoneProcessHelper(Baritone baritone) {
+        this.baritone = baritone;
+        this.ctx = baritone.getPlayerContext();
     }
 
     @Override

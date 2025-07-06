@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.player;
+package baritone.utils.player;
 
-import burgertone.api.utils.IPlayerController;
-import burgertone.utils.accessor.IPlayerControllerMP;
+import baritone.api.utils.IPlayerController;
+import baritone.utils.accessor.IPlayerControllerMP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;

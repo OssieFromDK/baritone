@@ -15,22 +15,22 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process.elytra;
+package baritone.process.elytra;
 
-import burgertone.Baritone;
-import burgertone.api.Settings;
-import burgertone.api.behavior.look.IAimProcessor;
-import burgertone.api.behavior.look.ITickableAimProcessor;
-import burgertone.api.event.events.*;
-import burgertone.api.pathing.goals.GoalBlock;
-import burgertone.api.utils.*;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.process.ElytraProcess;
-import burgertone.utils.BlockStateInterface;
-import burgertone.utils.IRenderer;
-import burgertone.utils.PathRenderer;
-import burgertone.utils.accessor.IFireworkRocketEntity;
+import baritone.Baritone;
+import baritone.api.Settings;
+import baritone.api.behavior.look.IAimProcessor;
+import baritone.api.behavior.look.ITickableAimProcessor;
+import baritone.api.event.events.*;
+import baritone.api.pathing.goals.GoalBlock;
+import baritone.api.utils.*;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.MovementHelper;
+import baritone.process.ElytraProcess;
+import baritone.utils.BlockStateInterface;
+import baritone.utils.IRenderer;
+import baritone.utils.PathRenderer;
+import baritone.utils.accessor.IFireworkRocketEntity;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import it.unimi.dsi.fastutil.floats.FloatArrayList;
 import it.unimi.dsi.fastutil.floats.FloatIterator;
@@ -63,11 +63,11 @@ import java.util.Queue;
 import java.util.concurrent.*;
 import java.util.function.UnaryOperator;
 
-import static burgertone.utils.BaritoneMath.fastCeil;
-import static burgertone.utils.BaritoneMath.fastFloor;
+import static baritone.utils.BaritoneMath.fastCeil;
+import static baritone.utils.BaritoneMath.fastFloor;
 
 public final class ElytraBehavior implements Helper {
-    private final Baritone burgertone;
+    private final Baritone baritone;
     private final IPlayerContext ctx;
 
     // Render stuff
@@ -120,9 +120,9 @@ public final class ElytraBehavior implements Helper {
     private int invTickCountdown = 0;
     private final Queue<Runnable> invTransactionQueue = new LinkedList<>();
 
-    public ElytraBehavior(Baritone burgertone, ElytraProcess process, BlockPos destination, boolean appendDestination) {
-        this.burgertone = burgertone;
-        this.ctx = burgertone.getPlayerContext();
+    public ElytraBehavior(Baritone baritone, ElytraProcess process, BlockPos destination, boolean appendDestination) {
+        this.baritone = baritone;
+        this.ctx = baritone.getPlayerContext();
         this.clearLines = new CopyOnWriteArrayList<>();
         this.blockedLines = new CopyOnWriteArrayList<>();
         this.pathManager = this.new PathManager();
@@ -575,7 +575,7 @@ public final class ElytraBehavior implements Helper {
     }
 
     /**
-     * Called by {@link burgertone.process.ElytraProcess#onTick(boolean, boolean)} when the process is in control and the player is flying
+     * Called by {@link baritone.process.ElytraProcess#onTick(boolean, boolean)} when the process is in control and the player is flying
      */
     public void tick() {
         if (this.pathManager.getPath().isEmpty()) {
@@ -609,7 +609,7 @@ public final class ElytraBehavior implements Helper {
 
         final boolean inLava = ctx.player().isInLava();
         if (inLava) {
-            burgertone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
+            baritone.getInputOverrideHandler().setInputForceState(Input.JUMP, true);
         }
 
         if (solution == null) {
@@ -617,7 +617,7 @@ public final class ElytraBehavior implements Helper {
             return;
         }
 
-        burgertone.getLookBehavior().updateTarget(solution.rotation, false);
+        baritone.getLookBehavior().updateTarget(solution.rotation, false);
 
         if (!solution.solvedPitch) {
             logVerbose("no pitch solution, probably gonna crash in a few ticks LOL!!!");
@@ -757,8 +757,8 @@ public final class ElytraBehavior implements Helper {
         ) {
             // Prioritize boosting fireworks over regular ones
             // TODO: Take the minimum boost time into account?
-            if (!burgertone.getInventoryBehavior().throwaway(true, ElytraBehavior::isBoostingFireworks) &&
-                    !burgertone.getInventoryBehavior().throwaway(true, ElytraBehavior::isFireworks)) {
+            if (!baritone.getInventoryBehavior().throwaway(true, ElytraBehavior::isBoostingFireworks) &&
+                    !baritone.getInventoryBehavior().throwaway(true, ElytraBehavior::isFireworks)) {
                 logDirect("no fireworks");
                 return;
             }
@@ -805,7 +805,7 @@ public final class ElytraBehavior implements Helper {
             }
             this.boost = new FireworkBoost(fireworkTicksExisted, ElytraBehavior.this.minimumBoostTicks);
 
-            ITickableAimProcessor aim = ElytraBehavior.this.burgertone.getLookBehavior().getAimProcessor().fork();
+            ITickableAimProcessor aim = ElytraBehavior.this.baritone.getLookBehavior().getAimProcessor().fork();
             if (async) {
                 // async computation is done at the end of a tick, advance by 1 to prepare for the next tick
                 aim.advance(1);

@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command;
+package baritone.api.command;
 
-import burgertone.api.Settings;
+import baritone.api.Settings;
 
 import java.util.UUID;
 

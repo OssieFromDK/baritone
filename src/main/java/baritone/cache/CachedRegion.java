@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.cache;
+package baritone.cache;
 
-import burgertone.Baritone;
-import burgertone.api.cache.ICachedRegion;
-import burgertone.api.utils.BlockUtils;
+import baritone.Baritone;
+import baritone.api.cache.ICachedRegion;
+import baritone.api.utils.BlockUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.DimensionType;

@@ -15,18 +15,18 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.Baritone;
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.datatypes.RelativeBlockPos;
-import burgertone.api.command.datatypes.RelativeFile;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.command.exception.CommandInvalidStateException;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.utils.schematic.SchematicSystem;
+import baritone.Baritone;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.datatypes.RelativeBlockPos;
+import baritone.api.command.datatypes.RelativeFile;
+import baritone.api.command.exception.CommandException;
+import baritone.api.command.exception.CommandInvalidStateException;
+import baritone.api.utils.BetterBlockPos;
+import baritone.utils.schematic.SchematicSystem;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -39,9 +39,9 @@ public class BuildCommand extends Command {
 
     private final File schematicsDir;
 
-    public BuildCommand(IBaritone burgertone) {
-        super(burgertone, "build");
-        this.schematicsDir = new File(burgertone.getPlayerContext().minecraft().gameDirectory, "schematics");
+    public BuildCommand(IBaritone baritone) {
+        super(baritone, "build");
+        this.schematicsDir = new File(baritone.getPlayerContext().minecraft().gameDirectory, "schematics");
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BuildCommand extends Command {
             args.requireMax(0);
             buildOrigin = origin;
         }
-        boolean success = burgertone.getBuilderProcess().build(file.getName(), file, buildOrigin);
+        boolean success = baritone.getBuilderProcess().build(file.getName(), file, buildOrigin);
         if (!success) {
             throw new CommandInvalidStateException("Couldn't load the schematic. Either your schematic is corrupt or this is a bug.");
         }

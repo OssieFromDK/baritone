@@ -15,17 +15,17 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone;
+package baritone;
 
-import burgertone.api.IBaritone;
-import burgertone.api.IBaritoneProvider;
-import burgertone.api.cache.IWorldScanner;
-import burgertone.api.command.ICommandSystem;
-import burgertone.api.schematic.ISchematicSystem;
-import burgertone.cache.FasterWorldScanner;
-import burgertone.command.CommandSystem;
-import burgertone.command.ExampleBaritoneControl;
-import burgertone.utils.schematic.SchematicSystem;
+import baritone.api.IBaritone;
+import baritone.api.IBaritoneProvider;
+import baritone.api.cache.IWorldScanner;
+import baritone.api.command.ICommandSystem;
+import baritone.api.schematic.ISchematicSystem;
+import baritone.cache.FasterWorldScanner;
+import baritone.command.CommandSystem;
+import baritone.command.ExampleBaritoneControl;
+import baritone.utils.schematic.SchematicSystem;
 import net.minecraft.client.Minecraft;
 
 import java.util.Collections;
@@ -62,16 +62,16 @@ public final class BaritoneProvider implements IBaritoneProvider {
 
     @Override
     public synchronized IBaritone createBaritone(Minecraft minecraft) {
-        IBaritone burgertone = this.getBaritoneForMinecraft(minecraft);
-        if (burgertone == null) {
-            this.all.add(burgertone = new Baritone(minecraft));
+        IBaritone baritone = this.getBaritoneForMinecraft(minecraft);
+        if (baritone == null) {
+            this.all.add(baritone = new Baritone(minecraft));
         }
-        return burgertone;
+        return baritone;
     }
 
     @Override
-    public synchronized boolean destroyBaritone(IBaritone burgertone) {
-        return burgertone != this.getPrimaryBaritone() && this.all.remove(burgertone);
+    public synchronized boolean destroyBaritone(IBaritone baritone) {
+        return baritone != this.getPrimaryBaritone() && this.all.remove(baritone);
     }
 
     @Override

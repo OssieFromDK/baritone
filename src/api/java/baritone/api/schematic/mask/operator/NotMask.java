@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.schematic.mask.operator;
+package baritone.api.schematic.mask.operator;
 
-import burgertone.api.schematic.mask.AbstractMask;
-import burgertone.api.schematic.mask.Mask;
-import burgertone.api.schematic.mask.StaticMask;
+import baritone.api.schematic.mask.AbstractMask;
+import baritone.api.schematic.mask.Mask;
+import baritone.api.schematic.mask.StaticMask;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**

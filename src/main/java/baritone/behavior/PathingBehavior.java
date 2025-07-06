@@ -15,28 +15,28 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.behavior;
+package baritone.behavior;
 
-import burgertone.Baritone;
-import burgertone.api.behavior.IPathingBehavior;
-import burgertone.api.event.events.*;
-import burgertone.api.pathing.calc.IPath;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalXZ;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.Helper;
-import burgertone.api.utils.PathCalculationResult;
-import burgertone.api.utils.interfaces.IGoalRenderPos;
-import burgertone.pathing.calc.AStarPathFinder;
-import burgertone.pathing.calc.AbstractNodeCostSearch;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.pathing.path.PathExecutor;
-import burgertone.process.ElytraProcess;
-import burgertone.utils.PathRenderer;
-import burgertone.utils.PathingCommandContext;
-import burgertone.utils.pathing.Favoring;
+import baritone.Baritone;
+import baritone.api.behavior.IPathingBehavior;
+import baritone.api.event.events.*;
+import baritone.api.pathing.calc.IPath;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalXZ;
+import baritone.api.process.PathingCommand;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.Helper;
+import baritone.api.utils.PathCalculationResult;
+import baritone.api.utils.interfaces.IGoalRenderPos;
+import baritone.pathing.calc.AStarPathFinder;
+import baritone.pathing.calc.AbstractNodeCostSearch;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.MovementHelper;
+import baritone.pathing.path.PathExecutor;
+import baritone.process.ElytraProcess;
+import baritone.utils.PathRenderer;
+import baritone.utils.PathingCommandContext;
+import baritone.utils.pathing.Favoring;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
@@ -74,8 +74,8 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
 
     private final LinkedBlockingQueue<PathEvent> toDispatch = new LinkedBlockingQueue<>();
 
-    public PathingBehavior(Baritone burgertone) {
-        super(burgertone);
+    public PathingBehavior(Baritone baritone) {
+        super(baritone);
     }
 
     private void queuePathEvent(PathEvent event) {
@@ -87,7 +87,7 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         toDispatch.drainTo(curr);
         calcFailedLastTick = curr.contains(PathEvent.CALC_FAILED);
         for (PathEvent event : curr) {
-            burgertone.getGameEventHandler().onPathEvent(event);
+            baritone.getGameEventHandler().onPathEvent(event);
         }
     }
 
@@ -96,12 +96,12 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         dispatchEvents();
         if (event.getType() == TickEvent.Type.OUT) {
             secretInternalSegmentCancel();
-            burgertone.getPathingControlManager().cancelEverything();
+            baritone.getPathingControlManager().cancelEverything();
             return;
         }
 
         expectedSegmentStart = pathStart();
-        burgertone.getPathingControlManager().preTick();
+        baritone.getPathingControlManager().preTick();
         tickPath();
         ticksElapsedSoFar++;
         dispatchEvents();
@@ -119,8 +119,8 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         if (pauseRequestedLastTick && safeToCancel) {
             pauseRequestedLastTick = false;
             if (unpausedLastTick) {
-                burgertone.getInputOverrideHandler().clearAllKeys();
-                burgertone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
+                baritone.getInputOverrideHandler().clearAllKeys();
+                baritone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
             }
             unpausedLastTick = false;
             pausedThisTick = true;
@@ -129,7 +129,7 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         unpausedLastTick = true;
         if (cancelRequested) {
             cancelRequested = false;
-            burgertone.getInputOverrideHandler().clearAllKeys();
+            baritone.getInputOverrideHandler().clearAllKeys();
         }
         synchronized (pathPlanLock) {
             synchronized (pathCalcLock) {
@@ -260,7 +260,7 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         if (command instanceof PathingCommandContext) {
             context = ((PathingCommandContext) command).desiredCalcContext;
         } else {
-            context = new CalculationContext(burgertone, true);
+            context = new CalculationContext(baritone, true);
         }
         if (goal == null) {
             return false;
@@ -310,7 +310,7 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
 
     public boolean isSafeToCancel() {
         if (current == null) {
-            return !burgertone.getElytraProcess().isActive() || burgertone.getElytraProcess().isSafeToCancel();
+            return !baritone.getElytraProcess().isActive() || baritone.getElytraProcess().isSafeToCancel();
         }
         return safeToCancel;
     }
@@ -333,7 +333,7 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
         if (doIt) {
             secretInternalSegmentCancel();
         }
-        burgertone.getPathingControlManager().cancelEverything(); // regardless of if we can stop the current segment, we can still stop the processes
+        baritone.getPathingControlManager().cancelEverything(); // regardless of if we can stop the current segment, we can still stop the processes
         return doIt;
     }
 
@@ -362,8 +362,8 @@ public final class PathingBehavior extends Behavior implements IPathingBehavior,
             if (current != null) {
                 current = null;
                 next = null;
-                burgertone.getInputOverrideHandler().clearAllKeys();
-                burgertone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
+                baritone.getInputOverrideHandler().clearAllKeys();
+                baritone.getInputOverrideHandler().getBlockBreakHelper().stopBreakingBlock();
             }
         }
     }

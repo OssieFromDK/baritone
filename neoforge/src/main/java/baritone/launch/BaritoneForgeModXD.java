@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch;
+package baritone.launch;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;

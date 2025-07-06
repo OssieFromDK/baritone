@@ -15,10 +15,10 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils.schematic;
+package baritone.utils.schematic;
 
-import burgertone.api.schematic.AbstractSchematic;
-import burgertone.api.schematic.IStaticSchematic;
+import baritone.api.schematic.AbstractSchematic;
+import baritone.api.schematic.IStaticSchematic;
 import java.util.List;
 import net.minecraft.world.level.block.state.BlockState;
 

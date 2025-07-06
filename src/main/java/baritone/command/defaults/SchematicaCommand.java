@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,14 +28,14 @@ import java.util.stream.Stream;
 
 public class SchematicaCommand extends Command {
 
-    public SchematicaCommand(IBaritone burgertone) {
-        super(burgertone, "schematica");
+    public SchematicaCommand(IBaritone baritone) {
+        super(baritone, "schematica");
     }
 
     @Override
     public void execute(String label, IArgConsumer args) throws CommandException {
         args.requireMax(0);
-        burgertone.getBuilderProcess().buildOpenSchematic();
+        baritone.getBuilderProcess().buildOpenSchematic();
     }
 
     @Override

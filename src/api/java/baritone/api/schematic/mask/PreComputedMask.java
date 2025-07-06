@@ -15,7 +15,7 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.schematic.mask;
+package baritone.api.schematic.mask;
 
 /**
  * @author Brady

@@ -15,13 +15,13 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.command.defaults;
+package baritone.command.defaults;
 
-import burgertone.api.IBaritone;
-import burgertone.api.command.Command;
-import burgertone.api.command.argument.IArgConsumer;
-import burgertone.api.command.exception.CommandException;
-import burgertone.api.utils.BetterBlockPos;
+import baritone.api.IBaritone;
+import baritone.api.command.Command;
+import baritone.api.command.argument.IArgConsumer;
+import baritone.api.command.exception.CommandException;
+import baritone.api.utils.BetterBlockPos;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +29,8 @@ import java.util.stream.Stream;
 
 public class RenderCommand extends Command {
 
-    public RenderCommand(IBaritone burgertone) {
-        super(burgertone, "render");
+    public RenderCommand(IBaritone baritone) {
+        super(baritone, "render");
     }
 
     @Override

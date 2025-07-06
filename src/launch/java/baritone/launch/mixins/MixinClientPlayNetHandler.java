@@ -15,17 +15,17 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.launch.mixins;
+package baritone.launch.mixins;
 
-import burgertone.Baritone;
-import burgertone.api.BaritoneAPI;
-import burgertone.api.IBaritone;
-import burgertone.api.event.events.BlockChangeEvent;
-import burgertone.api.event.events.ChatEvent;
-import burgertone.api.event.events.ChunkEvent;
-import burgertone.api.event.events.type.EventState;
-import burgertone.api.utils.Pair;
-import burgertone.cache.CachedChunk;
+import baritone.Baritone;
+import baritone.api.BaritoneAPI;
+import baritone.api.IBaritone;
+import baritone.api.event.events.BlockChangeEvent;
+import baritone.api.event.events.ChatEvent;
+import baritone.api.event.events.ChunkEvent;
+import baritone.api.event.events.type.EventState;
+import baritone.api.utils.Pair;
+import baritone.cache.CachedChunk;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -86,11 +86,11 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
     )
     private void sendChatMessage(String string, CallbackInfo ci) {
         ChatEvent event = new ChatEvent(string);
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.minecraft.player);
-        if (burgertone == null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForPlayer(this.minecraft.player);
+        if (baritone == null) {
             return;
         }
-        burgertone.getGameEventHandler().onSendChatMessage(event);
+        baritone.getGameEventHandler().onSendChatMessage(event);
         if (event.isCancelled()) {
             ci.cancel();
         }
@@ -177,8 +177,8 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
             at = @At("RETURN")
     )
     private void postHandleMultiBlockChange(ClientboundSectionBlocksUpdatePacket packetIn, CallbackInfo ci) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForConnection((ClientPacketListener) (Object) this);
-        if (burgertone == null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForConnection((ClientPacketListener) (Object) this);
+        if (baritone == null) {
             return;
         }
 
@@ -189,7 +189,7 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
         if (changes.isEmpty()) {
             return;
         }
-        burgertone.getGameEventHandler().onBlockChange(new BlockChangeEvent(
+        baritone.getGameEventHandler().onBlockChange(new BlockChangeEvent(
                 new ChunkPos(changes.get(0).first()),
                 changes
         ));
@@ -220,11 +220,11 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
             )
     )
     private void preRead(SPacketChunkData packetIn, CallbackInfo ci) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
-        if (burgertone == null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
+        if (baritone == null) {
             return;
         }
-        burgertone.getGameEventHandler().onChunkEvent(
+        baritone.getGameEventHandler().onChunkEvent(
                 new ChunkEvent(
                         EventState.PRE,
                         packetIn.isFullChunk() ? ChunkEvent.Type.POPULATE_FULL : ChunkEvent.Type.POPULATE_PARTIAL,
@@ -239,11 +239,11 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
             at = @At("RETURN")
     )
     private void postHandleChunkData(SPacketChunkData packetIn, CallbackInfo ci) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
-        if (burgertone == null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
+        if (baritone == null) {
             return;
         }
-        burgertone.getGameEventHandler().onChunkEvent(
+        baritone.getGameEventHandler().onChunkEvent(
                 new ChunkEvent(
                         EventState.POST,
                         packetIn.isFullChunk() ? ChunkEvent.Type.POPULATE_FULL : ChunkEvent.Type.POPULATE_PARTIAL,
@@ -258,14 +258,14 @@ public abstract class MixinClientPlayNetHandler extends ClientCommonPacketListen
             at = @At("RETURN")
     )
     private void postHandleBlockChange(SPacketBlockChange packetIn, CallbackInfo ci) {
-        IBaritone burgertone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
-        if (burgertone == null) {
+        IBaritone baritone = BaritoneAPI.getProvider().getBaritoneForConnection((NetHandlerPlayClient) (Object) this);
+        if (baritone == null) {
             return;
         }
 
         final ChunkPos pos = new ChunkPos(packetIn.getBlockPosition().getX() >> 4, packetIn.getBlockPosition().getZ() >> 4);
         final Pair<BlockPos, IBlockState> changed = new Pair<>(packetIn.getBlockPosition(), packetIn.getBlockState());
-        burgertone.getGameEventHandler().onBlockChange(new BlockChangeEvent(pos, Collections.singletonList(changed)));
+        baritone.getGameEventHandler().onBlockChange(new BlockChangeEvent(pos, Collections.singletonList(changed)));
     }
 
     @Inject(

@@ -15,24 +15,24 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.process;
+package baritone.process;
 
-import burgertone.Baritone;
-import burgertone.api.BaritoneAPI;
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.pathing.goals.GoalBlock;
-import burgertone.api.pathing.goals.GoalGetToBlock;
-import burgertone.api.pathing.goals.GoalComposite;
-import burgertone.api.process.IFarmProcess;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.RayTraceUtils;
-import burgertone.api.utils.Rotation;
-import burgertone.api.utils.RotationUtils;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.utils.BaritoneProcessHelper;
+import baritone.Baritone;
+import baritone.api.BaritoneAPI;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.pathing.goals.GoalBlock;
+import baritone.api.pathing.goals.GoalGetToBlock;
+import baritone.api.pathing.goals.GoalComposite;
+import baritone.api.process.IFarmProcess;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.RayTraceUtils;
+import baritone.api.utils.Rotation;
+import baritone.api.utils.RotationUtils;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.MovementHelper;
+import baritone.utils.BaritoneProcessHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -100,8 +100,8 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
             Blocks.CACTUS.asItem()
     );
 
-    public FarmProcess(Baritone burgertone) {
-        super(burgertone);
+    public FarmProcess(Baritone baritone) {
+        super(baritone);
     }
 
     @Override
@@ -112,7 +112,7 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
     @Override
     public void farm(int range, BlockPos pos) {
         if (pos == null) {
-            center = burgertone.getPlayerContext().playerFeet();
+            center = baritone.getPlayerContext().playerFeet();
         } else {
             center = pos;
         }
@@ -266,7 +266,7 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
             }
         }
 
-        burgertone.getInputOverrideHandler().clearAllKeys();
+        baritone.getInputOverrideHandler().clearAllKeys();
         BetterBlockPos playerPos = ctx.playerFeet();
         double blockReachDistance = ctx.playerController().getBlockReachDistance();
         for (BlockPos pos : toBreak) {
@@ -275,10 +275,10 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
             }
             Optional<Rotation> rot = RotationUtils.reachable(ctx, pos);
             if (rot.isPresent() && isSafeToCancel) {
-                burgertone.getLookBehavior().updateTarget(rot.get(), true);
+                baritone.getLookBehavior().updateTarget(rot.get(), true);
                 MovementHelper.switchToBestToolFor(ctx, ctx.world().getBlockState(pos));
                 if (ctx.isLookingAt(pos)) {
-                    burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_LEFT, true);
+                    baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_LEFT, true);
                 }
                 return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
             }
@@ -291,12 +291,12 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
             }
             boolean soulsand = openSoulsand.contains(pos);
             Optional<Rotation> rot = RotationUtils.reachableOffset(ctx, pos, new Vec3(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5), blockReachDistance, false);
-            if (rot.isPresent() && isSafeToCancel && burgertone.getInventoryBehavior().throwaway(true, soulsand ? this::isNetherWart : this::isPlantable)) {
+            if (rot.isPresent() && isSafeToCancel && baritone.getInventoryBehavior().throwaway(true, soulsand ? this::isNetherWart : this::isPlantable)) {
                 HitResult result = RayTraceUtils.rayTraceTowards(ctx.player(), rot.get(), blockReachDistance);
                 if (result instanceof BlockHitResult && ((BlockHitResult) result).getDirection() == Direction.UP) {
-                    burgertone.getLookBehavior().updateTarget(rot.get(), true);
+                    baritone.getLookBehavior().updateTarget(rot.get(), true);
                     if (ctx.isLookingAt(pos)) {
-                        burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
+                        baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
                     }
                     return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                 }
@@ -312,12 +312,12 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
                 }
                 Vec3 faceCenter = Vec3.atCenterOf(pos).add(Vec3.atLowerCornerOf(dir.getUnitVec3i()).scale(0.5));
                 Optional<Rotation> rot = RotationUtils.reachableOffset(ctx, pos, faceCenter, blockReachDistance, false);
-                if (rot.isPresent() && isSafeToCancel && burgertone.getInventoryBehavior().throwaway(true, this::isCocoa)) {
+                if (rot.isPresent() && isSafeToCancel && baritone.getInventoryBehavior().throwaway(true, this::isCocoa)) {
                     HitResult result = RayTraceUtils.rayTraceTowards(ctx.player(), rot.get(), blockReachDistance);
                     if (result instanceof BlockHitResult && ((BlockHitResult) result).getDirection() == dir) {
-                        burgertone.getLookBehavior().updateTarget(rot.get(), true);
+                        baritone.getLookBehavior().updateTarget(rot.get(), true);
                         if (ctx.isLookingAt(pos)) {
-                            burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
+                            baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
                         }
                         return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
                     }
@@ -329,10 +329,10 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
                 continue;
             }
             Optional<Rotation> rot = RotationUtils.reachable(ctx, pos);
-            if (rot.isPresent() && isSafeToCancel && burgertone.getInventoryBehavior().throwaway(true, this::isBoneMeal)) {
-                burgertone.getLookBehavior().updateTarget(rot.get(), true);
+            if (rot.isPresent() && isSafeToCancel && baritone.getInventoryBehavior().throwaway(true, this::isBoneMeal)) {
+                baritone.getLookBehavior().updateTarget(rot.get(), true);
                 if (ctx.isLookingAt(pos)) {
-                    burgertone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
+                    baritone.getInputOverrideHandler().setInputForceState(Input.CLICK_RIGHT, true);
                 }
                 return new PathingCommand(null, PathingCommandType.REQUEST_PAUSE);
             }
@@ -351,17 +351,17 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
         for (BlockPos pos : toBreak) {
             goalz.add(new BuilderProcess.GoalBreak(pos));
         }
-        if (burgertone.getInventoryBehavior().throwaway(false, this::isPlantable)) {
+        if (baritone.getInventoryBehavior().throwaway(false, this::isPlantable)) {
             for (BlockPos pos : openFarmland) {
                 goalz.add(new GoalBlock(pos.above()));
             }
         }
-        if (burgertone.getInventoryBehavior().throwaway(false, this::isNetherWart)) {
+        if (baritone.getInventoryBehavior().throwaway(false, this::isNetherWart)) {
             for (BlockPos pos : openSoulsand) {
                 goalz.add(new GoalBlock(pos.above()));
             }
         }
-        if (burgertone.getInventoryBehavior().throwaway(false, this::isCocoa)) {
+        if (baritone.getInventoryBehavior().throwaway(false, this::isCocoa)) {
             for (BlockPos pos : openLog) {
                 for (Direction direction : Direction.Plane.HORIZONTAL) {
                     if (ctx.world().getBlockState(pos.relative(direction)).getBlock() instanceof AirBlock) {
@@ -370,7 +370,7 @@ public final class FarmProcess extends BaritoneProcessHelper implements IFarmPro
                 }
             }
         }
-        if (burgertone.getInventoryBehavior().throwaway(false, this::isBoneMeal)) {
+        if (baritone.getInventoryBehavior().throwaway(false, this::isBoneMeal)) {
             for (BlockPos pos : bonemealable) {
                 goalz.add(new GoalBlock(pos));
             }

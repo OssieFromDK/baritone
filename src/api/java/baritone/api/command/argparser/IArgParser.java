@@ -15,9 +15,9 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.api.command.argparser;
+package baritone.api.command.argparser;
 
-import burgertone.api.command.argument.ICommandArgument;
+import baritone.api.command.argument.ICommandArgument;
 
 public interface IArgParser<T> {
 

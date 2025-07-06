@@ -15,19 +15,19 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement.movements;
+package baritone.pathing.movement.movements;
 
-import burgertone.api.IBaritone;
-import burgertone.api.pathing.movement.MovementStatus;
-import burgertone.api.utils.BetterBlockPos;
-import burgertone.api.utils.RotationUtils;
-import burgertone.api.utils.input.Input;
-import burgertone.pathing.movement.CalculationContext;
-import burgertone.pathing.movement.Movement;
-import burgertone.pathing.movement.MovementHelper;
-import burgertone.pathing.movement.MovementState;
-import burgertone.utils.BlockStateInterface;
-import burgertone.utils.pathing.MutableMoveResult;
+import baritone.api.IBaritone;
+import baritone.api.pathing.movement.MovementStatus;
+import baritone.api.utils.BetterBlockPos;
+import baritone.api.utils.RotationUtils;
+import baritone.api.utils.input.Input;
+import baritone.pathing.movement.CalculationContext;
+import baritone.pathing.movement.Movement;
+import baritone.pathing.movement.MovementHelper;
+import baritone.pathing.movement.MovementState;
+import baritone.utils.BlockStateInterface;
+import baritone.utils.pathing.MutableMoveResult;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
@@ -43,8 +43,8 @@ public class MovementDescend extends Movement {
     private int numTicks = 0;
     public boolean forceSafeMode = false;
 
-    public MovementDescend(IBaritone burgertone, BetterBlockPos start, BetterBlockPos end) {
-        super(burgertone, start, end, new BetterBlockPos[]{end.above(2), end.above(), end}, end.below());
+    public MovementDescend(IBaritone baritone, BetterBlockPos start, BetterBlockPos end) {
+        super(baritone, start, end, new BetterBlockPos[]{end.above(2), end.above(), end}, end.below());
     }
 
     @Override

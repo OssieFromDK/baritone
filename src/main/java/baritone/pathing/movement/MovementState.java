@@ -15,11 +15,11 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.pathing.movement;
+package baritone.pathing.movement;
 
-import burgertone.api.pathing.movement.MovementStatus;
-import burgertone.api.utils.Rotation;
-import burgertone.api.utils.input.Input;
+import baritone.api.pathing.movement.MovementStatus;
+import baritone.api.utils.Rotation;
+import baritone.api.utils.input.Input;
 
 import java.util.HashMap;
 import java.util.Map;

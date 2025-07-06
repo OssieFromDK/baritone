@@ -15,12 +15,12 @@
  * along with Baritone.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package burgertone.utils;
+package baritone.utils;
 
-import burgertone.api.pathing.goals.Goal;
-import burgertone.api.process.PathingCommand;
-import burgertone.api.process.PathingCommandType;
-import burgertone.pathing.movement.CalculationContext;
+import baritone.api.pathing.goals.Goal;
+import baritone.api.process.PathingCommand;
+import baritone.api.process.PathingCommandType;
+import baritone.pathing.movement.CalculationContext;
 
 public class PathingCommandContext extends PathingCommand {
 
